@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import Nav from "./Nav";
 
-export default function Header() {
-  return (
-    <div>Header</div>
-  )
+const Header = ()=> {
+    return (
+        <header className="page-head bg-gray">
+            <Nav />
+        </header>
+    );
 }
+export default Header;

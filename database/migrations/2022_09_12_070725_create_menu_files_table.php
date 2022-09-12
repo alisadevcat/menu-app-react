@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('menu_files', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('login')->unique();
-            $table->string('email')->nullable();
-            $table->string('password');
-            $table->boolean('active')->default(0);
-            $table->rememberToken();
+            $table->string('file');
+            $table->string('hash');
+            $table->foreignId('menu_id')->constrained('menus')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('menu_files');
     }
 };

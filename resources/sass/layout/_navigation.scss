@@ -1,0 +1,12 @@
+nav {
+    ul {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 1rem;
+
+        li a {
+            display: block;
+            padding: 1rem;
+        }
+    }
+}
