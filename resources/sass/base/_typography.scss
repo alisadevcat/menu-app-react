@@ -1,0 +1,31 @@
+$text-positions: (
+  "left": left,
+  "right": right,
+  "center": center,
+  "justify": justify,
+  "start": start,
+  "end": end,
+);
+
+@each $key, $val in $text-positions{
+  .text-#{$key} {
+    text-align: $val;
+  }
+}
+
+$text-transforms: (
+    "none": "none",
+    "uppercase": uppercase,
+    "lowercase": lowercase,
+    "full-width": full-width,
+);
+
+@each $key, $val in $text-transforms{
+    .text-#{$key} {
+    text-transform: $val;
+    }
+  }
+  
+// .uppercase{
+//     text-transform: uppercase;
+// }

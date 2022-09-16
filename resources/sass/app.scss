@@ -1,6 +1,12 @@
-@import 'base';
-@import 'components';
-@import 'layout';
-@import 'pages';
+// variables & functions
 @import 'settings';
 @import 'utils';
+
+// base & layout
+@import 'base';
+@import 'layout';
+
+//components & pages
+@import 'pages';
+@import 'components';
+

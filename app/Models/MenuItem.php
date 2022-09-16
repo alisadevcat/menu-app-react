@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MenuItem extends Model
 {
     use HasFactory;
+    public function menu_section(){
+        return $this->belongsTo(MenuSection::class);
+    }
 }

@@ -41,4 +41,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
+    }
+    //a user has many menus
+    public function menus()
+    {
+        return $this->hasMany(Menu::class);
+    }
+    public function branches(){
+        return $this->belongsToMany(Branch::class, 'branch_user');
+    }
 }

@@ -1,10 +1,13 @@
 import React from "react";
 
 const Home = () => {
-    const heading = "Laravel 9 Vite  with React JS";
     return (
         <>
-            <div className="red"> {heading}</div>
+            <div className="page-content">
+                <div className="container">
+                    <h1>Home</h1>
+                </div>
+            </div>
         </>
     );
 };
