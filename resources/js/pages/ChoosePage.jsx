@@ -12,9 +12,6 @@ export const ChoosePage = () => {
         dispatch(fetchBranches());
     }, [dispatch]);
 
-    console.log("status", status);
-    console.log("branches", branches);
-
     if (!status) {
         return <div className="loading">loading</div>;
     } else {
