@@ -1,9 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from "@reduxjs/toolkit";
 import branchesSlice from "./reducers/branchesSlice";
 
 export const store = configureStore({
-  reducer: {
-    branches: branchesSlice
-  },
-})
-
+    reducer: {
+        branches: branchesSlice,
+    },
+});

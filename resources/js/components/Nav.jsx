@@ -15,7 +15,7 @@ const Nav = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="choose" className={setActive}>Create new Menu </NavLink>
+                    <NavLink to="/api/choose" className={setActive}>Create new Menu </NavLink>
                 </li>
                 <li>
                     <NavLink to="/" className={setActive}>My menus </NavLink>
