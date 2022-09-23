@@ -13,7 +13,7 @@ export const BranchList = () => {
         <div className="branch-logos">
             {branches &&
                 branches.map((branch) => (
-                    <Link to={`/start/${branch.slug}`}>
+                    <Link to={`/start/${branch.id}/${branch.slug}`}>
                         <figure className="text-center">
                             <img
                                 src={addImagePath(branch.slug)}
