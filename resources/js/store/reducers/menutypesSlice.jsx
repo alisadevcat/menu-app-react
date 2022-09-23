@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchMenutypesById = createAsyncThunk(
     "menutypes/fetchMenutypesById",
-    async (id) => {
-        const response = await fetch(`/api/start/${id}/${branch}`);
+    async (branch) => {
+        const response = await fetch(`/api/start/${branch}`);
         if (response.ok) {
             const data = await response.json();
             console.log(data);

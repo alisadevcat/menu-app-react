@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 export const StartBranch = () => {
     const dispatch = useDispatch();
     const menutypes = useSelector((state) => state.menutypes.menutypes);
-    const status = useSelector((state) => state.branches.isLoaded);
+    const status = useSelector((state) => state.menutypes.isLoaded);
     const {branch, id} = useParams();
 
 

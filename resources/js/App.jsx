@@ -13,7 +13,7 @@ const App = () => {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage />} />
                     <Route path="/api/choose" element={<ChoosePage />} />
-                    <Route path="/start/:id/:branch" element={<StartBranch />} />
+                    <Route path="/api/start/:branch" element={<StartBranch />} />
                     {/* <Route path="account" element={<MyAccountPage />} />
                     <Route path="/start/:branch" element={<Branch />} />
                     <Route path="/menus/:branch/:menu_shortname" element={<MenuEdit />}

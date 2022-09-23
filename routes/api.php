@@ -16,7 +16,7 @@ use App\Http\Controllers\API\MenuTypeController;
 */
 
 Route::get('/choose', [BranchController::class, 'index']);
-Route::get('/start/:id/:branch', [MenuTypeController::class, 'getByBranchId']);
+Route::get('/start/:branch', [MenuTypeController::class, 'getByBranchId']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
