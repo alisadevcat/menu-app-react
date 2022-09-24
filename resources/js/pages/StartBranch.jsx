@@ -20,12 +20,12 @@ export const StartBranch = () => {
         return <div className="loading">loading</div>;
     } else {
         return (
-            <div className="container">
-                <h1>CREATE NEW Menu</h1>
+            <div className="container center">
+                <h1 className="m-2">CREATE NEW MENU</h1>
                 <section>
-                    <div className="">
-                        <h3>Select Meal Period</h3>
-                        <select name="menu_types">
+                    <label className="control-label">Select Meal Period</label>
+                        <select id="menu_type" name="menu_type" class="form-control mt-2">
+                        <option disabled value="">Select Template</option>
                             {menutypes &&
                                 menutypes.map((menutype) => (
                                     <option value={menutype.template}>
@@ -33,7 +33,6 @@ export const StartBranch = () => {
                                     </option>
                                 ))}
                         </select>
-                    </div>
                 </section>
             </div>
         );
