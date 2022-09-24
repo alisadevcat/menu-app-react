@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-const setActive = ({isActive}) => isActive ? 'active-site-nav__link text-uppercase' : 'text-uppercase';
+
+const setActive = ({ isActive }) =>
+    isActive ? "active-site-nav__link text-uppercase" : "text-uppercase";
 
 const Nav = () => {
     return (
@@ -15,13 +17,19 @@ const Nav = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/api/choose" className={setActive}>Create new Menu </NavLink>
+                    <NavLink to="/api/choose" className={setActive}>
+                        Create new Menu
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/" className={setActive}>My menus </NavLink>
+                    <NavLink to="/" className={setActive}>
+                        My menus
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/" className={setActive}>My account </NavLink>
+                    <NavLink to="/" className={setActive}>
+                        My account
+                    </NavLink>
                 </li>
             </ul>
         </nav>

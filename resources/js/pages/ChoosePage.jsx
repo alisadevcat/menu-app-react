@@ -5,7 +5,6 @@ import { BranchList } from "../components/BranchList";
 
 export const ChoosePage = () => {
     const dispatch = useDispatch();
-    const branches = useSelector((state) => state.branches.branches);
     const status = useSelector((state) => state.branches.isLoaded);
 
     useEffect(() => {

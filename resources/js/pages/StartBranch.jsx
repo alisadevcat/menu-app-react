@@ -7,16 +7,35 @@ export const StartBranch = () => {
     const dispatch = useDispatch();
     const menutypes = useSelector((state) => state.menutypes.menutypes);
     const status = useSelector((state) => state.menutypes.isLoaded);
-    const {branch, id} = useParams();
-
+    const { branch } = useParams();
 
     useEffect(() => {
-        fetchMenutypesById();
+        dispatch(fetchMenutypesById(branch));
     }, [dispatch]);
 
-    console.log(menutypes);
-    console.log(branch, id);
+    console.log(branch);
     console.log(status);
 
-    return <div>StartBranch</div>;
+    if (!status) {
+        return <div className="loading">loading</div>;
+    } else {
+        return (
+            <div className="container">
+                <h1>CREATE NEW Menu</h1>
+                <section>
+                    <div className="">
+                        <h3>Select Meal Period</h3>
+                        <select name="menu_types">
+                            {menutypes &&
+                                menutypes.map((menutype) => (
+                                    <option value={menutype.template}>
+                                        {menutype.name}
+                                    </option>
+                                ))}
+                        </select>
+                    </div>
+                </section>
+            </div>
+        );
+    }
 };

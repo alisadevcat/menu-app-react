@@ -15,7 +15,6 @@ const App = () => {
                     <Route path="/api/choose" element={<ChoosePage />} />
                     <Route path="/api/start/:branch" element={<StartBranch />} />
                     {/* <Route path="account" element={<MyAccountPage />} />
-                    <Route path="/start/:branch" element={<Branch />} />
                     <Route path="/menus/:branch/:menu_shortname" element={<MenuEdit />}
                     /> */}
                     {/* <Route path="*" element={<NotFound />} /> */}

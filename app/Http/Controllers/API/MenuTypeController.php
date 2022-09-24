@@ -14,6 +14,7 @@ class MenuTypeController extends Controller
       $menu_types = MenuType::all();
       return $menu_types;
    }
+
    public function getByBranchId($branch)
    {
       $id = Branch::where('slug', $branch)->pluck('id');
