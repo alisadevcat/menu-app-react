@@ -1,0 +1,23 @@
+.btn{
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.btn-danger, .btn-default, .btn-info, .btn-primary, .btn-success, .btn-warning {
+    text-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+.btn-default {
+    font-family: "FFDINWebProLight", sans-serif;
+    background: transparent;
+    border: 1px solid #979797;
+    border-radius: 4px;
+    color: #979797;
+}
+.btn-start{
+    height: 2.8rem;
+    width: 15rem;
+}

@@ -1,8 +1,7 @@
 .control-label {
     display: block;
 }
-#menu-type .form-control,
-#choose-modal .form-control {
+select.form-control{
     margin-bottom: 2rem;
     width: 15rem;
 }

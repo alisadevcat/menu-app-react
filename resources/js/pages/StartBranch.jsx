@@ -1,40 +1,73 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMenutypesById } from "../store/reducers/menutypesSlice";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { ChooseMenu } from "../components/ChooseMenu";
+import { TemplateMenu } from "../components/TemplateMenu";
 
 export const StartBranch = () => {
     const dispatch = useDispatch();
     const menutypes = useSelector((state) => state.menutypes.menutypes);
     const status = useSelector((state) => state.menutypes.isLoaded);
     const { branch } = useParams();
+    const [selected, setSelected] = useState(null);
+    const [showTemplate, setShowTemplate] = useState(false);
 
     useEffect(() => {
         dispatch(fetchMenutypesById(branch));
     }, [dispatch]);
 
+    const handleSelectChange = (event) => {
+        setSelected(event.target.value);
+    };
+
+    const handleShowTemplate = (value) => {
+        setShowTemplate(value);
+    };
+
     console.log(branch);
     console.log(status);
+    console.log(selected);
 
     if (!status) {
         return <div className="loading">loading</div>;
     } else {
         return (
-            <div className="container center">
-                <h1 className="m-2">CREATE NEW MENU</h1>
-                <section>
-                    <label className="control-label">Select Meal Period</label>
-                        <select id="menu_type" name="menu_type" class="form-control mt-2">
-                        <option disabled value="">Select Template</option>
+            <>
+                <div className="container">
+                    <h1>CREATE NEW MENU</h1>
+                    <section id="select-template">
+                        <label className="control-label">
+                            Select Meal Period
+                        </label>
+                        <select
+                            id="menu_type"
+                            name="menu_type"
+                            className="form-control mt-2"
+                            onChange={handleSelectChange}
+                        >
+                            <option disabled value="default">
+                                Select Template
+                            </option>
                             {menutypes &&
                                 menutypes.map((menutype) => (
-                                    <option value={menutype.template}>
+                                    <option
+                                        value={menutype.template}
+                                        key={menutype.name}
+                                    >
                                         {menutype.name}
                                     </option>
                                 ))}
                         </select>
-                </section>
-            </div>
+                    </section>
+                </div>
+                {selected && (
+                    <div className="container">
+                        <ChooseMenu handleShowTemplate={handleShowTemplate} />
+                    </div>
+                )}
+                {showTemplate && (<div className="container"><TemplateMenu/></div>)}
+            </>
         );
     }
 };
