@@ -12,12 +12,15 @@ export const StartBranch = () => {
     const { branch } = useParams();
     const [selected, setSelected] = useState(null);
     const [showTemplate, setShowTemplate] = useState(false);
+    const [selectedTitle, setSelectedTitle] = useState(null);
 
     useEffect(() => {
         dispatch(fetchMenutypesById(branch));
     }, [dispatch]);
 
     const handleSelectChange = (event) => {
+        let index = event.nativeEvent.target.selectedIndex;
+        setSelectedTitle(event.nativeEvent.target[index].text);
         setSelected(event.target.value);
     };
 
@@ -25,8 +28,6 @@ export const StartBranch = () => {
         setShowTemplate(value);
     };
 
-    console.log(branch);
-    console.log(status);
     console.log(selected);
 
     if (!status) {
@@ -66,7 +67,11 @@ export const StartBranch = () => {
                         <ChooseMenu handleShowTemplate={handleShowTemplate} />
                     </div>
                 )}
-                {showTemplate && (<div className="container"><TemplateMenu/></div>)}
+                {showTemplate && (
+                    <div className="container">
+                        <TemplateMenu template={selected}/>
+                    </div>
+                )}
             </>
         );
     }

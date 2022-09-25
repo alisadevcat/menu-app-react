@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export const ChooseMenu = (props) => {
 
-
   const handleClick = ()=>{
     props.handleShowTemplate(true);
   }
