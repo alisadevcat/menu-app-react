@@ -61,7 +61,7 @@ export const StartBranch = () => {
                     </select>
                 </section>
 
-                {selectedTemplate && <ChooseMenu />}
+                {selectedTemplate && <ChooseMenu title={templateData.title}/>}
                 {selectedTemplate && (
                     <TemplateMenu templateData={templateData} />
                 )}
