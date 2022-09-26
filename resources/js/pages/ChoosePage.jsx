@@ -1,7 +1,7 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBranches } from "../store/reducers/branchesSlice";
-import { BranchList } from "../components/BranchList";
+import { BranchList } from "../parts/BranchList";
 
 export const ChoosePage = () => {
     const dispatch = useDispatch();
