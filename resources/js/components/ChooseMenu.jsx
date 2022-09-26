@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
 
-export const ChooseMenu = (props) => {
+const ChooseMenu = (props) => {
 
   const handleClick = ()=>{
     props.handleShowTemplate(true);
@@ -28,7 +28,7 @@ export const ChooseMenu = (props) => {
                             id="saved-template"
                             className="form-control mt-2"
                         >
-                            <option disabled value="default">
+                            <option disabled value="default" selected="selected">
                                 Select One
                             </option>
                         </select>
@@ -38,3 +38,4 @@ export const ChooseMenu = (props) => {
         </>
     );
 };
+export default ChooseMenu;

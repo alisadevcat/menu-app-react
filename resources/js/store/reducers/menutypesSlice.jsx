@@ -17,7 +17,9 @@ export const fetchMenutypesById = createAsyncThunk(
 const menutypesSlice = createSlice({
     name: "menutypes",
     initialState: { menutypes: [], isLoaded: false, error: null },
-    reducers: {},
+    reducers: {
+       
+    },
     extraReducers: {
         [fetchMenutypesById.pending]: (state) => {
             state.isLoaded = false;
@@ -34,3 +36,4 @@ const menutypesSlice = createSlice({
 });
 
 export default menutypesSlice.reducer;
+// export const { getShortName } = menutypesSlice.actions;

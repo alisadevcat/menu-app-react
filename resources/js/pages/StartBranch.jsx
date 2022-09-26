@@ -1,34 +1,40 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMenutypesById } from "../store/reducers/menutypesSlice";
+import { fetchMenutypesById}  from "../store/reducers/menutypesSlice";
 import { useParams } from "react-router-dom";
-import { ChooseMenu } from "../components/ChooseMenu";
-import { TemplateMenu } from "../components/TemplateMenu";
+import ChooseMenu from "../components/ChooseMenu";
+import TemplateMenu  from "../components/TemplateMenu";
 
 export const StartBranch = () => {
     const dispatch = useDispatch();
     const menutypes = useSelector((state) => state.menutypes.menutypes);
     const status = useSelector((state) => state.menutypes.isLoaded);
     const { branch } = useParams();
-    const [selected, setSelected] = useState(null);
+    const [selectedTemplate, setSelectedTemplate] = useState(null);
     const [showTemplate, setShowTemplate] = useState(false);
-    const [selectedTitle, setSelectedTitle] = useState(null);
+    const [templateData, setTemplateData] = useState(null);
+
 
     useEffect(() => {
         dispatch(fetchMenutypesById(branch));
     }, [dispatch]);
 
+    const getShortName = (template_name) => {
+        return menutypes.filter((item) => item.template === template_name)[0].shortname;
+    }
+
     const handleSelectChange = (event) => {
         let index = event.nativeEvent.target.selectedIndex;
-        setSelectedTitle(event.nativeEvent.target[index].text);
-        setSelected(event.target.value);
+        const title = event.nativeEvent.target[index].text;
+        setSelectedTemplate(event.target.value);
+        setTemplateData({ title: title, shortname: getShortName(event.target.value) });
     };
 
     const handleShowTemplate = (value) => {
         setShowTemplate(value);
     };
 
-    console.log(selected);
+    // console.log(selectedTemplate);
 
     if (!status) {
         return <div className="loading">loading</div>;
@@ -47,29 +53,28 @@ export const StartBranch = () => {
                             className="form-control mt-2"
                             onChange={handleSelectChange}
                         >
-                            <option disabled value="default">
+                            <option disabled value="default" selected="selected">
                                 Select Template
                             </option>
                             {menutypes &&
                                 menutypes.map((menutype) => (
                                     <option
                                         value={menutype.template}
-                                        key={menutype.name}
-                                    >
+                                        key={menutype.shortname}>
                                         {menutype.name}
                                     </option>
                                 ))}
                         </select>
                     </section>
                 </div>
-                {selected && (
+                {selectedTemplate && (
                     <div className="container">
                         <ChooseMenu handleShowTemplate={handleShowTemplate} />
                     </div>
                 )}
-                {showTemplate && (
+                {(selectedTemplate && showTemplate) && (
                     <div className="container">
-                        <TemplateMenu template={selected}/>
+                        <TemplateMenu templateData={templateData}/>
                     </div>
                 )}
             </>

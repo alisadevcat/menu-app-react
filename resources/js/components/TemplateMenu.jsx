@@ -1,16 +1,16 @@
 import React from "react";
 
-export const TemplateMenu = (props) => {
-    const { template } = props.template;
-    console.log(template);
-    const img_path = `storage/images/MenuThumbnails/${template}`;
+const TemplateMenu = (props) => {
+    const { title, shortname } = props.templateData;
+    const img_path = `storage/images/MenuThumbnails/${shortname}.png`;
 
     return (
         <>
             <h2>TEMPLATE MENU</h2>
-            <p>{template}</p>
-            <img src={img_path} alt={template} />
+            <p>{title}</p>
+            <img src={img_path} alt={shortname} />
         </>
     );
 };
 
+export default TemplateMenu;
