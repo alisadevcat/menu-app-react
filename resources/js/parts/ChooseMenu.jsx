@@ -21,7 +21,7 @@ const ChooseMenu = (props) => {
                             Create From Template
                         </label>
                         <button
-                            className="btn btn-default btn-start"
+                            className="btn btn-default btn-start mt-2"
                             onClick={openModal}
                         >
                             Start

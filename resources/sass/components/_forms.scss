@@ -1,0 +1,18 @@
+.form-control:not(select) {
+    margin-top: 8px;
+    color: #000;
+    font-size: 12px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    border: 1px solid #4a4a4a;
+}
+
+.form-group {
+display:flex;
+flex-direction: column;
+justify-content: space-around;
+}
+
+.edit-modal .control-label {
+    text-align: left;
+}
