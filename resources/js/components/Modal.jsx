@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import validateMenuName from "../utils/Validation";
 
 const Modal = (props) => {
     const showModal = props.showModal;
@@ -9,13 +10,10 @@ const Modal = (props) => {
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('submit', menu)
-        
+        console.log(validateMenuName(menuName, 3));
     };
     const handleInput =(event)=>{
-        console.log(event.target.value.trim());
         setMenuName(event.target.value.trim());
-
     }
     //Validation
     const CheckIfEmpty =(value)=>{};
