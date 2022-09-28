@@ -1,9 +1,7 @@
 function checkIsEmpty(value) {
-    console.log(value.length === 0, 'empty')
    return value.length === 0 ;
 }
 function checkNotMatchCount(value, maxCount) {
-    console.log(value.length > maxCount, 'letters');
   return value.length > maxCount;
 }
 function validateEmail(value) {
@@ -15,19 +13,17 @@ export default function validateMenuName(value, count) {
     let errors = [];
     let emptyMessage = "Field mustn't be empty";
     let lettersMessage = `Field must contain not more than ${count} letters`;
-    let status = false;
 
     if (checkIsEmpty(value)) {
+        errors.length = 0;
         errors.push(emptyMessage);
-        status = false;
     } else if (checkNotMatchCount(value, count)) {
+        errors.length = 0;
         errors.push(lettersMessage);
-        status = false;
-    } else {
-        status = true;
+    }else{
+        errors.length = 0;
     }
-
-    return { errors: errors, status: status };
+    return errors;
 }
 
 function containsCharacters(value, code) {

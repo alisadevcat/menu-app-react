@@ -1,5 +1,6 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import validateMenuName from "../utils/Validation";
+import { useNavigate } from "react-router-dom";
 
 const Modal = (props) => {
     const showModal = props.showModal;
@@ -7,17 +8,28 @@ const Modal = (props) => {
     const title = props.title;
     const [menuName, setMenuName] = useState("");
     const [errors, setErrors] = useState([]);
-    
+    const navigate = useNavigate();
+
+    useEffect(() => {
+
+    }, [errors]);
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(validateMenuName(menuName, 3));
+        let validationData = validateMenuName(menuName, 3);
+        setErrors([...errors, ...validationData]);
+        
+       console.log(errors);
     };
-    const handleInput =(event)=>{
+
+    const handleInput = (event) => {
+        setErrors([]);
         setMenuName(event.target.value.trim());
-    }
+    };
     //Validation
-    const CheckIfEmpty =(value)=>{};
-    const CheckLettersCount =()=>{};
+    const CheckIfEmpty = (value) => {};
+    const CheckLettersCount = () => {};
 
     console.log(showModal);
     if (showModal) {
@@ -37,10 +49,12 @@ const Modal = (props) => {
                             </div>
                         </div>
                         <div className="modal-body">
-                            <h2 className="mt-1 mb-1">Confirm Meal Period And Name</h2>
+                            <h2 className="mt-1 mb-1">
+                                Confirm Meal Period And Name
+                            </h2>
                             <label className="control-label">Type</label>
                             <div className="bg-light-gray">{title}</div>
-                            <form onSubmit={handleSubmit} >
+                            <form onSubmit={handleSubmit}>
                                 <div className="form-group mt-1 mb-1">
                                     <label className="control-label">
                                         Name
@@ -56,6 +70,11 @@ const Modal = (props) => {
                                     <button type="submit" className="btn m-2">
                                         Get Started
                                     </button>
+
+                                     {errors &&
+                                        errors.map((error) => (
+                                            <span key={error}>{ error }</span>
+                                        ))}  
                                 </div>
                             </form>
                         </div>
