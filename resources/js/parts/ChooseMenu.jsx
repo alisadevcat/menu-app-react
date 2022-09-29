@@ -4,6 +4,7 @@ import Modal from "../components/Modal";
 const ChooseMenu = (props) => {
     const [showModal, setShowModal] = useState(false);
     const title = props.title;
+    
     const openModal = () => {
         setShowModal(true);
     };

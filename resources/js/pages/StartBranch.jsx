@@ -21,6 +21,7 @@ export const StartBranch = () => {
         return menutypes.filter((item) => item.template === template_name)[0].shortname;
     };
 
+
     const handleSelectChange = (event) => {
         let index = event.nativeEvent.target.selectedIndex;
         const title = event.nativeEvent.target[index].text;
@@ -29,6 +30,8 @@ export const StartBranch = () => {
             title: title,
             shortname: getShortName(event.target.value),
         });
+
+        localStorage.setItem('menu_type_id', menutypes.filter((item) => item.template === event.target.value)[0].id);
     };
 
     if (!status) {

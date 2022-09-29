@@ -1,12 +1,28 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const menusSlice = createSlice({
-    name: menus,
-    initialState: { menus: [], isLoaded: false, error: null },
-    reducers: {},
-    extraReducers:{
+// export const addMenu = createAsyncThunk(
+//     "menus/addMenu",
+//     async (url = "", data = {}) => {
 
-    }
-});
+//         // const response = await fetch("/api/menus", {
+//         //     method: "POST",
+//         // });
+        
+//         // if (response.ok) {
+//         //     const data = await response.json();
+//         //     return data;
+//         // } else {
+//         //     console.log("Ошибка HTTP: " + response.status);
+//         // }
+//     }
+// );
 
-export default menusSlice.reducer;
+// const menusSlice = createSlice({
+//     name: menus,
+//     initialState: [],
+//     reducers: {
+//     },
+//     extraReducers: {},
+// });
+
+// export default menusSlice.reducer;

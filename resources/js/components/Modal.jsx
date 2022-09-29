@@ -9,6 +9,7 @@ const Modal = (props) => {
     const [menuName, setMenuName] = useState("");
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
+    const menu_type_id = localStorage.getItem('menu_type_id');
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -17,8 +18,7 @@ const Modal = (props) => {
         if (validationErrors.length > 0) {
             setErrors([...errors, ...validationErrors]);
         }
-
-        navigate("/");
+        // navigate("/");
     };
 
     const handleInput = (event) => {
