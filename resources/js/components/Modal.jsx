@@ -10,17 +10,15 @@ const Modal = (props) => {
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
 
-    useEffect(() => {
-
-    }, [errors]);
-
-
     const handleSubmit = (event) => {
         event.preventDefault();
-        let validationData = validateMenuName(menuName, 3);
-        setErrors([...errors, ...validationData]);
-        
-       console.log(errors);
+        let validationErrors = validateMenuName(menuName, 3);
+
+        if (validationErrors.length > 0) {
+            setErrors([...errors, ...validationErrors]);
+        }
+
+        navigate("/");
     };
 
     const handleInput = (event) => {
@@ -71,10 +69,10 @@ const Modal = (props) => {
                                         Get Started
                                     </button>
 
-                                     {errors &&
+                                    {errors &&
                                         errors.map((error) => (
-                                            <span key={error}>{ error }</span>
-                                        ))}  
+                                            <span key={error}>{error}</span>
+                                        ))}
                                 </div>
                             </form>
                         </div>

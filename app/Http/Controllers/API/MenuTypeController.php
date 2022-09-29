@@ -1,24 +1,94 @@
 <?php
 
 namespace App\Http\Controllers\API;
-
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
 use App\Models\MenuType;
+
 use Illuminate\Http\Request;
 
 class MenuTypeController extends Controller
 {
-   public function index()
-   {
-      $menu_types = MenuType::all();
-      return $menu_types;
-   }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+       $menu_types = MenuType::all();
+       return $menu_types;
+    }
+ 
+    public function getByBranchId($branch)
+    {
+       $id = Branch::where('slug', $branch)->pluck('id');
+       $menutypes = MenuType::where('branch_id', $id)->get();
+       return $menutypes;
+    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
-   public function getByBranchId($branch)
-   {
-      $id = Branch::where('slug', $branch)->pluck('id');
-      $menutypes = MenuType::where('branch_id', $id)->get();
-      return $menutypes;
-   }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }

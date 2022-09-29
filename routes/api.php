@@ -3,7 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\BranchController;
+use App\Http\Controllers\API\MenuController;
 use App\Http\Controllers\API\MenuTypeController;
+use App\Http\Controllers\API\MenuSectionController;
+use App\Http\Controllers\API\MenuItemController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,6 +20,10 @@ use App\Http\Controllers\API\MenuTypeController;
 
 Route::get('/choose', [BranchController::class, 'index']);
 Route::get('/start/{branch}', [MenuTypeController::class, 'getByBranchId']);
+Route::resource('menu-sections', MenuSectionController::class)->except(['index', 'create']);
+Route::resource('menu-types', MenuTypeController::class);
+Route::resource('menu-items', MenuItemController::class);
+Route::resource('menus', MenuController::class)->except(['index', 'create']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
