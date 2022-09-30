@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
-
+use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -25,7 +25,7 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        $menu_template = Menu::where('menu_type_id', $request->type_id)->firstOrFail();
+        $menu_template = Menu::where('menu_type_id', $request->type_id)->latest('updated_at')->first();
 
         $footer_notice = $menu_template->footer_notice;
         $footer_notice2 = $menu_template->footer_notice2;

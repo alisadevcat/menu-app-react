@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import validateMenuName from "../utils/Validation";
 import { useNavigate } from "react-router-dom";
+import addMenu from "../store/reducers/menusSlice";
 
 const Modal = (props) => {
     const showModal = props.showModal;
@@ -18,6 +19,8 @@ const Modal = (props) => {
         if (validationErrors.length > 0) {
             setErrors([...errors, ...validationErrors]);
         }
+       console.log(addMenu({ type_id: menu_type_id, menu_name: menuName })) ;
+
         // navigate("/");
     };
 
