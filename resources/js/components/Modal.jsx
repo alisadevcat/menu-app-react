@@ -1,7 +1,8 @@
 import { React, useState, useEffect } from "react";
 import validateMenuName from "../utils/Validation";
 import { useNavigate } from "react-router-dom";
-import addMenu from "../store/reducers/menusSlice";
+import { addMenu } from "../store/reducers/menusSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Modal = (props) => {
     const showModal = props.showModal;
@@ -9,8 +10,9 @@ const Modal = (props) => {
     const title = props.title;
     const [menuName, setMenuName] = useState("");
     const [errors, setErrors] = useState([]);
-    const navigate = useNavigate();
-    const menu_type_id = localStorage.getItem('menu_type_id');
+    const dispatch = useDispatch();
+    // const navigate = useNavigate();
+    const menu_type_id = localStorage.getItem("menu_type_id");
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -19,8 +21,9 @@ const Modal = (props) => {
         if (validationErrors.length > 0) {
             setErrors([...errors, ...validationErrors]);
         }
-       console.log(addMenu({ type_id: menu_type_id, menu_name: menuName })) ;
-
+        const menu_object = { type_id: menu_type_id, menu_name: menuName };
+        
+        dispatch(addMenu(menu_object));
         // navigate("/");
     };
 

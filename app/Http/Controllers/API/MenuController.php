@@ -24,23 +24,25 @@ class MenuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $menu_template = Menu::where('menu_type_id', $request->type_id)->latest('updated_at')->first();
+{
+        // $request = json_decode($request);
 
-        $footer_notice = $menu_template->footer_notice;
-        $footer_notice2 = $menu_template->footer_notice2;
-        $menu = new Menu();
+        // $menu_template = Menu::where('menu_type_id', $request->type_id)->latest('updated_at')->first();
 
-        $menu->name = $request->menu_name;
-        $menu->footer_notice = $footer_notice;
-        $menu->footer_notice2 = $footer_notice2;
-        $menu->menu_type_id = $request->type_id;
-        $menu->user_id = $request->user_id;
-        $menu->save();
+        // $footer_notice = $menu_template->footer_notice;
+        // $footer_notice2 = $menu_template->footer_notice2;
+        // $menu = new Menu();
+
+        // $menu->name = $request->menu_name;
+        // $menu->footer_notice = $footer_notice;
+        // $menu->footer_notice2 = $footer_notice2;
+        // $menu->menu_type_id = $request->type_id;
+        // $menu->user_id = $request->user_id;
+        // $menu->save();
         
         $message = 'Success';
 
-        return response()->json(['message'=> $message, "menu" => $menu]);
+        return response()->json(['message'=> $message]);
     }
 
 
