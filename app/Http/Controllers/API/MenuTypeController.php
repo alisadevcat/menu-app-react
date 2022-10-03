@@ -10,16 +10,20 @@ use Illuminate\Http\Request;
 class MenuTypeController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display a listing of the menu types.
      */
+
     public function index()
     {
        $menu_types = MenuType::all();
        return $menu_types;
     }
  
+    /**
+     * Get menu type by the branch id.
+     * @param  string  $branch
+     */
+
     public function getByBranchId($branch)
     {
        $id = Branch::where('slug', $branch)->pluck('id');

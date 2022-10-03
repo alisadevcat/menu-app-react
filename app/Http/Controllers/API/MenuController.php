@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\API;
+
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
-{ 
+{
     /**
      * Show the form for creating a new resource.
      *
@@ -24,25 +25,34 @@ class MenuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
+    {
+        // echo "<pre>";
+        // print_r('ggggg');
+        // echo "</pre>";
+        // $uri = $request->path();
+        //$method = $request->method();
+
         // $request = json_decode($request);
 
-        // $menu_template = Menu::where('menu_type_id', $request->type_id)->latest('updated_at')->first();
+        $type_id = $request->input('type_id');
 
-        // $footer_notice = $menu_template->footer_notice;
-        // $footer_notice2 = $menu_template->footer_notice2;
-        // $menu = new Menu();
+        $menu_template = Menu::where('menu_type_id',  $type_id)->firstOrFail();
 
-        // $menu->name = $request->menu_name;
-        // $menu->footer_notice = $footer_notice;
-        // $menu->footer_notice2 = $footer_notice2;
-        // $menu->menu_type_id = $request->type_id;
-        // $menu->user_id = $request->user_id;
-        // $menu->save();
-        
+        $footer_notice = $menu_template->footer_notice;
+        $footer_notice2 = $menu_template->footer_notice2;
+        $menu = new Menu();
+
+        $menu->name = $request->menu_name;
+        $menu->footer_notice = $footer_notice;
+        $menu->footer_notice2 = $footer_notice2;
+        $menu->menu_type_id = $request->type_id;
+        $menu->user_id = $request->user_id;
+        $menu->save();
+
         $message = 'Success';
 
-        return response()->json(['message'=> $message]);
+        return response()->json(['message'=> $message, "menu" => $menu]);
+        //"menu" => $menu
     }
 
 

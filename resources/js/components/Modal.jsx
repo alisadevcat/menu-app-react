@@ -21,7 +21,8 @@ const Modal = (props) => {
         if (validationErrors.length > 0) {
             setErrors([...errors, ...validationErrors]);
         }
-        const menu_object = { type_id: menu_type_id, menu_name: menuName };
+
+        const menu_object = { type_id: menu_type_id, menu_name: menuName, user_id: 1 };
         
         dispatch(addMenu(menu_object));
         // navigate("/");

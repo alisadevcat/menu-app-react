@@ -1,25 +1,40 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const addMenu = createAsyncThunk(
     "menus/addMenu",
     async (menu_object) => {
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(menu_object),
-        };
+        // const options = {
+        //     method: "POST",
+        //     headers: {
+        //         "Accept": "application/json, text/plain, */*",
+        //         "Content-Type": "application/json",
+        //     },
+        //     mode: 'cors',
+        //     body: JSON.stringify(menu_object),
+        // };
 
-        const response = await fetch("/api/menus", options);
+        // const response = await fetch("/api/menus", options);
 
-        if (response.ok) {
-            const data = await response.json();
-            console.log(data, 'data');
-            return data;
-        } else {
-            console.log("Ошибка HTTP: " + response.status);
-        }
+        axios
+            .post("/api/menus", menu_object)
+            .then(function (response) {
+                console.log(response.data);
+                return response.data;
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+
+        // console.log(options);
+
+        // if (response.ok) {
+        //     const data = await response.json();
+        //     console.log(data, "data");
+        //     return data;
+        // } else {
+        //     console.log("Ошибка HTTP: " + response.status);
+        // }
     }
 );
 
@@ -40,8 +55,8 @@ const menusSlice = createSlice({
         },
         [addMenu.fulfilled]: (state, action) => {
             state.isLoaded = true;
-            state.message = action.payload;
-            console.log(action.payload);
+            // state.message = action.payload;
+            console.log(action.payload, "payload");
             // state.menu = action.payload.menu
         },
         [addMenu.rejected]: (state) => {
