@@ -26,17 +26,10 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        // echo "<pre>";
-        // print_r('ggggg');
-        // echo "</pre>";
-        // $uri = $request->path();
-        //$method = $request->method();
-
-        // $request = json_decode($request);
 
         $type_id = $request->input('type_id');
 
-        $menu_template = Menu::where('menu_type_id',  $type_id)->firstOrFail();
+        $menu_template = Menu::where('menu_type_id',  $type_id)->latest()->first();;
 
         $footer_notice = $menu_template->footer_notice;
         $footer_notice2 = $menu_template->footer_notice2;
@@ -49,10 +42,7 @@ class MenuController extends Controller
         $menu->user_id = $request->user_id;
         $menu->save();
 
-        $message = 'Success';
-
-        return response()->json(['message'=> $message, "menu" => $menu]);
-        //"menu" => $menu
+        return response()->json(["menu" => $menu]);
     }
 
 

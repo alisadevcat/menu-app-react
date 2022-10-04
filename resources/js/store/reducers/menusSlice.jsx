@@ -1,40 +1,28 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 
 export const addMenu = createAsyncThunk(
     "menus/addMenu",
     async (menu_object) => {
-        // const options = {
-        //     method: "POST",
-        //     headers: {
-        //         "Accept": "application/json, text/plain, */*",
-        //         "Content-Type": "application/json",
-        //     },
-        //     mode: 'cors',
-        //     body: JSON.stringify(menu_object),
-        // };
 
-        // const response = await fetch("/api/menus", options);
+        const options = {
+            method: "POST",
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json",
+            },
+            mode: "cors",
+            body: JSON.stringify(menu_object),
+        };
 
-        axios
-            .post("/api/menus", menu_object)
-            .then(function (response) {
-                console.log(response.data);
-                return response.data;
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
+        const response = await fetch("/api/menus", options);
 
-        // console.log(options);
 
-        // if (response.ok) {
-        //     const data = await response.json();
-        //     console.log(data, "data");
-        //     return data;
-        // } else {
-        //     console.log("Ошибка HTTP: " + response.status);
-        // }
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            console.log("Ошибка HTTP: " + response.status);
+        }
     }
 );
 
@@ -44,7 +32,6 @@ const menusSlice = createSlice({
         menus: [],
         isLoaded: false,
         error: null,
-        message: null,
         menu: null,
     },
     reducers: {},
@@ -55,9 +42,8 @@ const menusSlice = createSlice({
         },
         [addMenu.fulfilled]: (state, action) => {
             state.isLoaded = true;
-            // state.message = action.payload;
+            state.menu = action.payload.menu;
             console.log(action.payload, "payload");
-            // state.menu = action.payload.menu
         },
         [addMenu.rejected]: (state) => {
             state.isLoaded = true;

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import ChooseMenu from "../parts/ChooseMenu";
 import TemplateMenu from "../parts/TemplateMenu";
 
-export const StartBranch = () => {
+ const StartBranch = () => {
     const dispatch = useDispatch();
     const menutypes = useSelector((state) => state.menutypes.menutypes);
     const status = useSelector((state) => state.menutypes.isLoaded);
@@ -72,3 +72,4 @@ export const StartBranch = () => {
         );
     }
 };
+export default StartBranch;

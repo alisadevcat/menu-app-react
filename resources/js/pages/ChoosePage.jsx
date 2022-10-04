@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBranches } from "../store/reducers/branchesSlice";
 import { BranchList } from "../parts/BranchList";
 
-export const ChoosePage = () => {
+const ChoosePage = () => {
     const dispatch = useDispatch();
     const status = useSelector((state) => state.branches.isLoaded);
 
@@ -24,3 +24,5 @@ export const ChoosePage = () => {
         );
     }
 };
+
+export default ChoosePage;

@@ -11,20 +11,29 @@ const Modal = (props) => {
     const [menuName, setMenuName] = useState("");
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+
     const menu_type_id = localStorage.getItem("menu_type_id");
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        let validationErrors = validateMenuName(menuName, 3);
+        let validationErrors = validateMenuName(menuName, 255);
 
         if (validationErrors.length > 0) {
             setErrors([...errors, ...validationErrors]);
         }
 
-        const menu_object = { type_id: menu_type_id, menu_name: menuName, user_id: 1 };
-        
+        const menu_object = {
+            type_id: menu_type_id,
+            menu_name: menuName,
+            user_id: 1,
+        };
+
         dispatch(addMenu(menu_object));
+        
+        setTimeout(() => {
+            navigate("/");
+        }, 2000);
         // navigate("/");
     };
 
