@@ -34,7 +34,9 @@ const menusSlice = createSlice({
         error: null,
         menu: null,
     },
-    reducers: {},
+    reducers: {
+        getMenu: state => state.menus
+    },
     extraReducers: {
         [addMenu.pending]: (state) => {
             state.isLoaded = false;

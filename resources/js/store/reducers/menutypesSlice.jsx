@@ -18,9 +18,6 @@ const menutypesSlice = createSlice({
     name: "menutypes",
     initialState: { menutypes: [], isLoaded: false, error: null },
     reducers: {
-        getMenuTypeId: (state) => {
-            return state.menutypes.filter((item) => { item.id });
-        },
     },
     extraReducers: {
         [fetchMenutypesById.pending]: (state) => {
@@ -38,4 +35,3 @@ const menutypesSlice = createSlice({
 });
 
 export default menutypesSlice.reducer;
-export const { getMenuTypeId } = menutypesSlice.actions;

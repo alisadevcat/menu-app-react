@@ -19,7 +19,12 @@ export const fetchBranches = createAsyncThunk(
 const branchesSlice = createSlice({
     name: "branches",
     initialState: { branches: [], isLoaded: false, error: null },
-    reducers: {},
+    reducers: {
+        all: state => state.branches,
+        getBranchName: state=>slug=>state.branches.find(item=>item.slug == slug).name,
+		getBranchId: state=>slug =>state.branches.find(item=>item.slug == slug).id,
+        getBranchNameById: state=>id=>state.branches.find(item=>item.id == id).slug,
+    },
     extraReducers: {
         [fetchBranches.pending]: (state) => {
             state.isLoaded = false;

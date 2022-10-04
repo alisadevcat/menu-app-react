@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useParams } from "react";
 import validateMenuName from "../utils/Validation";
 import { useNavigate } from "react-router-dom";
 import { addMenu } from "../store/reducers/menusSlice";
@@ -13,7 +13,11 @@ const Modal = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const menu_type_id = localStorage.getItem("menu_type_id");
+    const menuTypeId = localStorage.getItem("menu_type_id");
+    const branchSlug = localStorage.getItem("branch_slug");
+    const shortnameSlug = localStorage.getItem("menu_type_shortname");
+
+    console.log(branchSlug, shortnameSlug, menuTypeId);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -24,7 +28,7 @@ const Modal = (props) => {
         }
 
         const menu_object = {
-            type_id: menu_type_id,
+            type_id: menuTypeId,
             menu_name: menuName,
             user_id: 1,
         };
@@ -32,9 +36,9 @@ const Modal = (props) => {
         dispatch(addMenu(menu_object));
         
         setTimeout(() => {
-            navigate("/");
+            navigate(`/api/menus/${branchSlug}/${shortnameSlug}`);
         }, 2000);
-        // navigate("/");
+        
     };
 
     const handleInput = (event) => {

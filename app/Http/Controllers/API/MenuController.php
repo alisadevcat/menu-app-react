@@ -40,7 +40,7 @@ class MenuController extends Controller
         $menu->footer_notice2 = $footer_notice2;
         $menu->menu_type_id = $request->type_id;
         $menu->user_id = $request->user_id;
-        $menu->save();
+        // $menu->save();
 
         return response()->json(["menu" => $menu]);
     }

@@ -1,4 +1,4 @@
-import { React, useEffect, useState, useRef } from "react";
+import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMenutypesById } from "../store/reducers/menutypesSlice";
 import { useParams } from "react-router-dom";
@@ -13,13 +13,17 @@ import TemplateMenu from "../parts/TemplateMenu";
     const [selectedTemplate, setSelectedTemplate] = useState(null);
     const [templateData, setTemplateData] = useState(null);
 
+    const getShortName = (template_name) => {
+        return menutypes.filter((item) => item.template === template_name)[0].shortname;
+    };
+
     useEffect(() => {
         dispatch(fetchMenutypesById(branch));
     }, [dispatch]);
 
-    const getShortName = (template_name) => {
-        return menutypes.filter((item) => item.template === template_name)[0].shortname;
-    };
+    useEffect(() => {
+        localStorage.setItem('branch_slug', branch);
+    },  [branch])
 
 
     const handleSelectChange = (event) => {
@@ -32,6 +36,7 @@ import TemplateMenu from "../parts/TemplateMenu";
         });
 
         localStorage.setItem('menu_type_id', menutypes.filter((item) => item.template === event.target.value)[0].id);
+        localStorage.setItem('menu_type_shortname', getShortName(event.target.value));
     };
 
     if (!status) {
@@ -56,7 +61,7 @@ import TemplateMenu from "../parts/TemplateMenu";
                             menutypes.map((menutype) => (
                                 <option
                                     value={menutype.template}
-                                    key={menutype.shortname}
+                                    key={menutype.id}
                                 >
                                     {menutype.name}
                                 </option>
