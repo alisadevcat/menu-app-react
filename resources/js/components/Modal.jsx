@@ -17,8 +17,6 @@ const Modal = (props) => {
     const branchSlug = localStorage.getItem("branch_slug");
     const shortnameSlug = localStorage.getItem("menu_type_shortname");
 
-    console.log(branchSlug, shortnameSlug, menuTypeId);
-
     const handleSubmit = (event) => {
         event.preventDefault();
         let validationErrors = validateMenuName(menuName, 255);

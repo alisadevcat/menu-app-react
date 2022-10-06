@@ -23,7 +23,8 @@ import TemplateMenu from "../parts/TemplateMenu";
 
     useEffect(() => {
         localStorage.setItem('branch_slug', branch);
-    },  [branch])
+        localStorage.setItem('menu_template_name', selectedTemplate);
+    },  [branch, selectedTemplate])
 
 
     const handleSelectChange = (event) => {

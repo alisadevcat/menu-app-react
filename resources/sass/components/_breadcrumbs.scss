@@ -1,0 +1,18 @@
+.breadcrumbs {
+    padding: 20px 0;
+    background-color: lightgray;
+
+    ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+
+        li {
+            margin-right: 4rem;
+
+            a {
+                display: block;
+            }
+        }
+    }
+}
