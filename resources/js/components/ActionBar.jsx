@@ -1,6 +1,6 @@
 import React from "react";
 
-const ActionBar = () => {
+export const ActionBar = () => {
     return (
         <div className="actionbar">
             <ul className="actionbar__list">
@@ -21,4 +21,3 @@ const ActionBar = () => {
     );
 };
 
-export default ActionBar;

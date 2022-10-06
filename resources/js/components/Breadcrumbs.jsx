@@ -1,6 +1,6 @@
 import React from "react";
 
-const Breadcrumbs = () => {
+export const Breadcrumbs = () => {
     return (
         <div className="breadcrumbs">
             <ul>
@@ -21,4 +21,3 @@ const Breadcrumbs = () => {
     );
 };
 
-export default Breadcrumbs;

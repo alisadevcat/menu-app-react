@@ -1,16 +1,32 @@
-import React from "react";
-import Breadcrumbs from "../components/Breadcrumbs";
-import ActionBar from "../components/ActionBar";
+import { React, useEffect, useState } from "react";
+import { Breadcrumbs } from "../components/Breadcrumbs";
+import { ActionBar } from "../components/ActionBar";
+import { useSelector } from "react-redux";
+import AZULINDAHALF from "../menus/AZULINDAHALF";
 
 const MenuEdit = () => {
-const menu_template = localStorage.getItem('menu_template_name');
-const ComponentName = menu_template.toUpperCase();
-console.log( ComponentName );
+    const menuTemplate = localStorage.getItem("menu_template_name");
+    const menuObject = useSelector((state) => state.menus.menu);
+    const [TemplateComponent, setTemplateComponent] = useState();
+
+    const getComponentName = (template, menu) => {
+        switch (template) {
+            case "azulindaHalf":
+                return <AZULINDAHALF menu={menu}/>;
+            default:
+                return <div></div>;
+        }
+    };
+
+    useEffect(() => {
+        setTemplateComponent(getComponentName(menuTemplate, menuObject));
+    }, []);
+
 
     return (
         <>
             <Breadcrumbs />
-            <div className="editBlock container">
+            <div className="editBlock container text-center">
                 <h4>EDIT MENU</h4>
                 <p>
                     Click to edit the menu title and edit sections, use the
@@ -20,6 +36,8 @@ console.log( ComponentName );
                     options.
                 </p>
             </div>
+
+            {TemplateComponent}
 
             <ActionBar />
         </>
