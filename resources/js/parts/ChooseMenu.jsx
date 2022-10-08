@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import Modal from "../components/Modal";
+import StartMenuModal from "../components/Modals/StartMenuModal";
 
 const ChooseMenu = (props) => {
     const [showModal, setShowModal] = useState(false);
@@ -48,7 +48,7 @@ const ChooseMenu = (props) => {
                     </div>
                 </div>
             </section>
-            <Modal
+            <StartMenuModal
                 showModal={showModal}
                 closeModal={closeModal}
                 title={title}

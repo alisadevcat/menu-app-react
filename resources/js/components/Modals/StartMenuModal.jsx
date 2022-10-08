@@ -1,10 +1,10 @@
 import { React, useState, useParams } from "react";
-import validateMenuName from "../utils/Validation";
+import validateMenuName from "../../utils/Validation";
 import { useNavigate } from "react-router-dom";
-import { addMenu } from "../store/reducers/menusSlice";
+import { addMenu } from "../../store/reducers/menusSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const Modal = (props) => {
+const StartMenuModal = (props) => {
     const showModal = props.showModal;
     const closeModal = props.closeModal;
     const title = props.title;
@@ -101,4 +101,4 @@ const Modal = (props) => {
     }
 };
 
-export default Modal;
+export default StartMenuModal;

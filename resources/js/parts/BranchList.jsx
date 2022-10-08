@@ -8,7 +8,7 @@ export const BranchList = () => {
     const addImagePath = (name) => {
         return "/storage/images/choose/" + name + ".png";
     };
-
+    
     return (
         <div className="branch-logos">
             {branches &&
