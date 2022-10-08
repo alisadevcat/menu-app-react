@@ -6,7 +6,6 @@ export const fetchMenutypesById = createAsyncThunk(
         const response = await fetch(`/api/start/${branch}`);
         if (response.ok) {
             const data = await response.json();
-            // console.log(data);
             return data;
         } else {
             console.log("Ошибка HTTP: " + response.status);

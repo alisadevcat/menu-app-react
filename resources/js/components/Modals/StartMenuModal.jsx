@@ -1,13 +1,10 @@
-import { React, useState, useParams } from "react";
+import { React, useState } from "react";
 import validateMenuName from "../../utils/Validation";
 import { useNavigate } from "react-router-dom";
 import { addMenu } from "../../store/reducers/menusSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-const StartMenuModal = (props) => {
-    const showModal = props.showModal;
-    const closeModal = props.closeModal;
-    const title = props.title;
+const StartMenuModal = ({ title, closeModal, showModal }) => {
     const [menuName, setMenuName] = useState("");
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
@@ -32,22 +29,17 @@ const StartMenuModal = (props) => {
         };
 
         dispatch(addMenu(menu_object));
-        
+
         setTimeout(() => {
             navigate(`/api/menus/${branchSlug}/${shortnameSlug}`);
         }, 2000);
-        
     };
 
     const handleInput = (event) => {
         setErrors([]);
         setMenuName(event.target.value.trim());
     };
-    //Validation
-    const CheckIfEmpty = (value) => {};
-    const CheckLettersCount = () => {};
 
-    console.log(showModal);
     if (showModal) {
         return (
             <>

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ActionBar = () => {
+export const ActionBar = (props) => {
     return (
         <div className="actionbar">
             <ul className="actionbar__list">

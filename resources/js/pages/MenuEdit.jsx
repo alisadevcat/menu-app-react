@@ -8,24 +8,24 @@ const MenuEdit = () => {
     const menuTemplate = localStorage.getItem("menu_template_name");
     const menuObject = useSelector((state) => state.menus.menu);
     const [TemplateComponent, setTemplateComponent] = useState();
+    const activeBreadcrumb = "editor";
 
-    const getComponentName = (template, menu) => {
+    const getComponent = (template, menu) => {
         switch (template) {
             case "azulindaHalf":
-                return <AZULINDAHALF menu={menu}/>;
+                return <AZULINDAHALF menu={menu} />;
             default:
                 return <div></div>;
         }
     };
 
     useEffect(() => {
-        setTemplateComponent(getComponentName(menuTemplate, menuObject));
+        setTemplateComponent(getComponent(menuTemplate, menuObject));
     }, []);
-
 
     return (
         <>
-            <Breadcrumbs />
+            <Breadcrumbs activeBreadcrumb={activeBreadcrumb} />
             <div className="editBlock container text-center">
                 <h4>EDIT MENU</h4>
                 <p>

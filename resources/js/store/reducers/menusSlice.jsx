@@ -45,7 +45,6 @@ const menusSlice = createSlice({
         [addMenu.fulfilled]: (state, action) => {
             state.isLoaded = true;
             state.menu = action.payload.menu;
-            console.log(action.payload, "payload");
         },
         [addMenu.rejected]: (state) => {
             state.isLoaded = true;

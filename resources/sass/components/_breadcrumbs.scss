@@ -2,7 +2,7 @@
     padding: 20px 0;
     background-color: lightgray;
 
-    ul {
+    .breadcrumbs__list {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -10,9 +10,11 @@
         li {
             margin-right: 4rem;
 
-            a {
-                display: block;
-            }
+        }
+        
+        li.active {
+            font-weight: bold;
+            color:darkblue;
         }
     }
 }

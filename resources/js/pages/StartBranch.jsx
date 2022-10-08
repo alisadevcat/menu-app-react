@@ -36,7 +36,7 @@ import TemplateMenu from "../parts/TemplateMenu";
             shortname: getShortName(event.target.value),
         });
 
-        localStorage.setItem('menu_type_id', menutypes.filter((item) => item.template === event.target.value)[0].id);
+        localStorage.setItem('menu_type_id', menutypes.find((item) => item.template === event.target.value).id);
         localStorage.setItem('menu_type_shortname', getShortName(event.target.value));
     };
 
