@@ -1,23 +1,14 @@
 import { React, useEffect, useState } from "react";
-import { Breadcrumbs } from "../components/Breadcrumbs";
+import { MenuBar } from "../components/MenuBar";
 import { ActionBar } from "../components/ActionBar";
 import { useSelector } from "react-redux";
-import AZULINDAHALF from "../menus/AZULINDAHALF";
+import { getComponent } from "../factories/components";
+const activeMenuBarItem = "editor";
 
 const MenuEdit = () => {
     const menuTemplate = localStorage.getItem("menu_template_name");
     const menuObject = useSelector((state) => state.menus.menu);
     const [TemplateComponent, setTemplateComponent] = useState();
-    const activeBreadcrumb = "editor";
-
-    const getComponent = (template, menu) => {
-        switch (template) {
-            case "azulindaHalf":
-                return <AZULINDAHALF menu={menu} />;
-            default:
-                return <div></div>;
-        }
-    };
 
     useEffect(() => {
         setTemplateComponent(getComponent(menuTemplate, menuObject));
@@ -25,7 +16,7 @@ const MenuEdit = () => {
 
     return (
         <>
-            <Breadcrumbs activeBreadcrumb={activeBreadcrumb} />
+            <MenuBar activeMenuBarItem={activeMenuBarItem} />
             <div className="editBlock container text-center">
                 <h4>EDIT MENU</h4>
                 <p>

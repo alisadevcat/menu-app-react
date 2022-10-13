@@ -1,6 +1,6 @@
 import React from "react";
 
-const AZULINDAHALF = () => {
+const Azulindahalf = () => {
     return (
         <>
             <div class="container">
@@ -63,4 +63,4 @@ const AZULINDAHALF = () => {
     );
 };
 
-export default AZULINDAHALF;
+export default Azulindahalf;

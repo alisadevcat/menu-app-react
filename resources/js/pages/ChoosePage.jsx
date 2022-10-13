@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import  React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBranches } from "../store/reducers/branchesSlice";
 import { BranchList } from "../parts/BranchList";

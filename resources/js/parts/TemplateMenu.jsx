@@ -1,7 +1,6 @@
 import React from "react";
 
-const TemplateMenu = (props) => {
-    const { title, shortname } = props.templateData;
+const TemplateMenu = ({ title, shortname }) => {
     const imgPath = `/storage/images/MenuThumbnails/${shortname}.png`;
 
     return (
@@ -9,8 +8,8 @@ const TemplateMenu = (props) => {
             <section id="selected-template" className="container">
                 <div className="text-center">
                     <h2>TEMPLATE MENU</h2>
-                    {title && <h4>{title}</h4>}
-                    {imgPath && <img src={imgPath} alt={shortname} />}
+                    {title && (<h4>{title}</h4>)}
+                    {imgPath && (<img src={imgPath} alt={shortname} />)}
                 </div>
             </section>
         </>

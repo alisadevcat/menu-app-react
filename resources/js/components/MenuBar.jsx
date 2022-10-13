@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-const initialbreadCrumbs = [
+const initialMenuBarItems = [
     { className: "start", title: "Select Menu", isActive: false },
     { className: "editor", title: "Edit Menu", isActive: false },
     { className: "preview", title: "Review", isActive: false },
     { className: "print", title: "Print File", isActive: false },
 ];
 
-export const Breadcrumbs = ({ activeBreadcrumb }) => {
-    const breadCrumbs = initialbreadCrumbs.map((item) => ({
+export const MenuBar = ({ activeMenuBarItem }) => {
+    const menuBarItems = initialMenuBarItems.map((item) => ({
         ...item,
-        isActive: item.className === activeBreadcrumb ? true : false,
+        isActive: item.className === activeMenuBarItem ? true : false,
     }));
 
     return (
         <div className="breadcrumbs">
             <ul className="breadcrumbs__list">
-                {breadCrumbs &&
-                    breadCrumbs.map((item, index) => (
+                {menuBarItems &&
+                    menuBarItems.map((item, index) => (
                         <li
                             className={
                                 item.isActive

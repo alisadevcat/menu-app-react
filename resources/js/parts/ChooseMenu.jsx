@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import StartMenuModal from "../components/Modals/StartMenuModal";
 
 const ChooseMenu = (props) => {
@@ -56,4 +56,5 @@ const ChooseMenu = (props) => {
         </>
     );
 };
+
 export default ChooseMenu;

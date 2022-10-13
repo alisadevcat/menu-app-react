@@ -61,7 +61,7 @@ const StartMenuModal = ({ title, closeModal, showModal }) => {
                                 Confirm Meal Period And Name
                             </h2>
                             <label className="control-label">Type</label>
-                            <div className="bg-light-gray">{title}</div>
+                            {title && <div className="bg-light-gray">{title}</div>}
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group mt-1 mb-1">
                                     <label className="control-label">
