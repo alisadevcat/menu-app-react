@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchMenutypesById } from "../store/reducers/menutypesSlice";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMenutypesById, setMenuType } from "../store/reducers/menutypesSlice";
 import { MenuBar } from "../components/MenuBar";
 import ChooseMenu from "../parts/ChooseMenu";
 import TemplateMenu from "../parts/TemplateMenu";
 const activeMenuBarItem = "start";
 
-const getShortName = (template_name, arr) => {
-    return arr.find((item) => item.template === template_name).shortname;
-};
-
 const StartBranch = () => {
     const { branch } = useParams();
     const dispatch = useDispatch();
     const menutypes = useSelector((state) => state.menutypes.menutypes);
+    const menutype =  useSelector((state) => state.menutypes.menutype);
     const status = useSelector((state) => state.menutypes.isLoaded);
     const [selectedTemplate, setSelectedTemplate] = useState(null);
     const [templateData, setTemplateData] = useState(null);
@@ -23,28 +20,16 @@ const StartBranch = () => {
         dispatch(fetchMenutypesById(branch));
     }, [dispatch]);
 
-    useEffect(() => {
-        localStorage.setItem("branch_slug", branch);
-        localStorage.setItem("menu_template_name", selectedTemplate);
-    }, [branch, selectedTemplate]);
-
     const handleSelectChange = (event) => {
         let index = event.nativeEvent.target.selectedIndex;
         const title = event.nativeEvent.target[index].text;
         setSelectedTemplate(event.target.value);
         setTemplateData({
             title: title,
-            shortname: getShortName(event.target.value, menutypes),
+            shortname: menutype.getShortName,
         });
 
-        localStorage.setItem(
-            "menu_type_id",
-            menutypes.find((item) => item.template === event.target.value).id
-        );
-        localStorage.setItem(
-            "menu_type_shortname",
-            getShortName(event.target.value, menutypes)
-        );
+        setMenuType(menutypes.find((item) => item.template === event.target.value))
     };
 
     if (!status) {

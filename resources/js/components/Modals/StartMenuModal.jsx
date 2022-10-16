@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import validateMenuName from "../../utils/Validation";
 import { useNavigate } from "react-router-dom";
 import { addMenu } from "../../store/reducers/menusSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const StartMenuModal = ({ title, closeModal, showModal }) => {
     const [menuName, setMenuName] = useState("");
@@ -10,9 +10,9 @@ const StartMenuModal = ({ title, closeModal, showModal }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const menuTypeId = localStorage.getItem("menu_type_id");
-    const branchSlug = localStorage.getItem("branch_slug");
-    const shortnameSlug = localStorage.getItem("menu_type_shortname");
+    const menuTypeId = useSelector((state)=> state.menutypes.menutype.id);
+    const branchSlug =  useSelector((state)=> state.branches.branch.slug);
+    const shortnameSlug = useSelector((state)=> state.menutypes.menutype.shortname);
 
     const handleSubmit = (event) => {
         event.preventDefault();
