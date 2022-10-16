@@ -1,6 +1,7 @@
-import  React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setBranch } from "../store/reducers/branchesSlice";
+import { useNavigate } from "react-router-dom";
 
 const addImagePath = (name) => {
     return "/storage/images/choose/" + name + ".png";
@@ -8,12 +9,28 @@ const addImagePath = (name) => {
 
 export const BranchList = () => {
     const branches = useSelector((state) => state.branches.branches);
+    const branch = useSelector((state) => state.branches.branch);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const dispatchThenRoute = (branch, slug) => {
+        dispatch(setBranch(branch));
+        navigate(slug);
+    };
 
     return (
         <div className="branch-logos">
             {branches &&
                 branches.map((branch) => (
-                    <Link to={`/api/start/${branch.slug}`} key={branch.id}>
+                    <div
+                        key={branch.id}
+                        onClick={() =>
+                            dispatchThenRoute(
+                                branch,
+                                `/api/start/${branch.slug}`
+                            )
+                        }
+                    >
                         <figure className="text-center">
                             <img
                                 src={addImagePath(branch.slug)}
@@ -23,7 +40,7 @@ export const BranchList = () => {
                                 <h3>{branch.title}</h3>
                             </figcaption>
                         </figure>
-                    </Link>
+                    </div>
                 ))}
         </div>
     );

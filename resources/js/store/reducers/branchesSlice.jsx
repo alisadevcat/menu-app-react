@@ -18,9 +18,12 @@ export const fetchBranches = createAsyncThunk(
 
 const branchesSlice = createSlice({
     name: "branches",
-    initialState: { branches: [], isLoaded: false, error: null },
+    initialState: { branches: [], branch: {}, isLoaded: false, error: null },
     reducers: {
-        all: state => state.branches,
+        setBranch: (state, action) => {
+            // state.branch.push(action.payload)
+            state.branch = action.payload
+        },
     },
     extraReducers: {
         [fetchBranches.pending]: (state) => {
@@ -37,4 +40,5 @@ const branchesSlice = createSlice({
     },
 });
 
+export const { setBranch } = branchesSlice.actions;
 export default branchesSlice.reducer;
