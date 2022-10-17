@@ -6,8 +6,9 @@ import { getComponent } from "../factories/components";
 const activeMenuBarItem = "editor";
 
 const MenuEdit = () => {
-    const menuTemplate = localStorage.getItem("menu_template_name");
     const menuObject = useSelector((state) => state.menus.menu);
+    const menutype = useSelector((state) => state.menutypes.menutype);
+    const menuTemplate = menutype.template;
     const [TemplateComponent, setTemplateComponent] = useState();
 
     useEffect(() => {

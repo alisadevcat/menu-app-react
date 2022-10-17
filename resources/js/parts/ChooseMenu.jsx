@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import StartMenuModal from "../components/Modals/StartMenuModal";
 
-const ChooseMenu = (props) => {
+const ChooseMenu = () => {
     const [showModal, setShowModal] = useState(false);
-    const title = props.title;
     
     const openModal = () => {
         setShowModal(true);
@@ -51,7 +50,6 @@ const ChooseMenu = (props) => {
             <StartMenuModal
                 showModal={showModal}
                 closeModal={closeModal}
-                title={title}
             />
         </>
     );

@@ -35,5 +35,6 @@ const menutypesSlice = createSlice({
         },
     },
 });
+
 export const { setMenuType } = menutypesSlice.actions;
 export default menutypesSlice.reducer;

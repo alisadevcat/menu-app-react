@@ -4,15 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { addMenu } from "../../store/reducers/menusSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const StartMenuModal = ({ title, closeModal, showModal }) => {
+const StartMenuModal = ({ closeModal, showModal }) => {
     const [menuName, setMenuName] = useState("");
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const menutype = useSelector((state) => state.menutypes.menutype);
 
-    const menuTypeId = useSelector((state)=> state.menutypes.menutype.id);
+    const menuTypeId = menutype.id;
     const branchSlug =  useSelector((state)=> state.branches.branch.slug);
-    const shortnameSlug = useSelector((state)=> state.menutypes.menutype.shortname);
+    const shortnameSlug = menutype.shortname;
+    const menuTitle = menutype.name;
+    
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -61,7 +64,7 @@ const StartMenuModal = ({ title, closeModal, showModal }) => {
                                 Confirm Meal Period And Name
                             </h2>
                             <label className="control-label">Type</label>
-                            {title && <div className="bg-light-gray">{title}</div>}
+                            {menuTitle && <div className="bg-light-gray">{menuTitle}</div>}
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group mt-1 mb-1">
                                     <label className="control-label">

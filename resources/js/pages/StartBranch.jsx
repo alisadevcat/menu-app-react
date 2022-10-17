@@ -1,36 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMenutypesById, setMenuType } from "../store/reducers/menutypesSlice";
+import { fetchMenutypesById, setMenuType} from "../store/reducers/menutypesSlice";
 import { MenuBar } from "../components/MenuBar";
 import ChooseMenu from "../parts/ChooseMenu";
 import TemplateMenu from "../parts/TemplateMenu";
 const activeMenuBarItem = "start";
 
+const isNotEmpty = (obj) => Object.keys(obj).length > 0;
+
 const StartBranch = () => {
     const { branch } = useParams();
     const dispatch = useDispatch();
     const menutypes = useSelector((state) => state.menutypes.menutypes);
-    const menutype =  useSelector((state) => state.menutypes.menutype);
+    const menutype = useSelector((state) => state.menutypes.menutype);
     const status = useSelector((state) => state.menutypes.isLoaded);
-    const [selectedTemplate, setSelectedTemplate] = useState(null);
-    const [templateData, setTemplateData] = useState(null);
 
     useEffect(() => {
         dispatch(fetchMenutypesById(branch));
     }, [dispatch]);
 
-    const handleSelectChange = (event) => {
-        let index = event.nativeEvent.target.selectedIndex;
-        const title = event.nativeEvent.target[index].text;
-        setSelectedTemplate(event.target.value);
-        setTemplateData({
-            title: title,
-            shortname: menutype.getShortName,
-        });
 
-        setMenuType(menutypes.find((item) => item.template === event.target.value))
+    const handleSelectChange = (event) => {
+        const type = menutypes.find((item) => item.template === event.target.value);
+        dispatch(setMenuType(type));
     };
+
+    console.log(menutype, "menutype");
+    console.log(isNotEmpty(menutype));
 
     if (!status) {
         return <div className="loading">loading</div>;
@@ -64,10 +61,8 @@ const StartBranch = () => {
                     </select>
                 </section>
 
-                {selectedTemplate && <ChooseMenu title={templateData.title} />}
-                {selectedTemplate && (
-                    <TemplateMenu templateData={templateData} />
-                )}
+                {isNotEmpty(menutype) && <ChooseMenu/>}
+                {isNotEmpty(menutype) && <TemplateMenu/>}
             </>
         );
     }
