@@ -1,29 +1,34 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Azulindahalf = () => {
+const AzulindaHalf = ({ menu }) => {
+    const menu_type = useSelector((state) => state.menutypes.menutype);
+
+    console.log(menu);
     return (
         <>
-            <div class="container">
-                <div class="container-fluid formContainer">
+            <div className="container text-center">
+                <div className="container-fluid">
                     <form id="loader">
-                        <div class="print-box">
-                            <div class="print-outter">
-                                <div class="print-lines">
-                                    <div class="print-inner">
-                                        <div class="menu-headline">
-                                            Menu Title:{" "}
+                        <div className="print-box">
+                            <div className="print-outter">
+                                <div className="print-lines">
+                                    <div className="print-inner">
+                                        <div className="menu-headline">
+                                            Menu Title:{menu.name}
                                         </div>
-                                        <div class="menu-subtitle">
-                                            Menu Title 2:{" "}
+                                        <div className="menu-subtitle">
+                                            Menu Title 2:{menu.title}
                                         </div>
-                                        <div class="menu-bg">Menu Type: </div>
-                                        <div class="row">
-                                            <div class="col-6-md col-6-xl col-6-sm">
-
+                                        <div className="menu-bg">
+                                            Menu Type:{menu_type.name}
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-6-md col-6-xl col-6-sm">
                                                 {/* left section */}
                                             </div>
-                                            <div class="col-6-md col-6-xl col-6-sm">
-
+                                            <div className="col-6-md col-6-xl col-6-sm">
                                                 {/* //right section */}
                                             </div>
                                         </div>
@@ -35,27 +40,30 @@ const Azulindahalf = () => {
                 </div>
             </div>
 
-            <div class="col-sm-6 col-sm-push-6">
-                <div class="footer-inner">
-                    <ul class="footer-icons">
+            <div className="col-sm-6 col-sm-push-6 container">
+                <div className="footer-inner">
+                    <ul className="footer-icons">
                         <li>
-                            <span class="bullet veg"></span>
-                            {/* <font-awesome-icon icon="apple-alt"/>VEGETARIAN */}
+                            <span className="bullet veg"></span>
+                          <FontAwesomeIcon icon="apple-alt" /> 
+                            VEGETARIAN *
                         </li>
-                        {/* <li><span class="bullet gf"></span><font-awesome-icon icon="bread-slice" /> Gluten-free</li> */}
+                        <li>
+                            <span className="bullet gf"></span>
+                            <FontAwesomeIcon icon="bread-slice" /> Gluten-free
+                        </li>
                     </ul>
-                    <div class="menu_notice_wrap outter-edit rel style1">
-                        <div class="menu_footer_notice"></div>
-
-                        <span class="inner-edit"></span>
+                    <div className="menu_notice_wrap outter-edit rel style1">
+                        <div className="menu_footer_notice"></div>
+                        {menu.footer_notice}
+                        <span className="inner-edit"></span>
                     </div>
 
-                    <div class="menu_notice_wrap2 outter-edit rel style1">
-                        <div class="menu_footer_notice2">
-                            {/* {{ menu.footer_notice2 }} */}
-                            <span class="inner-edit"></span>
+                    <div className="menu_notice_wrap2 outter-edit rel style1">
+                        <div className="menu_footer_notice2">
+                            {menu.footer_notice2}
+                            <span className="inner-edit"></span>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -63,4 +71,4 @@ const Azulindahalf = () => {
     );
 };
 
-export default Azulindahalf;
+export default AzulindaHalf;

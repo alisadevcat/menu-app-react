@@ -6,6 +6,10 @@ import HomePage from "./pages/Home";
 import ChoosePage from "./pages/ChoosePage";
 import StartBranch from "./pages/StartBranch";
 import MenuEdit from "./pages/MenuEdit";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faBreadSlice, faAppleAlt } from '@fortawesome/free-solid-svg-icons'
+library.add(fab,faBreadSlice, faAppleAlt)
 
 const App = () => {
     return (
