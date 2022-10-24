@@ -8,8 +8,8 @@ import StartBranch from "./pages/StartBranch";
 import MenuEdit from "./pages/MenuEdit";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faBreadSlice, faAppleAlt } from '@fortawesome/free-solid-svg-icons'
-library.add(fab,faBreadSlice, faAppleAlt)
+import { faBreadSlice, faAppleAlt,faEdit,faTrashAlt,faLongArrowAltDown,faCopy,faLongArrowDown } from '@fortawesome/free-solid-svg-icons'
+library.add(fab,faBreadSlice, faAppleAlt,faEdit,faTrashAlt,faLongArrowAltDown,faCopy,faLongArrowDown)
 
 const App = () => {
     return (

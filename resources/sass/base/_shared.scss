@@ -3,10 +3,11 @@
     margin: 0 auto;
 }
 .wrapper{
-    min-height:100% !important;
-    display: flex !important;
-    flex-direction: column !important;
+    // min-height:100% !important;
+    // display: flex !important;
+    // flex-direction: column !important;
+    min-height: calc(100vh - 290px);
   }
-  main.page-main{
-    flex: 1 1 auto !important;
-  }
+  // main.page-main{
+  //   flex: 1 1 auto !important;
+  // }

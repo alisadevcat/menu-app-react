@@ -1,0 +1,10 @@
+.footer-inner {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: right;
+}
+.menu-headline span,
+.menu-subtitle span {
+    font-weight: bold;
+}

@@ -18,8 +18,8 @@ const MenuEdit = () => {
     return (
         <>
             <MenuBar activeMenuBarItem={activeMenuBarItem} />
-            <div className="editBlock container text-center">
-                <h4>EDIT MENU</h4>
+            <div className="edit-block container text-center">
+                <h4 className="edit-block__title">EDIT MENU</h4>
                 <p>
                     Click to edit the menu title and edit sections, use the
                     icons to edit, move items, and delete.

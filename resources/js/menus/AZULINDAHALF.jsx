@@ -10,19 +10,27 @@ const AzulindaHalf = ({ menu }) => {
         <>
             <div className="container text-center">
                 <div className="container-fluid">
-                    <form id="loader">
                         <div className="print-box">
                             <div className="print-outter">
                                 <div className="print-lines">
                                     <div className="print-inner">
-                                        <div className="menu-headline">
-                                            Menu Title:{menu.name}
+                                        <div className="menu-headline pt-1">
+                                            <h3>
+                                                Menu Title:
+                                                <span>{menu.name}</span>
+                                            </h3>
                                         </div>
-                                        <div className="menu-subtitle">
-                                            Menu Title 2:{menu.title}
+                                        <div className="menu-subtitle pt-1">
+                                            <h3>
+                                                Menu Title 2:
+                                                <span>{menu.title}</span>
+                                            </h3>
                                         </div>
-                                        <div className="menu-bg">
-                                            Menu Type:{menu_type.name}
+                                        <div className="menu-type-name pt-1">
+                                            <h3>
+                                                Menu Type:
+                                                <span>{menu_type.name}</span>
+                                            </h3>
                                         </div>
                                         <div className="row">
                                             <div className="col-6-md col-6-xl col-6-sm">
@@ -36,34 +44,39 @@ const AzulindaHalf = ({ menu }) => {
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
 
-            <div className="col-sm-6 col-sm-push-6 container">
+            <div className="container footer-notices">
                 <div className="footer-inner">
-                    <ul className="footer-icons">
-                        <li>
-                            <span className="bullet veg"></span>
-                          <FontAwesomeIcon icon="apple-alt" /> 
-                            VEGETARIAN *
-                        </li>
-                        <li>
-                            <span className="bullet gf"></span>
-                            <FontAwesomeIcon icon="bread-slice" /> Gluten-free
-                        </li>
-                    </ul>
-                    <div className="menu_notice_wrap outter-edit rel style1">
-                        <div className="menu_footer_notice"></div>
-                        {menu.footer_notice}
-                        <span className="inner-edit"></span>
+                    <div className="footer-inner__icons">
+                        <ul className="footer-icons">
+                            <li>
+                                <FontAwesomeIcon icon="apple-alt" />
+                                VEGETARIAN *
+                            </li>
+                            <li>
+                                <FontAwesomeIcon icon="bread-slice" />{" "}
+                                Gluten-free
+                            </li>
+                        </ul>
                     </div>
+                    <div>
+                        {menu.footer_notice && (
+                            <div className="footer-inner__notice">
+                                <div className="footer_notice">
+                                    {menu.footer_notice}
+                                </div>
+                            </div>
+                        )}
 
-                    <div className="menu_notice_wrap2 outter-edit rel style1">
-                        <div className="menu_footer_notice2">
-                            {menu.footer_notice2}
-                            <span className="inner-edit"></span>
-                        </div>
+                        {menu.footer_notice2 && (
+                            <div className="footer-inner__notice">
+                                <div className="footer_notice2">
+                                    {menu.footer_notice2}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
