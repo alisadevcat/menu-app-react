@@ -29,7 +29,7 @@ class MenuController extends Controller
 
         $type_id = $request->input('type_id');
 
-        $menu_template = Menu::where('menu_type_id',  $type_id)->latest()->first();
+        $menu_template = Menu::where('menu_type_id',  $type_id)->where('base_template', 1)->latest()->first();
 
         $footer_notice = $menu_template->footer_notice;
         $footer_notice2 = $menu_template->footer_notice2;
