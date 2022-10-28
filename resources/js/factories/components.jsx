@@ -3,14 +3,14 @@ import AzulindaFull from "../menus/AzulindaFull";
 import AzulindaMobile from "../menus/AzulindaMobile";
 import React from "react";
 
-export const getComponent = (template, menu) => {
+export const getComponent = (template) => {
     switch (template) {
         case "azulindaHalf":
-            return (<AzulindaHalf menu={menu} />);
+            return (<AzulindaHalf />);
         case "azulindaFull":
-            return (<AzulindaFull menu={menu} />);
+            return (<AzulindaFull />);
         case "azulindaMobile":
-            return (<AzulindaMobile menu={menu} />);
+            return (<AzulindaMobile />);
         default:
             return <div></div>;
     }

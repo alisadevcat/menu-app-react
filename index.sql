@@ -1,0 +1,66 @@
+INSERT INTO `menu_sections` (`id`, `id_parent_section`, `subtitle`, `title`, `price`, `style`, `side`, `field_order`, `ordering`, `menu_type_id`, `menu_id`, `created_at`, `updated_at`) VALUES
+(1, 0, '', 'Starters', '', 'No_Style', 'left', 'title,price,icons,subtitle,modifier,mod_text', 0, 1, 1, '2021-10-28 12:17:36', NULL),
+(2, 0, '', 'SALADS', '', 'No_Style', 'left', 'title,price,icons,subtitle,modifier,mod_text', 1, 1, 1, '2021-10-28 12:17:36', NULL),
+(3, 0, '', 'KIDS', '', 'No_Style', 'left', 'title,price,icons,subtitle,modifier,mod_text', 2, 1, 1, '2021-10-28 12:17:36', NULL),
+(4, 0, '', 'SIDES', '', 'No_Style', 'left', 'title,price,icons,subtitle,modifier,mod_text', 3, 1, 1, '2021-10-28 12:17:36', NULL),
+(5, 0, '', 'LAND &amp; SEA', '', 'No_Style', 'left', 'title,price,icons,subtitle,modifier,mod_text', 4, 1, 1, '2021-10-28 12:17:36', NULL),
+(6, 0, '', 'CHOPS &amp; STEAKS', '', 'No_Style', 'left', 'title,price,icons,subtitle,modifier,mod_text', 4, 1, 1, '2021-10-28 12:17:36', NULL),
+(7, 0, '', 'SWEETS', '', 'No_Style', 'left', 'title,price,icons,subtitle,modifier,mod_text', 6, 1, 1, '2021-10-28 12:17:36', NULL),
+(8, 0, '', 'SAUCES', '', 'No_Style', 'left', 'title,price,icons,subtitle,modifier,mod_text', 7, 1, 1, '2021-10-28 12:17:36', NULL);
+
+INSERT INTO `menu_items` (`id`, `title`, `subtitle`, `style`, `price`, `modifier`, `mod_text`, `notice`, `ordering`, `section_id`, `created_at`, `updated_at`) VALUES
+(1, 'Oysters', 'lemon wedges, cocktail sauce, shallot mignonette', 'No_Style', 10, '', '', '', 0, 1, '2022-04-26 10:45:21', NULL),
+(2, 'Shrimp Cocktail', 'cocktail sauce', 'No_Style', 10, '', '', '', 1, 1, '2022-04-26 10:45:21', NULL),
+(3, 'Crudo ', 'daily preperation', 'No_Style', 10, '', '', '', 2, 1, '2022-04-26 10:45:21', NULL),
+(4, 'Seafood Tower', '', 'No_Style', 10, '', '', '', 3, 1, '2022-04-26 10:45:21', NULL),
+(5, 'Warm Smoked Trout Dip', 'rosemary potato chips', 'No_Style', 12, '', '', '', 0, 2, '2022-04-26 10:45:21', NULL),
+(6, 'Crab Fritters', 'aji amarillo aioli', 'No_Style', 12, '', '', '', 1, 2, '2022-04-26 10:45:21', NULL),
+(7, 'Clam Chowder', 'oyster crackers', 'No_Style', 12, '', '', '', 2, 2, '2022-04-26 10:45:21', NULL),
+(8, 'Golden Crisp Wild Shrimp ', 'chili-lime dressing', 'No_Style', 16, '', '', '', 3, 2, '2022-04-26 10:45:21', NULL),
+(9, 'Fried Fish Sandwich', 'lettuce, beefsteak tomato, remoulade, garlic bread hoagie', 'No_Style', 20, 'add:', 'bacon, cheese, crushed avocado', '', 4, 2, '2022-04-26 10:45:21', NULL),
+(10, 'Fried Shrimp Po Boy', 'lettuce, beefsteak tomato, sriracha aioli, garlic bread hoagie', 'No_Style', 20, 'add:', 'bacon, cheese, crushed avocado', '', 5, 2, '2022-04-26 10:45:21', NULL),
+(11, 'Beer Battered Fish & Chips', 'remoulade, lemon', 'No_Style', 24, '', '', '', 6, 2, '2022-04-26 10:45:21', NULL),
+(12, 'Pan Roasted Salmon', 'corn succotash, shishito peppers, tomato', 'No_Style', 29, '', '', '', 7, 2, '2022-04-26 10:45:21', NULL),
+(13, 'Tuna', 'roasted broccolini, green olive & calabrian chili relish, tahini yogurt', 'No_Style', 34, '', '', '', 8, 2, '2022-04-26 10:45:21', NULL),
+(14, 'Scallops', 'roasted asparagus, lemon garlic butter', 'No_Style', 38, '', '', '', 9, 2, '2022-04-26 10:45:21', NULL),
+(15, 'Shrimp Linguine Genovese', 'roasted tomatoes, garlic breadcrumbs, pecorino romano, arugula, pesto', 'No_Style', 26, '', '', '', 10, 2, '2022-04-26 10:45:21', NULL),
+(16, 'Lobster Ravioli Gratin', 'spicy vodka sauce, parmesan, garlic bread', 'No_Style', 30, '', '', '', 11, 2, '2022-04-26 10:45:21', NULL),
+(17, 'Tomato Bisque ', 'parmesan crisps', 'No_Style', 10, '', '', '', 0, 3, '2022-04-26 10:45:21', NULL),
+(18, 'Fava Bean Hummus', 'radish', 'No_Style', 12, '', '', '', 1, 3, '2022-04-26 10:45:21', NULL),
+(19, 'Mediterranean Salad', 'pickled shallots, roasted tomato, feta, oregano vinaigrette', 'No_Style', 16, '', '', '', 2, 3, '2022-04-26 10:45:21', NULL),
+(20, 'Caesar Salad', 'parmesan, brioche croutons, caesar dressing', 'No_Style', 16, '', '', '', 3, 3, '2022-04-26 10:45:21', NULL),
+(21, 'Forager’s Salad', 'kale, wild mushroom roasted tomato & corn, oregano vinaigrette', 'No_Style', 16, '', '', '', 4, 3, '2022-04-26 10:45:21', NULL),
+(22, 'White Bean Salad', 'gimelli, olives, chili, capers, red onions, arugula, lemon dressing', 'No_Style', 16, '', '', '', 5, 3, '2022-04-26 10:45:21', NULL),
+(23, 'Eggplant Lasagna', 'tomato, breadcrumbs, basil', 'No_Style', 22, '', '', '', 6, 3, '2022-04-26 10:45:21', NULL),
+(24, 'Buttermilk Fried Chicken Sandwich', 'pickles, chili ranch, brioche bun', 'No_Style', 18, 'add:', 'bacon, cheese, crushed avocado', '', 7, 3, '2022-04-26 10:45:21', NULL),
+(25, 'Black Angus Burger', 'two beef patties, muenster, caramelized onion, pickles, garlic aioli', 'No_Style', 20, '', 'add:', 'fried egg, bacon, crushed avocado, wild mushroom, impossible™ burger $10', 8, 3, '2022-04-26 10:45:21', NULL),
+(26, 'Pot-Roasted Ricotta Chicken', 'cannellini bean fricassee, preserved lemon, crème fraiche, baby kale', 'No_Style', 26, '', '', '', 9, 3, '2022-04-26 10:45:21', NULL),
+(27, 'Braised Short Ribs', 'asparagus, warm potato salad, preserved lemon', 'No_Style', 28, '', '', '', 10, 3, '2022-04-26 10:45:21', NULL),
+(28, '14oz. Black Angus Ribeye', 'roasted herbed potatoes, king trumpet mushrooms, garlic butter', 'No_Style', 49, '', '', '', 11, 3, '2022-04-26 10:45:21', NULL),
+(29, 'Steak Fries', '', 'No_Style', 8, '', '', '', 0, 4, '2022-04-26 10:45:21', NULL),
+(30, 'Small Salad', 'wild mushrooms', 'No_Style', 6, '', '', '', 1, 4, '2022-04-26 10:45:21', NULL);
+
+
+INSERT INTO `branches` (`id`, `slug`, `title`, `active`, `created_at`, `updated_at`) VALUES
+(1, 'azulinda', 'Azulinda', 1, NULL, NULL),
+(2, 'laluce', 'LaLuce', 1, NULL, NULL),
+(3, 'sunan', 'Sunan', 1, NULL, NULL),
+(4, 'auma', 'Auma', 1, NULL, NULL),
+(5, 'maxal', 'Maxal', 1, NULL, NULL);
+
+INSERT INTO `menu_types` (`id`, `name`, `shortname`, `template`, `media`, `width`, `height`, `paper`, `orientation`, `size`, `branch_id`, `created_at`, `updated_at`) VALUES
+(1, 'Azulinda | Snacks & Shared (US Letter / Half)', 'azulinda_snacks_shared', 'azulindaHalf', 'print', 216, 279, 'Letter', 'Portrait', 'short', 1, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(2, 'Azulinda | Drinks (US Letter)', 'azulinda_drinks', 'azulindaFull', 'print', 216, 279, 'Letter', 'Portrait', 'short', 1, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(3, 'Azulinda | Mobile Menu', 'azulinda_mobile', 'azulindaMobile', 'mobile', 0, 0, 'Mobile', 'Mobile', 'short', 1, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(4, 'La Luce | Dinner (US Letter)', 'laluce_dinner', 'laluceDinner', 'print', 216, 356, 'Letter', 'Portrait', 'long', 2, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(5, 'La Luce | Drinks (US Letter)', 'laluce_drinks', 'laluceDrinks', 'print', 216, 356, 'Letter', 'Portrait', 'short', 2, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(6, 'La Luce | Mobile Menu', 'laluce_mobile', 'laluceMobile', 'mobile', 0, 0, 'Mobile', 'Mobile', 'short', 2, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(7, 'Sunan | Food (US Letter)', 'sunan_food', 'sunanFood', 'print', 216, 279, 'Letter', 'Portrait', 'short', 3, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(8, 'Sunan | Drinks (US Letter)', 'sunan_drinks', 'sunanDrinks', 'print', 216, 279, 'Letter', 'Portrait', 'short', 3, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(9, 'Sunan | Mobile Menu', 'sunan_mobile', 'sunanMobile', 'mobile', 0, 0, 'Mobile', 'Mobile', 'short', 3, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(10, 'Auma | Food', 'auma_food', 'aumaFood', 'print', 216, 279, 'Letter', 'Portrait', 'short', 4, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(11, 'Auma | Mobile Menu', 'auma_mobile', 'aumaMobile', 'mobile', 0, 0, 'Mobile', 'Mobile', 'short', 4, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(12, 'Maxal | Breakfast/Lunch (US Letter)', 'maxal_breakfast_lunch', 'maxalBreakfastLunch', 'print', 216, 279, 'Letter', 'Portrait', 'short', 5, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(13, 'Maxal | Dinner (US Letter)', 'maxal_dinner', 'maxalDinner', 'print', 216, 279, 'Letter', 'Portrait', 'short', 5, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(14, 'Maxal | Drinks (US Letter)', 'maxal_drinks', 'maxalDrinks', 'print', 216, 279, 'Letter', 'Portrait', 'short', 5, '2021-10-28 04:17:36', '2021-10-29 04:17:36'),
+(15, 'Maxal | Mobile Menu', 'maxal_mobile', 'maxalMobile', 'mobile', 0, 0, 'Mobile', 'Mobile', 'short', 5, '2021-10-28 04:17:36', '2021-10-29 04:17:36');

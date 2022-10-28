@@ -2,48 +2,48 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AzulindaHalf = ({ menu }) => {
+const AzulindaHalf = () => {
     const menu_type = useSelector((state) => state.menutypes.menutype);
+    const menu = useSelector((state) => state.menus.menu);
 
-    console.log(menu);
     return (
         <>
             <div className="container text-center">
                 <div className="container-fluid">
-                        <div className="print-box">
-                            <div className="print-outter">
-                                <div className="print-lines">
-                                    <div className="print-inner">
-                                        <div className="menu-headline pt-1">
-                                            <h3>
-                                                Menu Title:
-                                                <span>{menu.name}</span>
-                                            </h3>
+                    <div className="print-box">
+                        <div className="print-outter">
+                            <div className="print-lines">
+                                <div className="print-inner">
+                                    <div className="menu-headline pt-1">
+                                        <h3>
+                                            Menu Title:
+                                            <span>{menu.name}</span>
+                                        </h3>
+                                    </div>
+                                    <div className="menu-subtitle pt-1">
+                                        <h3>
+                                            Menu Title 2:
+                                            <span>{menu.title}</span>
+                                        </h3>
+                                    </div>
+                                    <div className="menu-type-name pt-1">
+                                        <h3>
+                                            Menu Type:
+                                            <span>{menu_type.name}</span>
+                                        </h3>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-6-md col-6-xl col-6-sm">
+                                            {/* left section */}
                                         </div>
-                                        <div className="menu-subtitle pt-1">
-                                            <h3>
-                                                Menu Title 2:
-                                                <span>{menu.title}</span>
-                                            </h3>
-                                        </div>
-                                        <div className="menu-type-name pt-1">
-                                            <h3>
-                                                Menu Type:
-                                                <span>{menu_type.name}</span>
-                                            </h3>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-6-md col-6-xl col-6-sm">
-                                                {/* left section */}
-                                            </div>
-                                            <div className="col-6-md col-6-xl col-6-sm">
-                                                {/* //right section */}
-                                            </div>
+                                        <div className="col-6-md col-6-xl col-6-sm">
+                                            {/* //right section */}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
 

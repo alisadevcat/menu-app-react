@@ -9,7 +9,6 @@ const addImagePath = (name) => {
 
 export const BranchList = () => {
     const branches = useSelector((state) => state.branches.branches);
-    const branch = useSelector((state) => state.branches.branch);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

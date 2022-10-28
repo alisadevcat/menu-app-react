@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const addMenu = createAsyncThunk(
     "menus/addMenu",
-    async (menu_object) => {
+    async (menuObject) => {
 
         const options = {
             method: "POST",
@@ -11,12 +11,11 @@ export const addMenu = createAsyncThunk(
                 "Content-Type": "application/json",
             },
             mode: "cors",
-            body: JSON.stringify(menu_object),
+            body: JSON.stringify(menuObject),
         };
 
         const response = await fetch("/api/menus", options);
-
-
+        
         if (response.ok) {
             const data = await response.json();
             return data;

@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\API;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\MenuSection;
 
 class MenuSectionController extends Controller
 {
@@ -17,6 +18,11 @@ class MenuSectionController extends Controller
         //
     }
 
+    public function getById($menu_id)
+    {
+        $sections = MenuSection::where('menu_id', $menu_id)->get();
+        return $sections;
+    }
     /**
      * Show the form for creating a new resource.
      *

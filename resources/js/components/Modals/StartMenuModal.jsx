@@ -10,12 +10,15 @@ const StartMenuModal = ({ closeModal, showModal }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const menutype = useSelector((state) => state.menutypes.menutype);
-
+    const branchSlug = useSelector((state)=> state.branches.branch.slug);
     const menuTypeId = menutype.id;
-    const branchSlug =  useSelector((state)=> state.branches.branch.slug);
     const shortnameSlug = menutype.shortname;
     const menuTitle = menutype.name;
-    
+
+    const handleInput = (event) => {
+        setErrors([]);
+        setMenuName(event.target.value.trim());
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -25,23 +28,22 @@ const StartMenuModal = ({ closeModal, showModal }) => {
             setErrors([...errors, ...validationErrors]);
         }
 
-        const menu_object = {
+        const menuObject = {
             type_id: menuTypeId,
             menu_name: menuName,
             user_id: 1,
         };
 
-        dispatch(addMenu(menu_object));
+        console.log(addMenu(menuObject), 'addmenu');
+
+        dispatch(addMenu(menuObject));
 
         setTimeout(() => {
             navigate(`/api/menus/${branchSlug}/${shortnameSlug}`);
         }, 2000);
     };
 
-    const handleInput = (event) => {
-        setErrors([]);
-        setMenuName(event.target.value.trim());
-    };
+ 
 
     if (showModal) {
         return (

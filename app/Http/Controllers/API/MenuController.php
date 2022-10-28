@@ -29,7 +29,7 @@ class MenuController extends Controller
 
         $type_id = $request->input('type_id');
 
-        $menu_template = Menu::where('menu_type_id',  $type_id)->latest()->first();;
+        $menu_template = Menu::where('menu_type_id',  $type_id)->latest()->first();
 
         $footer_notice = $menu_template->footer_notice;
         $footer_notice2 = $menu_template->footer_notice2;
@@ -42,7 +42,7 @@ class MenuController extends Controller
         $menu->user_id = $request->user_id;
         // $menu->save();
 
-        return response()->json(["menu" => $menu]);
+        return response()->json(["menu" => $menu_template]);
     }
 
 
