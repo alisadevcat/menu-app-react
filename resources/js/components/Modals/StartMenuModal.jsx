@@ -34,8 +34,6 @@ const StartMenuModal = ({ closeModal, showModal }) => {
             user_id: 1,
         };
 
-        console.log(addMenu(menuObject), 'addmenu');
-
         dispatch(addMenu(menuObject));
 
         setTimeout(() => {

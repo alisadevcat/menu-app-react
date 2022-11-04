@@ -32,6 +32,7 @@ const menusSlice = createSlice({
         isLoaded: false,
         error: null,
         menu: null,
+        bbaseTemplateId: null
     },
     reducers: {
         getMenu: state => state.menus
@@ -44,6 +45,7 @@ const menusSlice = createSlice({
         [addMenu.fulfilled]: (state, action) => {
             state.isLoaded = true;
             state.menu = action.payload.menu;
+            state.baseTemplateId = action.payload.base_template_id;
         },
         [addMenu.rejected]: (state) => {
             state.isLoaded = true;

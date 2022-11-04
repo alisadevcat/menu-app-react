@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MenuSection;
+use App\Models\Menu;
 
 class MenuSectionController extends Controller
 {
@@ -18,11 +19,12 @@ class MenuSectionController extends Controller
         //
     }
 
-     public function getById($base_template_id){
-        $template_sections = MenuSection::where('menu_id', $base_template_id)->get();
-        return $template_sections;
-     }
-
+    public function getById($section_id)
+    {
+        $section = MenuSection::find($section_id);
+        return $section;
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -43,32 +45,23 @@ class MenuSectionController extends Controller
     {
         $menu_id = $request->input('menu_id');
         $menu_type_id = $request->input('menu_type_id');
-        $base_template_id = $request->input('base_template_id');
 
-        $template_sections = MenuSection::where('menu_id', $base_template_id)->get();
-        //Menu::find($base_template_id)->menu_sections;
-        $sections = [];
+        $section = new MenuSection();
 
-        foreach ($template_sections as $item){
-            $section = new MenuSection();
+        $section->id_parent_section  = $request->id_parent_section;
+        $section->title = $request->title;
+        $section->sutitle = $request->subtitle;
+        $section->price = $request->price;
+        $section->style = $request->style;
+        $section->side = $request->side;
+        $section->field_order = $request->field_order;
+        $section-> ordering = $request->ordering;
+        $section->menu_type_id = $menu_type_id;
+        $section->menu_id = $menu_id ;
+        
+        $section->save();
 
-            $section->id_parent_section = $item->id_parent_section;
-            $section->title = $item->title;
-            $section->sutitle = $item->subtitle;
-            $section->price = $item->price;
-            $section->style = $item->style;
-            $section->side = $item->side;
-            $section->field_order = $item->field_order;
-            $section->ordering = $item->ordering;
-            $section->menu_type_id = $menu_type_id;
-            $section->menu_id = $menu_id;
-
-            $section->save();
-
-            $sections[] = $section;
-        }
-
-        return response()->json(["sections"=>$sections]);
+        return response()->json(["message"=>'Success']);
 
     }
 

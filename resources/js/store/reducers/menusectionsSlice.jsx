@@ -4,14 +4,38 @@ export const fetchSectionByMenuId = createAsyncThunk(
     "menusections/fetchSectionByMenuId",
     async (menu_id) => {
         const response = await fetch(`/api/menu-sections/all/${menu_id}`);
+
         if (response.ok) {
-            const data = response.json;
+           const data = await response.json();
             return data;
         } else {
             console.log("Ошибка HTTP: " + response.status);
         }
     }
 );
+
+// export const addMenuSections = createAsyncThunk(
+//     "menusections/addMenuSections", async(menuData)=>{
+//         const options = {
+//             method: "POST",
+//             headers: {
+//                 Accept: "application/json, text/plain, */*",
+//                 "Content-Type": "application/json",
+//             },
+//             mode: "cors",
+//             body: JSON.stringify(menuData),
+//         };
+
+//         const response = await fetch("/api/menu-sections", options);
+
+//         if (response.ok){
+//             const data = await response.json();
+//             return data;
+//         } else {
+//             console.log("Ошибка HTTP: " + response.status);
+//         }
+//     }
+// )
 
 const menusectionsSlice = createSlice({
     name: "menusections",
@@ -33,7 +57,18 @@ const menusectionsSlice = createSlice({
         },
         [fetchSectionByMenuId.rejected]: (state)=>{
             state.isLoaded = true;
-        }
+        },
+    // [addMenuSections.pending]:(state)=>{
+    //     state.isLoaded = false;
+    //     state.error = null;
+    // } ,
+    // [addMenuSections.fulfilled]: (state, actions)=>{
+    //     state.sections = actions.payload.sections;
+    //     state.isLoaded = true;
+    // },
+    // [addMenuSections.rejected]: (state)=>{
+    //     state.isLoaded = true;
+    // }
     },
 });
 

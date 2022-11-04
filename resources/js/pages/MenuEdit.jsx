@@ -1,16 +1,18 @@
 import { React, useEffect, useState } from "react";
 import { MenuBar } from "../components/MenuBar";
 import { ActionBar } from "../components/ActionBar";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import { getComponent } from "../factories/components";
-import { fetchSectionByMenuId } from "../store/reducers/menusectionsSlice";
+// import {addMenuSections} from "../../store/reducers/menusectionsSlice";
+ import { fetchSectionByMenuId } from "../store/reducers/menusectionsSlice";
 
 const activeMenuBarItem = "editor";
 
 const MenuEdit = () => {
-    const menuObject = useSelector((state) => state.menus.menu);
+    const dispatch = useDispatch(); 
+    // const menuObject = useSelector((state) => state.menus.menu);
     const menutype = useSelector((state) => state.menutypes.menutype);
-    const sections = useSelector((state) => state.menusections.sections);
+    const baseTemplateId = useSelector((state)=>state.menus.baseTemplateId);
     const menuTemplate = menutype.template;
     const [TemplateComponent, setTemplateComponent] = useState();
 
@@ -18,10 +20,8 @@ const MenuEdit = () => {
         setTemplateComponent(getComponent(menuTemplate));
     }, []);
 
-    useEffect(()=>{ fetchSectionByMenuId(menuObject.id) }, []);
+    useEffect(()=>{dispatch(fetchSectionByMenuId(baseTemplateId)) }, []);
 
-    console.log(sections);
-    
     return (
         <>
             <MenuBar activeMenuBarItem={activeMenuBarItem} />

@@ -1,11 +1,15 @@
-import React from 'react'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 
-const Section = () => {
-  return (
-    <div>
-    <div class="row justify-flex-end">
-      <span class="flaticon-write">
+export const Section = ({ section }) => {
+    console.log(section);
+    return (
+        <div>
+            <div className="row justify-flex-end">
+                <h3>{section.title}</h3>
+                <h4>{section.subtitle}</h4>
+                <h4>{section.field_order}</h4>
+
+                {/* <span class="flaticon-write">
       <FontAwesomeIcon icon="edit" onClick="showModal(section)"/>
       </span>
       <span class="flaticon-paper" onClick="showModal">
@@ -20,8 +24,8 @@ const Section = () => {
     <div class="section-title">
       <h3>{ section.title }</h3>
       <h4>{ section.subtitle }</h4>
-      <h4>{section.field_order}</h4> 
-      {/* <div
+      <h4>{section.field_order}</h4>  */}
+                {/* <div
         v-for="menu_item in menu_items_array"
         :key="menu_item.id"
         :class="setItemClass(menu_item.style)"
@@ -31,9 +35,7 @@ const Section = () => {
           :field_order="section.field_order"
         ></app-menu-item>
       </div> */}
-    </div>
-  </div>
-  )
-}
-
-export default Section
+            </div>
+        </div>
+    );
+};
