@@ -20,6 +20,7 @@ class MenuItemController extends Controller
     public function getById($id)
     {
         $menu_items = MenuItem::where('section_id', $id)->get();
+        var_dump($menu_items);exit;
         return $menu_items;
     }
     /**

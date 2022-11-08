@@ -1,9 +1,8 @@
 import React from 'react'
 
-const MenuItem = () => {
+export const MenuItem = ({ menuItem }) => {
+  console.log(menuItem);
   return (
     <div>MenuItem</div>
   )
 }
-
-export default MenuItem

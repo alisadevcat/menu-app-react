@@ -1,4 +1,5 @@
 import React from "react";
+import { generateKey } from "../utils/Helpers";
 
 const initialMenuBarItems = [
     { className: "start", title: "Select Menu", isActive: false },
@@ -24,6 +25,7 @@ export const MenuBar = ({ activeMenuBarItem }) => {
                                     ? `${item.className} active`
                                     : item.className
                             }
+                            key={generateKey(item.title)}
                         >
                             <span className="pr-1">{index + 1}</span>
                             {item.title}

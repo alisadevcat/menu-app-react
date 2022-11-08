@@ -1,30 +1,49 @@
 import React from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchItems } from "../store/reducers/menuitemsSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { MenuItem } from "../components/MenuItem";
+import parse from "html-react-parser";
 
 export const Section = ({ section }) => {
-    console.log(section);
+    const menuItems = useSelector((state) => state.menuitems.menuitems);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchItems(section.id));
+    }, []);
+
+    console.log(menuItems, "items");
+
     return (
         <div>
             <div className="row justify-flex-end">
-                <h3>{section.title}</h3>
-                <h4>{section.subtitle}</h4>
-                <h4>{section.field_order}</h4>
+                <div>
+                    <span>
+                        <FontAwesomeIcon icon="edit" onClick="showModal(section)" />
+                    </span>
+                    <span>
+                            <FontAwesomeIcon icon="copy"/>
+                    </span>
+                    <span>
+                    
+                        <FontAwesomeIcon icon="long-arrow-down"/>
+                    </span>
+                    <span>
+                        <FontAwesomeIcon icon="trash-alt"/>
+                    </span>
+                </div>
+                <div>
+                    {parse(`<div><h3>${section.title}</h3></div>`)}
+                    {parse(`<div><h4>${section.subtitle}</h4></div>`)}
+                </div>
 
-                {/* <span class="flaticon-write">
-      <FontAwesomeIcon icon="edit" onClick="showModal(section)"/>
-      </span>
-      <span class="flaticon-paper" onClick="showModal">
-            <FontAwesomeIcon icon="copy" />
-    </span>
-      <span class="flaticon-download" onClick="showModal">
-      <FontAwesomeIcon icon="long-arrow-alt-down" />
-        </span>
-      <span class="flaticon-rubbish-bin" onClick="showModal">
-      <FontAwesomeIcon icon="trash-alt" /></span>
-    </div>
-    <div class="section-title">
-      <h3>{ section.title }</h3>
-      <h4>{ section.subtitle }</h4>
-      <h4>{section.field_order}</h4>  */}
+                {menuItems &&
+                    menuItems.map((item) => (
+                        <MenuItem key={item.id} menuItem={item} />
+                    ))}
+
                 {/* <div
         v-for="menu_item in menu_items_array"
         :key="menu_item.id"

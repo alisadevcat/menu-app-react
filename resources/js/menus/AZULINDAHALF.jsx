@@ -7,7 +7,19 @@ const AzulindaHalf = () => {
     const menu_type = useSelector((state) => state.menutypes.menutype);
     const menu = useSelector((state) => state.menus.menu);
     const sections = useSelector((state) => state.menusections.sections);
-    console.log(sections, "sections");
+    const leftsections = sections.reduce((acc, item) => {
+        if (item.side === "left") {
+            acc.push(item);
+        }
+        return acc;
+    }, []);
+
+    const rightsections = sections.reduce((acc, item) => {
+        if (item.side === "right") {
+            acc.push(item);
+        }
+        return acc;
+    }, []);
 
     return (
         <>
@@ -50,16 +62,23 @@ const AzulindaHalf = () => {
                                         </div>
                                     )}
                                     <div className="row">
-                                        <div className="col-6-md col-6-xl col-6-sm">
-                                            {sections && sections.map((item) => (
-                                                <Section
-                                                    section={item}
-                                                    key={item.id}
-                                                />
-                                            ))}
+                                        <div className="col-6-md col-6-xl col-6-sm sections_col">
+                                            {leftsections &&
+                                                leftsections.map((section) => (
+                                                    <Section
+                                                        section={section}
+                                                        key={section.id}
+                                                    />
+                                                ))}
                                         </div>
-                                        <div className="col-6-md col-6-xl col-6-sm">
-                                            {/* //right section */}
+                                        <div className="col-6-md col-6-xl col-6-sm sections_col">
+                                            {rightsections &&
+                                                rightsections.map((section) => (
+                                                    <Section
+                                                        section={section}
+                                                        key={section.id}
+                                                    />
+                                                ))}
                                         </div>
                                     </div>
                                 </div>
@@ -78,7 +97,7 @@ const AzulindaHalf = () => {
                                 VEGETARIAN *
                             </li>
                             <li>
-                                <FontAwesomeIcon icon="bread-slice" />{" "}
+                                <FontAwesomeIcon icon="bread-slice" />
                                 Gluten-free
                             </li>
                         </ul>

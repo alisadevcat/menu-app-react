@@ -32,10 +32,9 @@ const menusSlice = createSlice({
         isLoaded: false,
         error: null,
         menu: null,
-        bbaseTemplateId: null
+        baseTemplateId: null
     },
     reducers: {
-        getMenu: state => state.menus
     },
     extraReducers: {
         [addMenu.pending]: (state) => {
