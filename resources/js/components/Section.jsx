@@ -14,24 +14,24 @@ export const Section = ({ section }) => {
         dispatch(fetchItems(section.id));
     }, []);
 
-    console.log(menuItems, "items");
-
     return (
         <div>
             <div className="row justify-flex-end">
                 <div>
                     <span>
-                        <FontAwesomeIcon icon="edit" onClick="showModal(section)" />
+                        <FontAwesomeIcon
+                            icon="edit"
+                            onClick="showModal(section)"
+                        />
                     </span>
                     <span>
-                            <FontAwesomeIcon icon="copy"/>
+                        <FontAwesomeIcon icon="copy" />
                     </span>
                     <span>
-                    
-                        <FontAwesomeIcon icon="long-arrow-down"/>
+                        <FontAwesomeIcon icon="long-arrow-down" />
                     </span>
                     <span>
-                        <FontAwesomeIcon icon="trash-alt"/>
+                        <FontAwesomeIcon icon="trash-alt" />
                     </span>
                 </div>
                 <div>
@@ -41,19 +41,12 @@ export const Section = ({ section }) => {
 
                 {menuItems &&
                     menuItems.map((item) => (
-                        <MenuItem key={item.id} menuItem={item} />
+                        <MenuItem
+                            key={item.id}
+                            menuItem={item}
+                            field_order={section.field_order}
+                        />
                     ))}
-
-                {/* <div
-        v-for="menu_item in menu_items_array"
-        :key="menu_item.id"
-        :class="setItemClass(menu_item.style)"
-      >
-        <app-menu-item
-          :menu_item="menu_item"
-          :field_order="section.field_order"
-        ></app-menu-item>
-      </div> */}
             </div>
         </div>
     );
