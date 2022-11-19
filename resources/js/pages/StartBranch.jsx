@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMenutypesById, setMenuType} from "../store/reducers/menutypesSlice";
@@ -26,8 +26,8 @@ const StartBranch = () => {
         dispatch(setMenuType(type));
     };
 
-    console.log(menutype, "menutype");
-    console.log(isNotEmpty(menutype));
+    // console.log(menutype, "menutype");
+    // console.log(isNotEmpty(menutype));
 
     if (!status) {
         return <div className="loading">loading</div>;

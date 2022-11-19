@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchItems = createAsyncThunk(
     "menuitems/fetchItems",
-    async(id) => {
-        const response = await fetch(`/api/menu-items/all/${id}`);
+    async(ids) => {
+        const response = await fetch(`/api/menu-items/all/${ids}`);
 
         if (response.ok) {
             const data = await response.json();
@@ -16,7 +16,7 @@ export const fetchItems = createAsyncThunk(
 
 const menuitemsSlice = createSlice({
     name: "menuitems",
-    initialState: {  menuitems: [], error: null, isLoaded: false, menuitem: {} },
+    initialState: {  menuitems:[], error: null, isLoaded: false, menuitem: {} },
     reducers: {
     },
     extraReducers: {
@@ -25,7 +25,7 @@ const menuitemsSlice = createSlice({
         },
         [fetchItems.fulfilled]: (state, action)=>{
             state.isLoaded = true;
-            state.menuitems = action.payload
+            state.menuitems = action.payload;
         },
         [fetchItems.rejected]: (state)=>{
             state.isLoaded = true;

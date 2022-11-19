@@ -18,9 +18,13 @@ class MenuItemController extends Controller
         return $menuitems;
     }
 
-    public function getById($id)
+    public function getById($ids)
     {
-        $menu_items = MenuItem::where('section_id', $id)->get();
+        $ids = explode("-", $ids);
+
+        foreach ($ids as $id){
+            $menu_items[] = MenuItem::where('section_id', intval($id))->get();
+        }
         return $menu_items;
     }
     /**

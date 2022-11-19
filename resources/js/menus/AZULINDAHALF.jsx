@@ -1,12 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector} from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Section } from "../components/Section";
+import { MenuSection } from "../components/MenuSection";
+
 
 const AzulindaHalf = () => {
     const menu_type = useSelector((state) => state.menutypes.menutype);
     const menu = useSelector((state) => state.menus.menu);
     const sections = useSelector((state) => state.menusections.sections);
+
     const leftsections = sections.reduce((acc, item) => {
         if (item.side === "left") {
             acc.push(item);
@@ -20,6 +22,10 @@ const AzulindaHalf = () => {
         }
         return acc;
     }, []);
+
+   
+
+   // console.log(sections);
 
     return (
         <>
@@ -62,19 +68,19 @@ const AzulindaHalf = () => {
                                         </div>
                                     )}
                                     <div className="row">
-                                        <div className="col-6-md col-6-xl col-6-sm sections_col">
+                                        <div className="sections_col">
                                             {leftsections &&
                                                 leftsections.map((section) => (
-                                                    <Section
+                                                    <MenuSection
                                                         section={section}
                                                         key={section.id}
                                                     />
                                                 ))}
                                         </div>
-                                        <div className="col-6-md col-6-xl col-6-sm sections_col">
+                                        <div className="sections_col">
                                             {rightsections &&
                                                 rightsections.map((section) => (
-                                                    <Section
+                                                    <MenuSection
                                                         section={section}
                                                         key={section.id}
                                                     />

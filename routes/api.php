@@ -20,7 +20,7 @@ use App\Http\Controllers\API\MenuItemController;
 
 Route::get('/choose', [BranchController::class, 'index']);
 Route::get('/start/{branch}', [MenuTypeController::class, 'getByBranchId']);
-Route::get('/menu-items/all/{id}', [MenuItemController::class, 'getById']);
+Route::get('/menu-items/all/{ids}', [MenuItemController::class, 'getById']);
 Route::get('/menu-sections/all/{id}', [MenuSectionController::class, 'getById']);
 Route::get('/menu-items/all/{id}', [MenuItemController::class, 'getById']);
 
