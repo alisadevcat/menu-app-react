@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import logo from "../../../storage/app/public/images/HiltonLogo.png";
 const Footer = () => {
     return (
         <>
@@ -9,7 +10,7 @@ const Footer = () => {
                     <li>
                         <Link to="/">
                             <img
-                                src="storage/images/HiltonLogo.png"
+                                src={logo}
                                 alt="hilton"
                             />
                         </Link>

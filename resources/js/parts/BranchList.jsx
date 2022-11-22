@@ -12,9 +12,9 @@ export const BranchList = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const dispatchThenRoute = (branch, slug) => {
+    const dispatchThenRoute = (branch) => {
         dispatch(setBranch(branch));
-        navigate(slug);
+        navigate(`/start/${branch.slug}`);
     };
 
     return (
@@ -25,8 +25,7 @@ export const BranchList = () => {
                         key={branch.id}
                         onClick={() =>
                             dispatchThenRoute(
-                                branch,
-                                `/api/start/${branch.slug}`
+                                branch
                             )
                         }
                     >

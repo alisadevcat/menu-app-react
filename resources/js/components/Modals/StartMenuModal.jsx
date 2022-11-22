@@ -37,12 +37,11 @@ const StartMenuModal = ({ closeModal, showModal }) => {
         dispatch(addMenu(menuObject));
 
         setTimeout(() => {
-            navigate(`/api/menus/${branchSlug}/${shortnameSlug}`);
+            navigate(`/menus/${branchSlug}/${shortnameSlug}`);
         }, 2000);
     };
 
  
-
     if (showModal) {
         return (
             <>

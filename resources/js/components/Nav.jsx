@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+ import logo from "../../../storage/app/public/images/HiltonLogo.png";
+ 
 const setActive = ({ isActive }) =>
     isActive ? "active-site-nav__link text-uppercase" : "text-uppercase";
 
@@ -11,13 +12,13 @@ const Nav = () => {
                 <li>
                     <NavLink to="/">
                         <img
-                            src="storage/images/HiltonLogo.png"
+                            src={logo}
                             alt="Main Logo"
                         />
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/api/choose" className={setActive}>
+                    <NavLink to="/choose" className={setActive}>
                         Create new Menu
                     </NavLink>
                 </li>

@@ -7,6 +7,7 @@ use App\Http\Controllers\API\MenuController;
 use App\Http\Controllers\API\MenuTypeController;
 use App\Http\Controllers\API\MenuSectionController;
 use App\Http\Controllers\API\MenuItemController;
+use App\Http\Controllers\API\SpaController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,12 +19,12 @@ use App\Http\Controllers\API\MenuItemController;
 |
 */
 
+
 Route::get('/choose', [BranchController::class, 'index']);
 Route::get('/start/{branch}', [MenuTypeController::class, 'getByBranchId']);
 Route::get('/menu-items/all/{ids}', [MenuItemController::class, 'getById']);
 Route::get('/menu-sections/all/{id}', [MenuSectionController::class, 'getById']);
 Route::get('/menu-items/all/{id}', [MenuItemController::class, 'getById']);
-
 Route::resource('menu-sections', MenuSectionController::class)->except(['index', 'create']);
 Route::resource('menu-types', MenuTypeController::class);
 Route::resource('menu-items', MenuItemController::class);

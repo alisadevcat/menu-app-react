@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 
 const TemplateMenu = () => {
     const menutype = useSelector((state) => state.menutypes.menutype);
-    const imgPath = `/storage/images/MenuThumbnails/${menutype.shortname}.png`;
+
+    const imgPath = `../../../storage/app/public/images/MenuThumbnails/${menutype.shortname}.png`;
 
     return (
         <>

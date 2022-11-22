@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MenuItem } from "./MenuItem";
@@ -6,26 +6,32 @@ import { fetchItems } from "../store/reducers/menuitemsSlice";
 import parse from "html-react-parser";
 
 function getItemsById(arr, id) {
-    return arr.reduce((acc, item, index) => {
-        if (item[index].section_id == id) {
-            acc = [...acc, ...item]
+    return arr.reduce((acc, item) => {
+        if (item[0].section_id === id) {
+            acc = [...acc, ...item];
         }
         return acc;
     }, []);
 }
 
 export const MenuSection = ({ section }) => {
-    const menuItems = useSelector((state) => state.menuitems.menuitems);
-    const menuitems = getItemsById(menuItems, section.id);
+    const [menuitems, setMenuItems] = useState([]);
     const sections = useSelector((state) => state.menusections.sections);
+    const menuItems = useSelector((state) => state.menuitems.menuitems);
     const dispatch = useDispatch();
-    let ids = sections.map((item) => item.id).join("-");
+    const ids = sections.map((item) => item.id).join("-");
 
     useEffect(() => {
         dispatch(fetchItems(ids));
-    }, []);
+    }, [sections]);
 
-    console.log(menuitems);
+    useEffect(() => {
+        if (menuItems.length > 0) {
+            setMenuItems(getItemsById(menuItems, section.id));
+        }
+    }, [menuItems]);
+
+    // console.log(items, 'menuitems');
 
     return (
         <div className="section-editable">

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\API\SpaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +17,4 @@ use Illuminate\Support\Facades\Route;
 //     return view('app');
 // });
 
-Route::view('/{any}', 'app')->where('any', '.*');
+Route::get('/{any_path?}', [SpaController::class, 'index'])->where('any_path', '(.*)');
