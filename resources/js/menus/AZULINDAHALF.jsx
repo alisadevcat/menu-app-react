@@ -23,8 +23,6 @@ const AzulindaHalf = () => {
         return acc;
     }, []);
 
-   
-
    // console.log(sections);
 
     return (
@@ -94,12 +92,12 @@ const AzulindaHalf = () => {
                 </div>
             </div>
 
-            <div className="container footer-notices">
+            <div className="container footer-notices mt-1">
                 <div className="footer-inner">
                     <div className="footer-inner__icons">
                         <ul className="footer-icons">
                             <li>
-                                <FontAwesomeIcon icon="apple-alt" />
+                                <FontAwesomeIcon icon="apple-alt"/>
                                 VEGETARIAN *
                             </li>
                             <li>

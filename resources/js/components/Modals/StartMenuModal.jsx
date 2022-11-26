@@ -44,7 +44,6 @@ const StartMenuModal = ({ closeModal, showModal }) => {
  
     if (showModal) {
         return (
-            <>
                 <div className="modal-backdrop">
                     <div className="modal menu-save">
                         <div className="modal-header">
@@ -90,7 +89,6 @@ const StartMenuModal = ({ closeModal, showModal }) => {
                         </div>
                     </div>
                 </div>
-            </>
         );
     }
 };

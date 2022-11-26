@@ -1,3 +1,28 @@
-.highlighted{
-    border:dotted 1px black;
-}
+
+.section-editable, .menuitem-editable {
+    position: relative;
+  
+    .editable-buttons {
+      position: absolute;
+      right: 0;
+      top: -20px;
+      display: none;
+      
+      .editable-button {
+        cursor: pointer;
+      }
+    }
+  
+    &:hover .editable-buttons {
+      display: block;
+    }
+  }
+  
+  .menu-section {
+    border: 1px solid #fff;
+    text-align: left;
+    margin-top: 30px;
+    &:hover {
+      border: dashed 1px rgba(0, 0, 0, 0.3);
+    }
+  }

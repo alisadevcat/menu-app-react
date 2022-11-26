@@ -11,3 +11,10 @@ export const divideSections = (arr, side) => {
     // }, []);
     return arr.filter((item)=>{item.side === side})
 };
+
+export function createWrapperAndAppendToBody(wrapperId) {
+    const wrapperElement = document.createElement('div');
+    wrapperElement.setAttribute("id", wrapperId);
+    document.body.appendChild(wrapperElement);
+    return wrapperElement;
+  }

@@ -11,5 +11,6 @@
     </head>
     <body>
         <div id="app"></div>
+        <div id="react-portal-modal"></div>
     </body>
 </html>
