@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "../components/Modals/Modal";
 import { SectionEditForm }from "../components/Forms/SectionEditForm";
-import { ModalFooter }  from "../components/Modals/ModalFooter";
+import { EditModalFooter }  from "./Modals/EditModalFooter";
 
 export const ActionIcons = ({ options }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +32,7 @@ export const ActionIcons = ({ options }) => {
                 <FontAwesomeIcon icon="trash-alt" />
             </span>
             
-            <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen} content={SectionEditForm} footer={ModalFooter}/>
+            <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen} content={<SectionEditForm/>} footer={<EditModalFooter handleClose={() => setIsOpen(false)}/>}/>
         </div>
     );
 };

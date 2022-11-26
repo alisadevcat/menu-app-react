@@ -7,9 +7,6 @@ import ReactPortal from "../../utils/ReactPortal";
 
 const Modal = ({ content, footer, isOpen, handleClose }) => {
     //On a keydown event, we’ll invoke handleClose if the Escape key was pressed:
-    console.log(content , 'content');
-    // console.log(footer , 'footer');
-    console.log(isOpen);
 
     useEffect(() => {
         const closeOnEscapeKey = (e) =>
