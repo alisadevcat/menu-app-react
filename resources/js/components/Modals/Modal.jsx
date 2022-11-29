@@ -5,8 +5,11 @@ import ReactPortal from "../../utils/ReactPortal";
 // Keyboard focus should be trapped inside of the modal, so the user does not accidentally tab outside of the modal (a.k.a. “escaping the modal”)
 // Screen readers should also be trapped inside of the modal to prevent accidentally escaping
 
-const Modal = ({ content, footer, isOpen, handleClose }) => {
+const Modal = ({ content, footer, modalClasses, isOpen, handleClose }) => {
     //On a keydown event, we’ll invoke handleClose if the Escape key was pressed:
+    // let cssProperties = {}
+    // cssProperties['--btn-bg-color'] = '#1780cc'
+    // style={cssProperties}
 
     useEffect(() => {
         const closeOnEscapeKey = (e) =>
@@ -21,8 +24,8 @@ const Modal = ({ content, footer, isOpen, handleClose }) => {
 
     return (
         <ReactPortal wrapperId="react-portal-modal">
-            <div className="modal-backdrop">
-                <div className="modal">
+            <div className="modal">
+                <div className={`modal-container ${modalClasses}`}>
                     <div className="modal-header">
                         <div className="dialog-header">
                             <button
@@ -34,8 +37,8 @@ const Modal = ({ content, footer, isOpen, handleClose }) => {
                             </button>
                         </div>
                     </div>
-                    <div className="modal-body">{content}</div>
-                    <div className="modal-footer">{footer}</div>
+                    {content && (<div className="modal-body">{content}</div>)}
+                    {footer && (<div className="modal-footer">{footer}</div>)}
                 </div>
             </div>
         </ReactPortal>

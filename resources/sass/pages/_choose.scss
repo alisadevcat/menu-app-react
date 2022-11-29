@@ -1,7 +1,12 @@
 .branch-logos {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-evenly;
-    gap: 0.1rem;
+    justify-content: space-around;
     margin: 6rem 0;
+
+    .branch-logo {
+        cursor: pointer;
+        margin-left: 4px;
+        flex-basis: 25.3%;
+    }
 }

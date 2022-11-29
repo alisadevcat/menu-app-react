@@ -23,6 +23,7 @@ export const BranchList = () => {
                 branches.map((branch) => (
                     <div
                         key={branch.id}
+                        className = "branch-logo"
                         onClick={() =>
                             dispatchThenRoute(
                                 branch

@@ -44,6 +44,7 @@ const menusSlice = createSlice({
         [addMenu.fulfilled]: (state, action) => {
             state.isLoaded = true;
             state.menu = action.payload.menu;
+            console.log(action.payload.menu, 'menu store');
             state.baseTemplateId = action.payload.base_template_id;
         },
         [addMenu.rejected]: (state) => {

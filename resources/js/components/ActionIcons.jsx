@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "../components/Modals/Modal";
 import { SectionEditForm }from "../components/Forms/SectionEditForm";
-import { EditModalFooter }  from "./Modals/EditModalFooter";
 
 export const ActionIcons = ({ options }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -14,8 +13,6 @@ export const ActionIcons = ({ options }) => {
     //         setContent
     //     }
     // }, []);
-
-  
 
     return (
         <div className="editable-buttons">
@@ -31,8 +28,7 @@ export const ActionIcons = ({ options }) => {
             <span className="editable-button">
                 <FontAwesomeIcon icon="trash-alt" />
             </span>
-            
-            <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen} content={<SectionEditForm/>} footer={<EditModalFooter handleClose={() => setIsOpen(false)}/>}/>
+            <Modal modalClasses="section-modal" handleClose={() => setIsOpen(false)} isOpen={isOpen} content={<SectionEditForm section={options.item} handleClose={() => setIsOpen(false)}/>}/>
         </div>
     );
 };

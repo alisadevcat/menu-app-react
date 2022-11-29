@@ -10,7 +10,7 @@ const StartMenuModal = ({ closeModal, showModal }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const menutype = useSelector((state) => state.menutypes.menutype);
-    const branchSlug = useSelector((state)=> state.branches.branch.slug);
+    const branchSlug = useSelector((state) => state.branches.branch.slug);
     const menuTypeId = menutype.id;
     const shortnameSlug = menutype.shortname;
     const menuTitle = menutype.name;
@@ -41,54 +41,53 @@ const StartMenuModal = ({ closeModal, showModal }) => {
         }, 2000);
     };
 
- 
     if (showModal) {
         return (
-                <div className="modal-backdrop">
-                    <div className="modal menu-save">
-                        <div className="modal-header">
-                            <div className="dialog-header">
-                                <button
-                                    type="button"
-                                    className="btn-close"
-                                    onClick={closeModal}
-                                >
-                                    x
-                                </button>
-                            </div>
-                        </div>
-                        <div className="modal-body">
-                            <h2 className="mt-1 mb-1">
-                                Confirm Meal Period And Name
-                            </h2>
-                            <label className="control-label">Type</label>
-                            {menuTitle && <div className="bg-light-gray">{menuTitle}</div>}
-                            <form onSubmit={handleSubmit}>
-                                <div className="form-group mt-1 mb-1">
-                                    <label className="control-label">
-                                        Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="menu-name"
-                                        className="form-control p-1"
-                                        value={menuName}
-                                        onChange={handleInput}
-                                    />
-                                    <div className="error"></div>
-                                    <button type="submit" className="btn m-2">
-                                        Get Started
-                                    </button>
-
-                                    {errors &&
-                                        errors.map((error) => (
-                                            <span key={error}>{error}</span>
-                                        ))}
-                                </div>
-                            </form>
+            <div className="modal">
+                <div className="modal-container menu-save">
+                    <div className="modal-header">
+                        <div className="dialog-header">
+                            <button
+                                type="button"
+                                className="btn-close"
+                                onClick={closeModal}
+                            >
+                                x
+                            </button>
                         </div>
                     </div>
+                    <div className="modal-body">
+                        <h2 className="mt-1 mb-1">
+                            Confirm Meal Period And Name
+                        </h2>
+                        <label className="control-label">Type</label>
+                        {menuTitle && (
+                            <div className="bg-light-gray">{menuTitle}</div>
+                        )}
+                        <form onSubmit={handleSubmit}>
+                            <div className="form-group mt-1 mb-1">
+                                <label className="control-label">Name</label>
+                                <input
+                                    type="text"
+                                    name="menu-name"
+                                    className="form-control p-1"
+                                    value={menuName}
+                                    onChange={handleInput}
+                                />
+                                <div className="error"></div>
+                                <button type="submit" className="btn m-2">
+                                    Get Started
+                                </button>
+
+                                {errors &&
+                                    errors.map((error) => (
+                                        <span key={error}>{error}</span>
+                                    ))}
+                            </div>
+                        </form>
+                    </div>
                 </div>
+            </div>
         );
     }
 };

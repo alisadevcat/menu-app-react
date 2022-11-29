@@ -9,23 +9,6 @@ function validateEmail(value) {
 }
 //   validatePassword(value) {}
 
-export default function validateMenuName(value, count) {
-    let errors = [];
-    let emptyMessage = "Field mustn't be empty";
-    let lettersMessage = `Field must contain not more than ${count} letters`;
-
-    if (checkIsEmpty(value)) {
-        errors.length = 0;
-        errors.push(emptyMessage);
-    } else if (checkNotMatchCount(value, count)) {
-        errors.length = 0;
-        errors.push(lettersMessage);
-    }else{
-        errors.length = 0;
-    }
-    return errors;
-}
-
 function containsCharacters(value, code) {
     let regEx;
     switch (code) {
@@ -84,4 +67,42 @@ function matchWithRegEx(regEx, value, message) {
     } else {
         return false;
     }
+}
+
+export default function validateMenuName(value, count) {
+    let errors = [];
+    let emptyMessage = "Field mustn't be empty";
+    let lettersMessage = `Field must contain not more than ${count} letters`;
+
+    if (checkIsEmpty(value)) {
+        errors.length = 0;
+        errors.push(emptyMessage);
+    } else if (checkNotMatchCount(value, count)) {
+        errors.length = 0;
+        errors.push(lettersMessage);
+    }else{
+        errors.length = 0;
+    }
+    return errors;
+}
+
+
+export function validateSection(values, count) {
+    let errors = [];
+    let emptyMessage = "Field mustn't be empty";
+    let lettersMessage = `Field must contain not more than ${count} letters`;
+
+    values.forEach((value)=>{
+        if (checkIsEmpty(value)) {
+            errors.length = 0;
+            errors.push(emptyMessage);
+        } else if (checkNotMatchCount(value, count)) {
+            errors.length = 0;
+            errors.push(lettersMessage);
+        }else{
+            errors.length = 0;
+        }
+    })
+   
+    return errors;
 }

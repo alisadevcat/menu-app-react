@@ -64,7 +64,7 @@ class MenuController extends Controller
         $menu->user_id = $request->user_id;
         // $menu->save();
 
-        return response()->json(["menu" => $template_menu, "base_template_id"=>$template_menu->id]);
+        return response()->json(["menu" => $menu, "base_template_id"=>$template_menu->id]);
     }
 
 

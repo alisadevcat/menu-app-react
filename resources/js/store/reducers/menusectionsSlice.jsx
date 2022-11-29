@@ -45,7 +45,10 @@ const menusectionsSlice = createSlice({
         isLoaded: false,
         error: null,
     },
-    reducers: {},
+    reducers: {
+        updateSections: (state, action) => {
+            // state.sections = action.payload;
+        }},
     extraReducers: {
         [fetchSectionByMenuId.pending]:(state)=>{
             state.isLoaded = false;
@@ -71,5 +74,5 @@ const menusectionsSlice = createSlice({
     // }
     },
 });
-
+export const { updateSections }= menusectionsSlice.actions;
 export default menusectionsSlice.reducer;
