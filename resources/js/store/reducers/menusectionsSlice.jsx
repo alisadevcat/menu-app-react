@@ -47,7 +47,10 @@ const menusectionsSlice = createSlice({
     },
     reducers: {
         updateSections: (state, action) => {
-            // state.sections = action.payload;
+         const index = state.sections.findIndex((e)=> e.id === action.payload.id);
+         console.log(index, 'index');
+         console.log(action.payload, 'action payload');
+         state.sections[index] = action.payload;
         }},
     extraReducers: {
         [fetchSectionByMenuId.pending]:(state)=>{

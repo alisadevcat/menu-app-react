@@ -42,6 +42,7 @@ export const MenuSection = ({ section }) => {
                 <div className="menu-section__data">
                     {parse(`<div><h3>${section.title}</h3></div>`)}
                     {parse(`<div><h4>${section.subtitle}</h4></div>`)}
+                    {parse(`<div><h4>${section.price}</h4></div>`)}
                 </div>
 
                 {menuitems &&

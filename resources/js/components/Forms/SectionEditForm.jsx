@@ -9,29 +9,28 @@ export const SectionEditForm = ({ section, handleClose }) => {
     const sections = useSelector((state) => state.menusections.sections);
     const dispatch = useDispatch();
 
-
-  console.log(sections, 'section');
+  console.log(sections, 'sections');
   console.log(sectionItem, 'section item');
-  console.log(menu, 'menu');
 
     const handleSubmit = (event) => {
         event.preventDefault();
         // setSectionItem({ sectionItem, menu_id: menu.id });
-        setSectionItem({ sectionItem, menu_id: 22 });
+        setSectionItem({ sectionItem });
         dispatch(updateSections(sectionItem));
+        handleClose();
     };
 
     const handleTitleImput = (event) => {
         setErrors([]);
-        setSectionItem({ sectionItem, title: event.target.value.trim() });
+        setSectionItem({ ...sectionItem, title: event.target.value.trim() });
     };
     const handleSubtitleInput = (event) => {
         setErrors([]);
-        setSectionItem({ sectionItem, subtitle: event.target.value.trim() });
+        setSectionItem({...sectionItem, subtitle: event.target.value.trim() });
     };
     const handlePriceInput = (event) => {
         setErrors([]);
-        setSectionItem({ sectionItem, price: event.target.value.trim() });
+        setSectionItem({ ...sectionItem, price: event.target.value.trim() });
     };
 
     return (
