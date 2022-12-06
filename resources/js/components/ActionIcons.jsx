@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "../components/Modals/Modal";
-import { SectionEditForm }from "../components/Forms/SectionEditForm";
+import { SectionEditForm } from "../components/Forms/SectionEditForm";
+import { MenuItemEditForm } from "../components/Forms/MenuItemEditForm";
 
 export const ActionIcons = ({ options }) => {
     const [isOpen, setIsOpen] = useState(false);
-    // const [content,setContent ] = useState();
-    // const [footer, setfooter] = useState();
-
-    // useEffect(()=>{
-    //     if (options.type == 'section') {
-    //         setContent
-    //     }
-    // }, []);
+    const handleClose = () => setIsOpen(false);
 
     return (
         <div className="editable-buttons">
@@ -28,7 +22,32 @@ export const ActionIcons = ({ options }) => {
             <span className="editable-button">
                 <FontAwesomeIcon icon="trash-alt" />
             </span>
-            <Modal modalClasses="section-modal" handleClose={() => setIsOpen(false)} isOpen={isOpen} content={<SectionEditForm section={options.item} handleClose={() => setIsOpen(false)}/>}/>
+
+            {(options.type === 'section') ? (
+                <Modal
+                    modalClasses="section-modal"
+                    handleClose={handleClose}
+                    isOpen={isOpen}
+                    content={
+                        <SectionEditForm
+                            section={options.item}
+                            handleClose={handleClose}
+                        />
+                    }
+                />
+            ) : (
+                <Modal
+                    modalClasses="menuitem-modal"
+                    handleClose={handleClose}
+                    isOpen={isOpen}
+                    content={
+                        <MenuItemEditForm
+                            item={options.item}
+                            handleClose={handleClose}
+                        />
+                    }
+                />
+            )}
         </div>
     );
 };

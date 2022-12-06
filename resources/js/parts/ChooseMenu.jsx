@@ -1,15 +1,9 @@
 import React, { useState } from "react";
-import StartMenuModal from "../components/Modals/StartMenuModal";
+import MenuForm from "../components/Forms/MenuForm";
+import Modal from "../components/Modals/Modal";
 
 const ChooseMenu = () => {
-    const [showModal, setShowModal] = useState(false);
-    
-    const openModal = () => {
-        setShowModal(true);
-    };
-    const closeModal = () => {
-        setShowModal(false);
-    };
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <>
@@ -22,7 +16,7 @@ const ChooseMenu = () => {
                         </label>
                         <button
                             className="btn btn-default btn-start mt-2"
-                            onClick={openModal}
+                            onClick={() => setIsOpen(true)}
                         >
                             Start
                         </button>
@@ -47,10 +41,8 @@ const ChooseMenu = () => {
                     </div>
                 </div>
             </section>
-            <StartMenuModal
-                showModal={showModal}
-                closeModal={closeModal}
-            />
+
+            <Modal modalClasses="menu-save" handleClose={() => setIsOpen(false)} isOpen={isOpen} content={<MenuForm handleClose={() => setIsOpen(false)}/>}/>
         </>
     );
 };
