@@ -14,7 +14,7 @@ export const SectionEditForm = ({ section, handleClose }) => {
         handleClose();
     };
 
-    const handleTitleImput = (event) => {
+    const handleTitleInput = (event) => {
         setErrors([]);
         setSectionItem({ ...sectionItem, title: event.target.value.trim() });
     };
@@ -37,7 +37,7 @@ export const SectionEditForm = ({ section, handleClose }) => {
                         name="menu-name"
                         className="form-control p-1"
                         value={sectionItem.title}
-                        onChange={handleTitleImput}
+                        onChange={handleTitleInput}
                     />
                 </div>
                 <div className="form-group mt-1 mb-1">

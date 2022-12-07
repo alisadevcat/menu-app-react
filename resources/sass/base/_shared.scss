@@ -2,15 +2,15 @@
     max-width: 1200px;
     margin: 0 auto;
 }
-.wrapper{
-    // min-height:100% !important;
-    // display: flex !important;
-    // flex-direction: column !important;
-    min-height: calc(100vh - 290px);
+// .wrapper{
+//     // min-height:100% !important;
+//     // display: flex !important;
+//     // flex-direction: column !important;
+//     //min-height: calc(100vh - 300px);
+//   }
+  main.page-main{
+    min-height: calc(100vh - 270px);
   }
-  // main.page-main{
-  //   flex: 1 1 auto !important;
-  // }
   .no-display{
     display: none;
   }

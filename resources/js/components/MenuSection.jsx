@@ -29,6 +29,7 @@ export const MenuSection = ({ section }) => {
 
     useEffect(() => {
         if (menuItemsAll.length > 0) {
+            console.log(menuItemsAll, 'mmmm');
             setMenuItems(getItemsById(menuItemsAll, section.id));
         }
     }, [menuItemsAll]);

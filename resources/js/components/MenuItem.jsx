@@ -2,10 +2,11 @@ import React from "react";
 import { ActionIcons } from "./ActionIcons";
 
 export const MenuItem = ({ menuItem, fieldOrder }) => {
-    const options = {  type: "menuitem", item: menuItem };
+    const options = { type: "menuitem", item: menuItem };
+    
     return (
         <div className="menuitem-editable">
-                {/* <ActionIcons options={options}/> */}
+                <ActionIcons options={options}/>
 
             <div className="pt-1">
                 <div className="menuitem__title">
