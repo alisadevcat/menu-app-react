@@ -9,11 +9,11 @@ export const MenuItemEditForm = ({ item, handleClose }) => {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      setMenuItem({ menuItem });
+      setMenuItem(menuItem);
       dispatch(updateMenuItems(menuItem));
       handleClose();
-  };
-console.log(menuItem, 'menuitem');
+    };
+    console.log(menuItem, 'menuitem');
 
     const handleTitleInput = (event) => {
         setErrors([]);

@@ -9,7 +9,7 @@ export const SectionEditForm = ({ section, handleClose }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setSectionItem({ sectionItem });
+        setSectionItem(sectionItem);
         dispatch(updateSections(sectionItem));
         handleClose();
     };

@@ -3,7 +3,7 @@ import { ActionIcons } from "./ActionIcons";
 
 export const MenuItem = ({ menuItem, fieldOrder }) => {
     const options = { type: "menuitem", item: menuItem };
-    
+    // console.log(menuItem);
     return (
         <div className="menuitem-editable">
                 <ActionIcons options={options}/>

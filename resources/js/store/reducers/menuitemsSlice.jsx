@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 
 export const fetchItems = createAsyncThunk(
     "menuitems/fetchItems",
@@ -19,11 +19,16 @@ const menuitemsSlice = createSlice({
     initialState: { menuitems: [], error: null, isLoaded: false, menuitem: {} },
     reducers: {
         updateMenuItems: (state, action) => {
-            const index = state.menuitems.findIndex(
+            //find index of section /the first array
+            const arr_index = state.menuitems.findIndex(
+                (e, i) => i + 1 === action.payload.section_id
+            );
+
+            const index = state.menuitems[arr_index].findIndex(
                 (e) => e.id === action.payload.id
             );
-            state.menuitems[index] = action.payload;
-            console.log(state.menuitems);
+            
+            state.menuitems[arr_index][index] = action.payload;
         },
     },
     extraReducers: {
@@ -42,3 +47,9 @@ const menuitemsSlice = createSlice({
 
 export const { updateMenuItems } = menuitemsSlice.actions;
 export default menuitemsSlice.reducer;
+
+
+// arra1 = arra1.map(item => {
+//     const item2 = state.menuitems[].find(i2 => i2.transid === item.transid);
+//     return item2 ? { ...item, ...item2 } : item;
+//   });

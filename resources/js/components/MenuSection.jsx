@@ -25,13 +25,13 @@ export const MenuSection = ({ section }) => {
 
     useEffect(() => {
         dispatch(fetchItems(ids));
-    }, [sections]);
+    }, [dispatch]);
 
     useEffect(() => {
         if (menuItemsAll.length > 0) {
-            console.log(menuItemsAll, 'mmmm');
             setMenuItems(getItemsById(menuItemsAll, section.id));
         }
+        //console.log(menuItemsAll, 'all');
     }, [menuItemsAll]);
 
 
