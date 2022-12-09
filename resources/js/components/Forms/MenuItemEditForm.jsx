@@ -2,44 +2,43 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateMenuItems } from "../../store/reducers/menuitemsSlice";
 
+const getStyles = (styles) => {
+    return styles.split(",");
+};
+
 export const MenuItemEditForm = ({ item, handleClose }) => {
     const dispatch = useDispatch();
     const [menuItem, setMenuItem] = useState(item);
-    const [errors, setErrors] = useState([]);
+    const styles = getStyles(menuItem.style);
 
     const handleSubmit = (event) => {
-      event.preventDefault();
-      setMenuItem(menuItem);
-      dispatch(updateMenuItems(menuItem));
-      handleClose();
+        event.preventDefault();
+        setMenuItem(menuItem);
+        dispatch(updateMenuItems(menuItem));
+        handleClose();
     };
-    console.log(menuItem, 'menuitem');
 
     const handleTitleInput = (event) => {
-        setErrors([]);
         setMenuItem({ ...menuItem, title: event.target.value.trim() });
     };
     const handleSubtitleInput = (event) => {
-        setErrors([]);
         setMenuItem({ ...menuItem, subtitle: event.target.value.trim() });
     };
     const handlePriceInput = (event) => {
-        setErrors([]);
         setMenuItem({ ...menuItem, price: event.target.value.trim() });
     };
-
     const handleModifierInput = (event) => {
-        setErrors([]);
         setMenuItem({ ...menuItem, modifier: event.target.value.trim() });
     };
     const handleModTextInput = (event) => {
-        setErrors([]);
         setMenuItem({ ...menuItem, mod_text: event.target.value.trim() });
     };
     const handleNoticeInput = (event) => {
-        setErrors([]);
         setMenuItem({ ...menuItem, notice: event.target.value.trim() });
     };
+    const handleStyleChange = (event)=>{
+        setMenuItem({ ...menuItem, style: event.target.value.trim() });
+    }
 
     return (
         <div>
@@ -50,7 +49,7 @@ export const MenuItemEditForm = ({ item, handleClose }) => {
                         <label className="control-label">Title</label>
                         <input
                             type="text"
-                            name="menu-name"
+                            name="menuitem-title"
                             className="form-control p-1"
                             value={menuItem.title}
                             onChange={handleTitleInput}
@@ -60,7 +59,7 @@ export const MenuItemEditForm = ({ item, handleClose }) => {
                         <label className="control-label">Subtitle</label>
                         <input
                             type="text"
-                            name="menu-name"
+                            name="menuitem-subtitle"
                             className="form-control p-1"
                             value={menuItem.subtitle}
                             onChange={handleSubtitleInput}
@@ -70,7 +69,7 @@ export const MenuItemEditForm = ({ item, handleClose }) => {
                         <label className="control-label">Price</label>
                         <input
                             type="text"
-                            name="menu-name"
+                            name="menuitem-price"
                             className="form-control p-1"
                             value={menuItem.price}
                             onChange={handlePriceInput}
@@ -80,7 +79,7 @@ export const MenuItemEditForm = ({ item, handleClose }) => {
                         <label className="control-label">Modifier</label>
                         <input
                             type="text"
-                            name="menu-name"
+                            name="menuitem-modifier"
                             className="form-control p-1"
                             value={menuItem.modifier}
                             onChange={handleModifierInput}
@@ -90,7 +89,7 @@ export const MenuItemEditForm = ({ item, handleClose }) => {
                         <label className="control-label">Modifier text</label>
                         <input
                             type="text"
-                            name="menu-name"
+                            name="menuitem-mod_text"
                             className="form-control p-1"
                             value={menuItem.mod_text}
                             onChange={handleModTextInput}
@@ -100,17 +99,18 @@ export const MenuItemEditForm = ({ item, handleClose }) => {
                         <label className="control-label">Notice</label>
                         <input
                             type="text"
-                            name="menu-name"
+                            name="menuitem-notice"
                             className="form-control p-1"
                             value={menuItem.notice}
                             onChange={handleNoticeInput}
                         />
                     </div>
-
-                    <div className="error"></div>
-
-                    {errors &&
-                        errors.map((error) => <span key={error}>{error}</span>)}
+                    <select name="style" id="style" onChange={handleStyleChange}>
+                         <option disabled value="default" selected="selected">Style</option>
+                        {styles && styles.map((item) => 
+                            (<option value={item} key={item}>{item}</option>)
+                        )}
+                    </select>
 
                     <div className="row justify-center align-center">
                         <button

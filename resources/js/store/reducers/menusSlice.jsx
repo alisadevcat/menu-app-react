@@ -35,6 +35,9 @@ const menusSlice = createSlice({
         baseTemplateId: null
     },
     reducers: {
+        updateMenu: (state, action)=>{
+            state.menu = action.payload;
+        }
     },
     extraReducers: {
         [addMenu.pending]: (state) => {
@@ -51,5 +54,5 @@ const menusSlice = createSlice({
         },
     },
 });
-
+export const { updateMenu }  = menusSlice.actions;
 export default menusSlice.reducer;

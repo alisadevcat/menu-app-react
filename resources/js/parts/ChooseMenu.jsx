@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MenuForm from "../components/Forms/MenuForm";
+import MenuSaveForm from "../components/Forms/MenuSaveForm";
 import Modal from "../components/Modals/Modal";
 
 const ChooseMenu = () => {
@@ -42,7 +42,7 @@ const ChooseMenu = () => {
                 </div>
             </section>
 
-            <Modal modalClasses="menu-save" handleClose={() => setIsOpen(false)} isOpen={isOpen} content={<MenuForm handleClose={() => setIsOpen(false)}/>}/>
+            <Modal modalClasses="menu-save" handleClose={() => setIsOpen(false)} isOpen={isOpen} content={<MenuSaveForm handleClose={() => setIsOpen(false)}/>}/>
         </>
     );
 };

@@ -24,10 +24,11 @@ const menuitemsSlice = createSlice({
                 (e, i) => i + 1 === action.payload.section_id
             );
 
+            //second array of items themselves
             const index = state.menuitems[arr_index].findIndex(
                 (e) => e.id === action.payload.id
             );
-            
+
             state.menuitems[arr_index][index] = action.payload;
         },
     },
@@ -47,9 +48,3 @@ const menuitemsSlice = createSlice({
 
 export const { updateMenuItems } = menuitemsSlice.actions;
 export default menuitemsSlice.reducer;
-
-
-// arra1 = arra1.map(item => {
-//     const item2 = state.menuitems[].find(i2 => i2.transid === item.transid);
-//     return item2 ? { ...item, ...item2 } : item;
-//   });

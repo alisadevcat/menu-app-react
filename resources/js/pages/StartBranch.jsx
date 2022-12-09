@@ -6,6 +6,8 @@ import { MenuBar } from "../components/MenuBar";
 import ChooseMenu from "../parts/ChooseMenu";
 import TemplateMenu from "../parts/TemplateMenu";
 import { SelectTemplate } from "../parts/SelectTemplate";
+import { PreLoader } from "../components/PreLoader";
+
 const activeMenuBarItem = "start";
 
 const isNotEmpty = (obj) => Object.keys(obj).length > 0;
@@ -21,36 +23,13 @@ const StartBranch = () => {
     }, [dispatch]);
 
     if (!status) {
-        return <div className="loading">loading</div>;
+        return <PreLoader/>;
     } else {
         return (
             <>
                 <MenuBar activeMenuBarItem={activeMenuBarItem} />
 
                 <h1 className="text-center">CREATE NEW MENU</h1>
-
-                {/* <section id="selected-meal" className="container">
-                    <label className="control-label">Select Meal Period</label>
-                    <select
-                        id="menu_type"
-                        name="menu_type"
-                        className="form-control mt-2"
-                        onChange={handleSelectChange}
-                    >
-                        <option disabled value="default" selected="selected">
-                            Select Template
-                        </option>
-                        {menutypes &&
-                            menutypes.map((menutype) => (
-                                <option
-                                    value={menutype.template}
-                                    key={menutype.id}
-                                >
-                                    {menutype.name}
-                                </option>
-                            ))}
-                    </select>
-                </section> */}
 
                 <SelectTemplate/>
 

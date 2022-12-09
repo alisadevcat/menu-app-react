@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { addMenu } from "../../store/reducers/menusSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const MenuForm = () => {
+const MenuSaveForm = () => {
     const [menuName, setMenuName] = useState("");
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
@@ -74,4 +74,4 @@ const MenuForm = () => {
   )
 }
 
-export default MenuForm
+export default MenuSaveForm

@@ -4,7 +4,6 @@ import { updateSections } from "../../store/reducers/menusectionsSlice";
 
 export const SectionEditForm = ({ section, handleClose }) => {
     const [sectionItem, setSectionItem] = useState(section);
-    const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
 
     const handleSubmit = (event) => {
@@ -15,15 +14,12 @@ export const SectionEditForm = ({ section, handleClose }) => {
     };
 
     const handleTitleInput = (event) => {
-        setErrors([]);
         setSectionItem({ ...sectionItem, title: event.target.value.trim() });
     };
     const handleSubtitleInput = (event) => {
-        setErrors([]);
         setSectionItem({...sectionItem, subtitle: event.target.value.trim() });
     };
     const handlePriceInput = (event) => {
-        setErrors([]);
         setSectionItem({ ...sectionItem, price: event.target.value.trim() });
     };
 
@@ -60,10 +56,6 @@ export const SectionEditForm = ({ section, handleClose }) => {
                         onChange={handlePriceInput}
                     />
                 </div>
-                <div className="error"></div>
-
-                {errors &&
-                    errors.map((error) => <span key={error}>{error}</span>)}
 
                 <div className="row justify-center align-center">
                     <button

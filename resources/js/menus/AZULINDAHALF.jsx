@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector} from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MenuSection } from "../components/MenuSection";
+import { Menu } from "../components/Menu";
 
 
 const AzulindaHalf = () => {
@@ -23,8 +24,6 @@ const AzulindaHalf = () => {
         return acc;
     }, []);
 
-   // console.log(sections);
-
     return (
         <>
             <div className="container text-center">
@@ -33,38 +32,7 @@ const AzulindaHalf = () => {
                         <div className="print-outter">
                             <div className="print-lines">
                                 <div className="print-inner">
-                                    {menu.name && (
-                                        <div className="menu-headline pt-1">
-                                            <h3>
-                                                Menu Title:
-                                                <span>{menu.name}</span>
-                                            </h3>
-                                        </div>
-                                    )}
-                                    {menu.title && (
-                                        <div className="menu-subtitle pt-1">
-                                            <h3>
-                                                Menu Title:
-                                                <span>{menu.title}</span>
-                                            </h3>
-                                        </div>
-                                    )}
-                                    {menu.subtitle && (
-                                        <div className="menu-subtitle pt-1">
-                                            <h3>
-                                                Menu Subtitle:
-                                                <span>{menu.subtitle}</span>
-                                            </h3>
-                                        </div>
-                                    )}
-                                    {menu_type.name && (
-                                        <div className="menu-type-name pt-1">
-                                            <h3>
-                                                Menu Type:
-                                                <span>{menu_type.name}</span>
-                                            </h3>
-                                        </div>
-                                    )}
+                                <Menu menu={menu} menu_type={menu_type}/>
                                     <div className="row">
                                         <div className="sections_col">
                                             {leftsections &&
