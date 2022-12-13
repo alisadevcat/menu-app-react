@@ -38,7 +38,7 @@ export const MenuItemEditForm = ({ item, handleClose }) => {
     };
     const handleStyleChange = (event)=>{
         setMenuItem({ ...menuItem, style: event.target.value.trim() });
-    }
+    };
 
     return (
         <div>

@@ -1,5 +1,5 @@
-import { useState, useLayoutEffect } from 'react';
-import { createPortal } from 'react-dom';
+import { useState, useLayoutEffect } from "react";
+import { createPortal } from "react-dom";
 import {createWrapperAndAppendToBody} from "../utils/Helpers";
 
 //wrapperId property, which is the ID attribute of a DOM element and acts as the container for the portal.

@@ -16,8 +16,10 @@ $align-values: center, end, start, baseline,flex-start, flex-end ;
   flex-flow: row wrap;
 }
 
-
-
+.column{
+  display: flex;
+  flex-flow: column nowrap;
+}
 // grid gaps
 @each $key, $val in $grid-gaps {
   .gap-#{$key} > * {

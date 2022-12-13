@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setMenuType } from "../store/reducers/menutypesSlice";
 
-export const SelectTemplate = () => {
+export const SelectTemplate = ({ setShowTemplate }) => {
     const dispatch = useDispatch();
     const menutypes = useSelector((state) => state.menutypes.menutypes);
 
@@ -11,6 +11,7 @@ export const SelectTemplate = () => {
             (item) => item.template === event.target.value
         );
         dispatch(setMenuType(type));
+        if (event.target.value){ setShowTemplate();}
     };
 
     return (

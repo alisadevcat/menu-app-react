@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMenutypesById } from "../store/reducers/menutypesSlice";
@@ -7,17 +7,20 @@ import ChooseMenu from "../parts/ChooseMenu";
 import TemplateMenu from "../parts/TemplateMenu";
 import { SelectTemplate } from "../parts/SelectTemplate";
 import { PreLoader } from "../components/PreLoader";
-
+import  { isNotEmptyObj } from "../utils/Helpers";
 const activeMenuBarItem = "start";
 
-const isNotEmpty = (obj) => Object.keys(obj).length > 0;
-
-const StartBranch = () => {
+const StartBranchPage = () => {
     const { branch }  = useParams();
     const dispatch = useDispatch();
     const menutype = useSelector((state) => state.menutypes.menutype);
     const status = useSelector((state) => state.menutypes.isLoaded);
+    const [showTemplate, setShowTemplate] = useState(false);
 
+    const handleShowTemplate = ()=>{
+        setShowTemplate(true);
+    };
+    
     useEffect(() => {
         dispatch(fetchMenutypesById(branch));
     }, [dispatch]);
@@ -31,13 +34,13 @@ const StartBranch = () => {
 
                 <h1 className="text-center">CREATE NEW MENU</h1>
 
-                <SelectTemplate/>
+                <SelectTemplate setShowTemplate={()=>setShowTemplate(true)}/>
 
-                {isNotEmpty(menutype) && <ChooseMenu/>}
-                {isNotEmpty(menutype) && <TemplateMenu/>}
+                {(showTemplate && isNotEmptyObj(menutype)) && (<ChooseMenu/>)}
+                {(showTemplate && isNotEmptyObj(menutype)) && <TemplateMenu/>}
             </>
         );
     }
 };
 
-export default StartBranch;
+export default StartBranchPage;

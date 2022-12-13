@@ -13,7 +13,7 @@ export const ActionIcons = ({ options }) => {
         switch (type) {
             case "menu":
                 return (
-                    <div className="editable-buttons">
+                    <div className="pr-3">
                         <span className="editable-button"
                             onClick={() => setIsOpen(true)}>
                             <FontAwesomeIcon icon="edit" />

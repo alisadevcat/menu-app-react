@@ -1,16 +1,23 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector} from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MenuSection } from "../components/MenuSection";
 import { Menu } from "../components/Menu";
 
-const AzulindaHalf = () => {
+const LaluceDinner = () => {
     const menu_type = useSelector((state) => state.menutypes.menutype);
     const menu = useSelector((state) => state.menus.menu);
     const sections = useSelector((state) => state.menusections.sections);
 
     const leftsections = sections.reduce((acc, item) => {
         if (item.side === "left") {
+            acc.push(item);
+        }
+        return acc;
+    }, []);
+
+    const rightsections = sections.reduce((acc, item) => {
+        if (item.side === "right") {
             acc.push(item);
         }
         return acc;
@@ -24,15 +31,26 @@ const AzulindaHalf = () => {
                         <div className="print-outter">
                             <div className="print-lines">
                                 <div className="print-inner">
-                                    <Menu menu={menu} menu_type={menu_type} />
-                                    <div>
-                                        {sections &&
-                                            sections.map((section) => (
-                                                <MenuSection
-                                                    section={section}
-                                                    key={section.id}
-                                                />
-                                            ))}
+                                <Menu menu={menu} menu_type={menu_type}/>
+                                    <div className="row">
+                                        <div className="sections_2col">
+                                            {leftsections &&
+                                                leftsections.map((section) => (
+                                                    <MenuSection
+                                                        section={section}
+                                                        key={section.id}
+                                                    />
+                                                ))}
+                                        </div>
+                                        <div className="sections_2col">
+                                            {rightsections &&
+                                                rightsections.map((section) => (
+                                                    <MenuSection
+                                                        section={section}
+                                                        key={section.id}
+                                                    />
+                                                ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +64,7 @@ const AzulindaHalf = () => {
                     <div className="footer-inner__icons">
                         <ul className="footer-icons">
                             <li>
-                                <FontAwesomeIcon icon="apple-alt" />
+                                <FontAwesomeIcon icon="apple-alt"/>
                                 VEGETARIAN *
                             </li>
                             <li>
@@ -78,4 +96,4 @@ const AzulindaHalf = () => {
     );
 };
 
-export default AzulindaHalf;
+export default LaluceDinner;

@@ -102,7 +102,7 @@ export function validateSection(values, count) {
         }else{
             errors.length = 0;
         }
-    })
+    });
    
     return errors;
 }

@@ -8,7 +8,7 @@ import { getComponent } from "../factories/components";
 
 const activeMenuBarItem = "editor";
 
-const MenuEdit = () => {
+const MenuEditPage = () => {
     const dispatch = useDispatch(); 
     // const menuObject = useSelector((state) => state.menus.menu);
     const menutype = useSelector((state) => state.menutypes.menutype);
@@ -20,7 +20,7 @@ const MenuEdit = () => {
         setTemplateComponent(getComponent(menuTemplate));
     }, []);
 
-    useEffect(()=>{dispatch(fetchSectionByMenuId(baseTemplateId)) }, []);
+    useEffect(()=>{dispatch(fetchSectionByMenuId(baseTemplateId));}, []);
 
     return (
         <>
@@ -35,7 +35,7 @@ const MenuEdit = () => {
                     options.
                 </p>
             </div>
-
+            
             {TemplateComponent}
 
             <ActionBar />
@@ -43,4 +43,4 @@ const MenuEdit = () => {
     );
 };
 
-export default MenuEdit;
+export default MenuEditPage;

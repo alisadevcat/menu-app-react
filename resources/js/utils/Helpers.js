@@ -9,12 +9,15 @@ export const divideSections = (arr, side) => {
     //     }
     //     return acc;
     // }, []);
-    return arr.filter((item)=>{item.side === side})
+    return arr.filter((item) => {
+        item.side === side;
+    });
 };
 
 export function createWrapperAndAppendToBody(wrapperId) {
-    const wrapperElement = document.createElement('div');
+    const wrapperElement = document.createElement("div");
     wrapperElement.setAttribute("id", wrapperId);
     document.body.appendChild(wrapperElement);
     return wrapperElement;
-  }
+}
+export const isNotEmptyObj = (obj) => Object.keys(obj).length > 0;

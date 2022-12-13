@@ -71,7 +71,7 @@ const MenuSaveForm = () => {
         </div>
     </form>
 </div>
-  )
-}
+  );
+};
 
-export default MenuSaveForm
+export default MenuSaveForm;

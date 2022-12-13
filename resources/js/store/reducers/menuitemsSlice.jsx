@@ -19,17 +19,25 @@ const menuitemsSlice = createSlice({
     initialState: { menuitems: [], error: null, isLoaded: false, menuitem: {} },
     reducers: {
         updateMenuItems: (state, action) => {
+            console.log(current(state.menuitems), "cs");
             //find index of section /the first array
-            const arr_index = state.menuitems.findIndex(
-                (e, i) => i + 1 === action.payload.section_id
-            );
+            // const arr_index = state.menuitems.findIndex(
+            //     (e, i) => i + 1 === action.payload.section_id
+            // );
 
-            //second array of items themselves
-            const index = state.menuitems[arr_index].findIndex(
-                (e) => e.id === action.payload.id
-            );
+            // //second array of items themselves
+            // const index = state.menuitems[arr_index].findIndex(
+            //     (e) => e.id === action.payload.id
+            // );
+            // state.menuitems[arr_index][index] = action.payload;
 
-            state.menuitems[arr_index][index] = action.payload;
+         state.menuitems.forEach((item, i) => {
+                const index = item.findIndex((e) => e.id === action.payload.id );
+                if(index >= 0) {
+                   state.menuitems[i][index] = action.payload;
+                }              
+              });
+       
         },
     },
     extraReducers: {

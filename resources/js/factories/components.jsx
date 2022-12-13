@@ -1,22 +1,25 @@
 import AzulindaHalf from "../menus/AzulindaHalf";
 import AzulindaFull from "../menus/AzulindaFull";
 import AzulindaMobile from "../menus/AzulindaMobile";
+import LaLuceDinner from "../menus/LaluceDinner";
 import React from "react";
 
 export const getComponent = (template) => {
     switch (template) {
         case "azulindaHalf":
-            return (<AzulindaHalf />);
+            return <AzulindaHalf />;
         case "azulindaFull":
-            return (<AzulindaFull />);
+            return <AzulindaFull />;
         case "azulindaMobile":
-            return (<AzulindaMobile />);
+            return <AzulindaMobile />;
+        case "laluceDinner":
+            return <LaLuceDinner />;
         default:
             return <div></div>;
     }
 };
 
- // azulindaHalf
+// azulindaHalf
 // azulindaFull
 // azulindaMobile
 // laluceDinner
