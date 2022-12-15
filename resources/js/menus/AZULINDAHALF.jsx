@@ -4,17 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MenuSection } from "../components/MenuSection";
 import { Menu } from "../components/Menu";
 
-const AzulindaHalf = () => {
+const AzulindaHalf = ({ showForms }) => {
     const menu_type = useSelector((state) => state.menutypes.menutype);
     const menu = useSelector((state) => state.menus.menu);
     const sections = useSelector((state) => state.menusections.sections);
-
-    const leftsections = sections.reduce((acc, item) => {
-        if (item.side === "left") {
-            acc.push(item);
-        }
-        return acc;
-    }, []);
 
     return (
         <>
@@ -24,13 +17,14 @@ const AzulindaHalf = () => {
                         <div className="print-outter">
                             <div className="print-lines">
                                 <div className="print-inner">
-                                    <Menu menu={menu} menu_type={menu_type} />
+                                    <Menu menu={menu} menu_type={menu_type} showForms={showForms}/>
                                     <div>
                                         {sections &&
                                             sections.map((section) => (
                                                 <MenuSection
                                                     section={section}
                                                     key={section.id}
+                                                    showForms={showForms}
                                                 />
                                             ))}
                                     </div>

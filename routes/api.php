@@ -25,6 +25,7 @@ Route::get('/start/{branch}', [MenuTypeController::class, 'getByBranchId']);
 Route::get('/menu-items/all/{ids}', [MenuItemController::class, 'getById']);
 Route::get('/menu-sections/all/{id}', [MenuSectionController::class, 'getById']);
 Route::get('/menu-items/all/{id}', [MenuItemController::class, 'getById']);
+Route::get('/menus/template/{params}', [MenuController::class, 'getByParams']);
 Route::resource('menu-sections', MenuSectionController::class)->except(['index', 'create']);
 Route::resource('menu-types', MenuTypeController::class);
 Route::resource('menu-items', MenuItemController::class);

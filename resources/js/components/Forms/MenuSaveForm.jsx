@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import validateMenuName from "../../utils/Validation";
 import { useNavigate } from "react-router-dom";
-import { addMenu } from "../../store/reducers/menusSlice";
+import { setMenu } from "../../store/reducers/menusSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const MenuSaveForm = () => {
@@ -14,6 +14,7 @@ const MenuSaveForm = () => {
     const menuTypeId = menutype.id;
     const shortnameSlug = menutype.shortname;
     const menuTitle = menutype.name;
+    const userId = 1;
 
     const handleInput = (event) => {
         setErrors([]);
@@ -28,13 +29,9 @@ const MenuSaveForm = () => {
             setErrors([...errors, ...validationErrors]);
         }
 
-        const menuObject = {
-            type_id: menuTypeId,
-            menu_name: menuName,
-            user_id: 1,
-        };
+        const menuParams = `typeId=${menuTypeId}&menuName=${menuName}&userId=${userId}`;
 
-        dispatch(addMenu(menuObject));
+        dispatch(setMenu(menuParams));
 
         setTimeout(() => {
             navigate(`/menus/${branchSlug}/${shortnameSlug}`);

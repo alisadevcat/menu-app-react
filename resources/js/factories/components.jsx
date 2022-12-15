@@ -4,16 +4,16 @@ import AzulindaMobile from "../menus/AzulindaMobile";
 import LaLuceDinner from "../menus/LaluceDinner";
 import React from "react";
 
-export const getComponent = (template) => {
+export const getComponent = (template, showForms) => {
     switch (template) {
         case "azulindaHalf":
-            return <AzulindaHalf />;
+            return <AzulindaHalf showForms={showForms}/>;
         case "azulindaFull":
-            return <AzulindaFull />;
+            return <AzulindaFull showForms={showForms}/>;
         case "azulindaMobile":
-            return <AzulindaMobile />;
+            return <AzulindaMobile showForms={showForms}/>;
         case "laluceDinner":
-            return <LaLuceDinner />;
+            return <LaLuceDinner showForms={showForms}/>;
         default:
             return <div></div>;
     }

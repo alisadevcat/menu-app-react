@@ -21,7 +21,7 @@ const App = () => {
                     <Route path="/choose" element={<ChoosePage />} />
                     <Route path="/start/:branch" element={<StartBranchPage />} />
                     <Route path="/menus/:branch/:menu_type_shortname" element={<MenuEditPage />}/>
-                    <Route path="/menus/:branch/:menu_type_shortname/:menu_id/preview" element={<Preview/>}/>
+                    <Route path="/menus/:branch/:menu_type_template/preview" element={<Preview/>}/>
                     {/* <Route path="account" element={<MyAccountPage />} />*/}
                     {/* <Route path="*" element={<NotFound />} /> */}
                 </Route>

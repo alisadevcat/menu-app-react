@@ -10,6 +10,17 @@ use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
+    
+    public function getByParams($params)
+    {
+        parse_str($params, $output);
+        $template_menu = Menu::where('menu_type_id', intval($output['typeId']))->where('base_template', 1)->latest()->first();
+        $template_menu->name = $output['menuName'];
+        $template_menu->user_id = intval($output['userId']);
+
+        return response()->json(["menu" => $template_menu, "base_template_id" => $template_menu->id]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -19,6 +30,7 @@ class MenuController extends Controller
     {
         //
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -64,7 +76,7 @@ class MenuController extends Controller
         $menu->user_id = $request->user_id;
         // $menu->save();
 
-        return response()->json(["menu" => $menu, "base_template_id"=>$template_menu->id]);
+        return response()->json(["menu" => $menu, "base_template_id" => $template_menu->id]);
     }
 
 

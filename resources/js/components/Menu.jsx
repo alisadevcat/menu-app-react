@@ -1,11 +1,11 @@
 import React from "react";
 import { ActionIcons } from "./ActionIcons";
 
-export const Menu = ({ menu, menu_type }) => {
+export const Menu = ({ menu, showForms }) => {
     const options = { type: "menu", item: menu };
     return (
         <div className="menuitem-editable">
-            <ActionIcons options={options} />
+           {showForms && (<ActionIcons options={options} />)}
             {menu.name && (
                 <div className="menu-headline pt-1">
                     <h3>

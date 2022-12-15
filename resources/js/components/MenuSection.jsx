@@ -14,7 +14,7 @@ function getItemsById(arr, id) {
     }, []);
 }
 
-export const MenuSection = ({ section }) => {
+export const MenuSection = ({ section, showForms }) => {
     const [menuitems, setMenuItems] = useState([]);
     const sections = useSelector((state) => state.menusections.sections);
     const menuItemsAll = useSelector((state) => state.menuitems.menuitems);
@@ -37,7 +37,7 @@ export const MenuSection = ({ section }) => {
 
     return (
         <div className="section-editable">
-              <ActionIcons options={options}/>
+             {showForms && (<ActionIcons options={options}/>)}
 
             <div className="menu-section mt-1">
                 <div className="menu-section__data">
@@ -52,6 +52,7 @@ export const MenuSection = ({ section }) => {
                             key={item.id}
                             menuItem={item}
                             fieldOrder={section.field_order}
+                            showForms={showForms}
                         />
                     ))}
             </div>
