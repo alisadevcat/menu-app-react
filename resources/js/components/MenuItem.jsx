@@ -8,22 +8,22 @@ export const MenuItem = ({ menuItem, fieldOrder, showForms }) => {
             {showForms && (<ActionIcons options={options}/>)}
 
             <div className="pt-1">
-                <div className="menuitem__title">
+                <div className="item-title">
                     <p>{menuItem.title}</p>
                 </div>
-                <div className="menuitem__subtitle">
+                <div className="item-subtitle">
                     <p>{menuItem.subtitle}</p>
                 </div>
-                <div className="menuitem__price">
+                <div className="item-price">
                     <p>{menuItem.price}</p>
                 </div>
-                <div className="menuitem__modifier">
+                <div className="item-modifier">
                     <p>{menuItem.modifier}</p>
                 </div>
-                <div className="menuitem__mod_text">
+                <div className="item-mod_text">
                     <p>{menuItem.mod_text}</p>
                 </div>
-                <div className="menuitem__notice">
+                <div className="item-notice">
                     <p>{menuItem.notice}</p>
                 </div>
             </div>

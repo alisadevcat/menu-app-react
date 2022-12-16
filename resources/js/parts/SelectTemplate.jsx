@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setMenuType } from "../store/reducers/menutypesSlice";
+import PropTypes from "prop-types";
 
 export const SelectTemplate = ({ setShowTemplate }) => {
     const dispatch = useDispatch();
@@ -36,3 +37,7 @@ export const SelectTemplate = ({ setShowTemplate }) => {
         </section>
     );
 };
+
+SelectTemplate.PropTypes = {
+    setShowTemplate: PropTypes.func
+  };

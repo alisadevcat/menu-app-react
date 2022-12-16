@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "../components/Modals/Modal";
 import { SectionEditForm } from "../components/Forms/SectionEditForm";
 import { MenuItemEditForm } from "../components/Forms/MenuItemEditForm";
 import { MenuEditForm } from "../components/Forms/MenuEditForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types";
 
 export const ActionIcons = ({ options }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -14,8 +15,10 @@ export const ActionIcons = ({ options }) => {
             case "menu":
                 return (
                     <div className="pr-3">
-                        <span className="editable-button"
-                            onClick={() => setIsOpen(true)}>
+                        <span
+                            className="editable-button"
+                            onClick={() => setIsOpen(true)}
+                        >
                             <FontAwesomeIcon icon="edit" />
                         </span>
                         <Modal
@@ -98,9 +101,12 @@ export const ActionIcons = ({ options }) => {
         }
     };
 
-    return (
-        <div>
-            {actionComponent(options.type)}
-        </div>
-    );
+    return <div>{actionComponent(options.type)}</div>;
+};
+
+ActionIcons.propTypes = {
+    options: PropTypes.shape({
+        type: PropTypes.string,
+        item: PropTypes.objectOf(PropTypes.string),
+    }),
 };

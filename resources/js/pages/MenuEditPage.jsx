@@ -37,7 +37,7 @@ const MenuEditPage = () => {
             
             {TemplateComponent}
 
-            <ActionBar />
+            <ActionBar button={activeMenuBarItem}/>
         </>
     );
 };

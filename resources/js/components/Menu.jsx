@@ -1,59 +1,58 @@
 import React from "react";
 import { ActionIcons } from "./ActionIcons";
+import PropTypes from "prop-types";
 
 export const Menu = ({ menu, showForms }) => {
     const options = { type: "menu", item: menu };
     return (
         <div className="menuitem-editable">
-           {showForms && (<ActionIcons options={options} />)}
+            {showForms && <ActionIcons options={options} />}
             {menu.name && (
                 <div className="menu-headline pt-1">
-                    <h3>
-                        Menu Title:
+                    <h4>
                         <span>{menu.name}</span>
-                    </h3>
+                    </h4>
                 </div>
             )}
             {menu.title && (
                 <div className="menu-subtitle pt-1">
-                    <h3>
-                        Menu Title:
+                    <h4>
                         <span>{menu.title}</span>
-                    </h3>
+                    </h4>
                 </div>
             )}
             {menu.title2 && (
                 <div className="menu-subtitle pt-1">
-                    <h3>
-                        Menu Title 2:
+                    <h4>
                         <span>{menu.title2}</span>
-                    </h3>
+                    </h4>
                 </div>
             )}
             {menu.subtitle && (
                 <div className="menu-subtitle pt-1">
-                    <h3>
-                        Menu Subtitle:
+                    <h4>
                         <span>{menu.subtitle}</span>
-                    </h3>
+                    </h4>
                 </div>
             )}
-              {menu.subtitle2 && (
+            {menu.subtitle2 && (
                 <div className="menu-subtitle pt-1">
-                    <h3>
-                        Menu Subtitle2:
+                    <h4>
                         <span>{menu.subtitle2}</span>
-                    </h3>
+                    </h4>
                 </div>
             )}
-            {/* {menu_type.name && (
-                <div className="menu-type-name pt-1">
-                    <h3>
-                        Menu Type:
-                        <span>{menu_type.name}</span>
-                    </h3>
-                </div>
-            )} */}
         </div>
     );
+};
+
+Menu.propTypes = {
+    showForms: PropTypes.bool,
+    menu: PropTypes.shape({
+        name: PropTypes.string,
+        title: PropTypes.string,
+        title2: PropTypes.string,
+        subtitle: PropTypes.string,
+        subtitle2: PropTypes.string,
+    }),
 };

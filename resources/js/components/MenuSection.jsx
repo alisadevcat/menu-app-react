@@ -20,7 +20,8 @@ export const MenuSection = ({ section, showForms }) => {
     const menuItemsAll = useSelector((state) => state.menuitems.menuitems);
     const dispatch = useDispatch();
     const ids = sections.map((item) => item.id).join("-");
-   
+    const sectionClass = showForms ?  "menu-section menu-section_edit mt-1" : "menu-section_edit mt-1";
+
     const options = { type: "section", item: section };
 
     useEffect(() => {
@@ -34,16 +35,19 @@ export const MenuSection = ({ section, showForms }) => {
         //console.log(menuItemsAll, 'all');
     }, [menuItemsAll]);
 
-
     return (
         <div className="section-editable">
-             {showForms && (<ActionIcons options={options}/>)}
+            {showForms && <ActionIcons options={options} />}
 
-            <div className="menu-section mt-1">
-                <div className="menu-section__data">
-                    {parse(`<div><h3>${section.title}</h3></div>`)}
-                    {parse(`<div><h4>${section.subtitle}</h4></div>`)}
-                    {parse(`<div><h4>${section.price}</h4></div>`)}
+            <div className={sectionClass}>
+                <div className="section-title">
+                    {parse(`<h3>${section.title}</h3>`)}
+                </div>
+                <div className="section-subtitle,">
+                    {parse(`<h3>${section.subtitle}</h3>`)}
+                </div>
+                <div className="section-price">
+                    {parse(`<h3>${section.price}</h3>`)}
                 </div>
 
                 {menuitems &&
