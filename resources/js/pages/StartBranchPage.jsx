@@ -16,7 +16,7 @@ const StartBranchPage = () => {
     const menutype = useSelector((state) => state.menutypes.menutype);
     const status = useSelector((state) => state.menutypes.isLoaded);
     const [showTemplate, setShowTemplate] = useState(false);
-    const show = showTemplate || isNotEmptyObj(menutype);
+    // const show = showTemplate || isNotEmptyObj(menutype);
     
     useEffect(() => {
         dispatch(fetchMenutypesById(branch));
@@ -32,9 +32,7 @@ const StartBranchPage = () => {
                 <h1 className="text-center">CREATE NEW MENU</h1>
 
                 <SelectTemplate setShowTemplate={()=>setShowTemplate(true)}/>
-                { show && (<><ChooseMenu/> <TemplateMenu/></>) }
-
-
+                { showTemplate && (<><ChooseMenu/> <TemplateMenu/></>) }
             </>
         );
     }

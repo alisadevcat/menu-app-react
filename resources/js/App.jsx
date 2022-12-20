@@ -6,6 +6,7 @@ import ChoosePage from "./pages/ChoosePage";
 import StartBranchPage from "./pages/StartBranchPage";
 import MenuEditPage from "./pages/MenuEditPage";
 import Preview from "./pages/Preview";
+import FinalPage from "./pages/FinalPage";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -22,6 +23,7 @@ const App = () => {
                     <Route path="/start/:branch" element={<StartBranchPage />} />
                     <Route path="/menus/:branch/:menu_type_shortname" element={<MenuEditPage />}/>
                     <Route path="/menus/:branch/:menu_type_template/preview" element={<Preview/>}/>
+                    <Route path="/menus/pdf" element={<FinalPage/>}/>
                     {/* <Route path="account" element={<MyAccountPage />} />*/}
                     {/* <Route path="*" element={<NotFound />} /> */}
                 </Route>

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
-    
+
     public function getByParams($params)
     {
         parse_str($params, $output);
@@ -40,46 +40,45 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-
-        $type_id = $request->input('type_id');
-
-        $template_menu = Menu::where('menu_type_id',  $type_id)->where('base_template', 1)->latest()->first();
-        // $template_sections = MenuSection::where('menu_id', $template_menu->id)->get();
-
-        // foreach($template_sections as $section){
-        //     $template_menu_items[] = MenuItem::where('section_id', $section->id)->get();
-        // }
-
-        $footer_notice = $template_menu->footer_notice;
-        $footer_notice2 = $template_menu->footer_notice2;
-        $title = $template_menu->title;
-        $title2 = $template_menu->title2;
-        $subtitle2 = $template_menu->subtitle2;
-        $subtitle = $template_menu->sutitle;
-        $menu_price = $template_menu->menu_price;
-        $footer_local = $template_menu->footer_local;
-        $footer_watermark = $template_menu->watermark;
-
         $menu = new Menu();
 
-        $menu->name = $request->menu_name;
-        $menu->title = $title;
-        $menu->title2 = $title2;
-        $menu->subtitle = $subtitle;
-        $menu->sutitle2 = $subtitle2;
-        $menu->menu_price = $menu_price;
-        $menu->footer_local = $footer_local;
-        $menu->watermark = $footer_watermark;
-        $menu->footer_notice = $footer_notice;
-        $menu->footer_notice2 = $footer_notice2;
-        $menu->menu_type_id = $request->type_id;
-        $menu->user_id = $request->user_id;
-        // $menu->save();
+        $menu->name = $request->input('name');
+        $menu->title = $request->input('title');
+        $menu->title2 = $request->input('title2');
+        $menu->subtitle = $request->input('subtitle');
+        $menu->subtitle2 = $request->input('subtitle2');
+        $menu->menu_price = $request->input('menu_price');
+        $menu->footer_local = $request->input('footer_local');
+        $menu->footer_notice = $request->input('footer_notice');
+        $menu->footer_notice2 =$request->input('footer_notice2');
+        $menu->watermark = $request->input('watermark');
+        $menu->base_template = 0;
+        $menu->user_id = $request->input('user_id');
+        $menu->menu_type_id = $request->input('menu_type_id');
+        // $menu->created_at = $request->input('created_at');
+        // $menu->updated_at = $request->input('updated_at');
+        
+        $menu->save();
 
-        return response()->json(["menu" => $menu, "base_template_id" => $template_menu->id]);
+        return response()->json(["menu" => $menu]);
     }
 
 
+    // {"id":1,
+    //     "name":"Primary Menu",
+    //     "title":null,
+    //     "title2":null,
+    //     "subitle":null,
+    //     "subtitle2":null,
+    //     "menu_price":null,
+    //     "footer_local":null,
+    //     "footer_notice":"There may be a risk associated with consuming raw shellfish as is the case with other raw protein products. Please consume at your own risk**","footer_notice2":"The products with an indicated price are not included in the all-inclusive package and are priced in mexican pesos, inclusing iva**",
+    //     "watermark":null,
+    //     "base_template":1,
+    //     "user_id":1,
+    //     "menu_type_id":1,
+    //     "created_at":"2022-01-31T03:20:26.000000Z",
+    //     "updated_at":"2022-01-31T03:20:26.000000Z"}
     /**
      * Display the specified resource.
      *

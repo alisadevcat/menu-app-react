@@ -1,18 +1,33 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import { addMenu } from "../store/reducers/menusSlice";
+import { addMenuSections } from "../store/reducers/menusectionsSlice";
+import { addMenuItems } from "../store/reducers/menuitemsSlice";
 
 export const ActionBar = ({ button }) => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const branch = useSelector((state) => state.branches.branch.slug);
+    const menu = useSelector((state) => state.menus.menu);
+    const sections = useSelector((state) => state.menusections.sections);
+    const menuItemsAll = useSelector((state) => state.menuitems.menuitems);
+
     const menuTypeTemplate = useSelector(
         (state) => state.menutypes.menutype.template
     );
-    const navigate = useNavigate();
 
     const review_url = `/menus/${branch}/${menuTypeTemplate}/preview`;
     const print_url = "/";
-    //dispatchThenRoute
+
+    const dispatchThenRoute = () => {
+        dispatch(addMenu(menu));
+       // dispatch(addMenuSections(sections));
+       // dispatch(addMenuItems(menuItemsAll));
+       setTimeout(navigate("/menus/pdf"), 5000);
+    };
+
     return (
         <div className="actionbar mt-2">
             <ul className="actionbar__list">
@@ -33,15 +48,19 @@ export const ActionBar = ({ button }) => {
                         </Link>
                     </li>
                 )}
-                  {button == "preview" && (
+                {button == "preview" && (
                     <li>
-                        <Link to={print_url} className="btn btn-action">
+                        <div
+                            to={print_url}
+                            className="btn btn-action"
+                            onClick={dispatchThenRoute}
+                        >
                             Save and Print&nbsp;&nbsp;&nbsp;
                             <span className="fa fa-arrow-circle-o-right"></span>
-                        </Link>
+                        </div>
                     </li>
                 )}
-                 {button == "start" && (
+                {button == "start" && (
                     <li>
                         <div className="btn btn-action">
                             Start&nbsp;&nbsp;&nbsp;
@@ -55,5 +74,5 @@ export const ActionBar = ({ button }) => {
 };
 
 ActionBar.propTypes = {
-    button: PropTypes.string
-  };
+    button: PropTypes.string,
+};

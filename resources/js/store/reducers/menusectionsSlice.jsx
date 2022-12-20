@@ -6,7 +6,7 @@ export const fetchSectionByMenuId = createAsyncThunk(
         const response = await fetch(`/api/menu-sections/all/${menu_id}`);
 
         if (response.ok) {
-           const data = await response.json();
+            const data = await response.json();
             return data;
         } else {
             console.log("Ошибка HTTP: " + response.status);
@@ -14,28 +14,29 @@ export const fetchSectionByMenuId = createAsyncThunk(
     }
 );
 
-// export const addMenuSections = createAsyncThunk(
-//     "menusections/addMenuSections", async(menuData)=>{
-//         const options = {
-//             method: "POST",
-//             headers: {
-//                 Accept: "application/json, text/plain, */*",
-//                 "Content-Type": "application/json",
-//             },
-//             mode: "cors",
-//             body: JSON.stringify(menuData),
-//         };
+export const addMenuSections = createAsyncThunk(
+    "menusections/addMenuSections",
+    async (menuSections) => {
+        const options = {
+            method: "POST",
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json",
+            },
+            mode: "cors",
+            body: JSON.stringify(menuSections),
+        };
 
-//         const response = await fetch("/api/menu-sections", options);
+        const response = await fetch("/api/menu-sections", options);
 
-//         if (response.ok){
-//             const data = await response.json();
-//             return data;
-//         } else {
-//             console.log("Ошибка HTTP: " + response.status);
-//         }
-//     }
-// )
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            console.log("Ошибка HTTP: " + response.status);
+        }
+    }
+);
 
 const menusectionsSlice = createSlice({
     name: "menusections",
@@ -47,33 +48,36 @@ const menusectionsSlice = createSlice({
     },
     reducers: {
         updateSections: (state, action) => {
-         const index = state.sections.findIndex((e)=> e.id === action.payload.id);
-         state.sections[index] = action.payload;
-        }},
+            const index = state.sections.findIndex(
+                (e) => e.id === action.payload.id
+            );
+            state.sections[index] = action.payload;
+        },
+    },
     extraReducers: {
-        [fetchSectionByMenuId.pending]:(state)=>{
+        [fetchSectionByMenuId.pending]: (state) => {
             state.isLoaded = false;
             state.error = null;
-        } ,
-        [fetchSectionByMenuId.fulfilled]: (state, actions)=>{
+        },
+        [fetchSectionByMenuId.fulfilled]: (state, actions) => {
             state.sections = actions.payload;
             state.isLoaded = true;
         },
-        [fetchSectionByMenuId.rejected]: (state)=>{
+        [fetchSectionByMenuId.rejected]: (state) => {
             state.isLoaded = true;
         },
-    // [addMenuSections.pending]:(state)=>{
-    //     state.isLoaded = false;
-    //     state.error = null;
-    // } ,
-    // [addMenuSections.fulfilled]: (state, actions)=>{
-    //     state.sections = actions.payload.sections;
-    //     state.isLoaded = true;
-    // },
-    // [addMenuSections.rejected]: (state)=>{
-    //     state.isLoaded = true;
-    // }
+        [addMenuSections.pending]: (state) => {
+            state.isLoaded = false;
+            state.error = null;
+        },
+        [addMenuSections.fulfilled]: (state) => {
+            state.isLoaded = true;
+        },
+        [addMenuSections.rejected]: (state) => {
+            state.isLoaded = true;
+            state.error = null;
+        },
     },
 });
-export const { updateSections }= menusectionsSlice.actions;
+export const { updateSections } = menusectionsSlice.actions;
 export default menusectionsSlice.reducer;

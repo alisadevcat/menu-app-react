@@ -13,31 +13,43 @@ export const fetchItems = createAsyncThunk(
         }
     }
 );
+export const addMenuItems = createAsyncThunk(
+    "menusections/addMenuItems",
+    async (menuItems) => {
+        const options = {
+            method: "POST",
+            headers: {
+                "Accept": "application/json, text/plain, */*",
+                "Content-Type": "application/json",
+            },
+            mode: "cors",
+            body: JSON.stringify(menuItems),
+        };
+
+        const response = await fetch("/api/menu-items", options);
+
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            console.log("Ошибка HTTP: " + response.status);
+        }
+    }
+);
 
 const menuitemsSlice = createSlice({
     name: "menuitems",
     initialState: { menuitems: [], error: null, isLoaded: false, menuitem: {} },
     reducers: {
         updateMenuItems: (state, action) => {
-            console.log(current(state.menuitems), "cs");
-            //find index of section /the first array
-            // const arr_index = state.menuitems.findIndex(
-            //     (e, i) => i + 1 === action.payload.section_id
-            // );
+            // console.log(current(state.menuitems), "cs");
 
-            // //second array of items themselves
-            // const index = state.menuitems[arr_index].findIndex(
-            //     (e) => e.id === action.payload.id
-            // );
-            // state.menuitems[arr_index][index] = action.payload;
-
-         state.menuitems.forEach((item, i) => {
-                const index = item.findIndex((e) => e.id === action.payload.id );
-                if(index >= 0) {
-                   state.menuitems[i][index] = action.payload;
-                }              
-              });
-       
+            state.menuitems.forEach((item, i) => {
+                const index = item.findIndex((e) => e.id === action.payload.id);
+                if (index >= 0) {
+                    state.menuitems[i][index] = action.payload;
+                }
+            });
         },
     },
     extraReducers: {
@@ -50,6 +62,17 @@ const menuitemsSlice = createSlice({
         },
         [fetchItems.rejected]: (state) => {
             state.isLoaded = true;
+        },
+        [addMenuItems.pending]: (state) => {
+            state.isLoaded = false;
+            state.error = null;
+        },
+        [addMenuItems.fulfilled]: (state) => {
+            state.isLoaded = true;
+        },
+        [addMenuItems.rejected]: (state) => {
+            state.isLoaded = true;
+            state.error = null;
         },
     },
 });

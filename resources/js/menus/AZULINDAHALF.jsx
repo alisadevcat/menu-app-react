@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MenuSection } from "../components/MenuSection";
 import { Menu } from "../components/Menu";
-import logo from "../../../storage/app/public/images/logos/azulinda-logo.png";
+import PropTypes from "prop-types";
 
 const AzulindaHalf = ({ showForms }) => {
     const menu = useSelector((state) => state.menus.menu);
@@ -15,21 +15,51 @@ const AzulindaHalf = ({ showForms }) => {
                 <div className="container-fluid">
                     <div className="print-box">
                         <Menu menu={menu} showForms={showForms} />
+
                         <div className="print-outter">
                             <div className="print-lines">
                                 <div className="print-inner">
-                                    <div className="menu-logo">
-                                    </div>
-                                    <div>
-                                        {sections &&
-                                            sections.map((section) => (
-                                                <MenuSection
-                                                    section={section}
-                                                    key={section.id}
-                                                    showForms={showForms}
-                                                />
-                                            ))}
-                                    </div>
+                                    <div className="menu-logo"></div>
+
+                                    {showForms ? (
+                                        <div>
+                                            {sections &&
+                                                sections.map((section) => (
+                                                    <MenuSection
+                                                        section={section}
+                                                        key={section.id}
+                                                        showForms={showForms}
+                                                    />
+                                                ))}{" "}
+                                        </div>
+                                    ) : (
+                                        <div className="row">
+                                            <div className="sections_2col">
+                                                {sections &&
+                                                    sections.map((section) => (
+                                                        <MenuSection
+                                                            section={section}
+                                                            key={section.id}
+                                                            showForms={
+                                                                showForms
+                                                            }
+                                                        />
+                                                    ))}
+                                            </div>
+                                            <div className="sections_2col">
+                                                {sections &&
+                                                    sections.map((section) => (
+                                                        <MenuSection
+                                                            section={section}
+                                                            key={section.id}
+                                                            showForms={
+                                                                showForms
+                                                            }
+                                                        />
+                                                    ))}
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                             <div className="container footer-notices mt-1">
@@ -72,5 +102,8 @@ const AzulindaHalf = ({ showForms }) => {
         </>
     );
 };
-
+AzulindaHalf.propTypes = {
+    showForms : PropTypes.bool
+  };
+  
 export default AzulindaHalf;
