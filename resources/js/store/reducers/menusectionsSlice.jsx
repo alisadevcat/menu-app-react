@@ -14,30 +14,6 @@ export const fetchSectionByMenuId = createAsyncThunk(
     }
 );
 
-export const addMenuSections = createAsyncThunk(
-    "menusections/addMenuSections",
-    async (menuSections) => {
-        const options = {
-            method: "POST",
-            headers: {
-                Accept: "application/json, text/plain, */*",
-                "Content-Type": "application/json",
-            },
-            mode: "cors",
-            body: JSON.stringify(menuSections),
-        };
-
-        const response = await fetch("/api/menu-sections", options);
-
-        if (response.ok) {
-            const data = await response.json();
-            return data;
-        } else {
-            console.log("Ошибка HTTP: " + response.status);
-        }
-    }
-);
-
 const menusectionsSlice = createSlice({
     name: "menusections",
     initialState: {
@@ -53,31 +29,23 @@ const menusectionsSlice = createSlice({
             );
             state.sections[index] = action.payload;
         },
+        addMenuSections: (state, action)=>{
+            state.sections = action.payload;
+        }
     },
     extraReducers: {
         [fetchSectionByMenuId.pending]: (state) => {
             state.isLoaded = false;
             state.error = null;
         },
-        [fetchSectionByMenuId.fulfilled]: (state, actions) => {
-            state.sections = actions.payload;
+        [fetchSectionByMenuId.fulfilled]: (state, action) => {
+            state.sections = action.payload;
             state.isLoaded = true;
         },
         [fetchSectionByMenuId.rejected]: (state) => {
             state.isLoaded = true;
-        },
-        [addMenuSections.pending]: (state) => {
-            state.isLoaded = false;
-            state.error = null;
-        },
-        [addMenuSections.fulfilled]: (state) => {
-            state.isLoaded = true;
-        },
-        [addMenuSections.rejected]: (state) => {
-            state.isLoaded = true;
-            state.error = null;
-        },
+        }
     },
 });
-export const { updateSections } = menusectionsSlice.actions;
+export const { updateSections, addMenuSections } = menusectionsSlice.actions;
 export default menusectionsSlice.reducer;

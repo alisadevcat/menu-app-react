@@ -63,22 +63,6 @@ class MenuController extends Controller
         return response()->json(["menu" => $menu]);
     }
 
-
-    // {"id":1,
-    //     "name":"Primary Menu",
-    //     "title":null,
-    //     "title2":null,
-    //     "subitle":null,
-    //     "subtitle2":null,
-    //     "menu_price":null,
-    //     "footer_local":null,
-    //     "footer_notice":"There may be a risk associated with consuming raw shellfish as is the case with other raw protein products. Please consume at your own risk**","footer_notice2":"The products with an indicated price are not included in the all-inclusive package and are priced in mexican pesos, inclusing iva**",
-    //     "watermark":null,
-    //     "base_template":1,
-    //     "user_id":1,
-    //     "menu_type_id":1,
-    //     "created_at":"2022-01-31T03:20:26.000000Z",
-    //     "updated_at":"2022-01-31T03:20:26.000000Z"}
     /**
      * Display the specified resource.
      *

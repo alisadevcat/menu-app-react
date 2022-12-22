@@ -41,37 +41,31 @@ class MenuSectionController extends Controller
      */
     public function store(Request $request)
     {
-        $menu_id = $request->input('menu_id');
-        $menu_type_id = $request->input('menu_type_id');
-        $base_template_id = $request->input('base_template_id');
 
-        $template_sections = MenuSection::where('menu_id', $base_template_id)->get();
-        //Menu::find($base_template_id)->menu_sections;
-        $sections = [];
+        // foreach ($request as $item){
 
-        foreach ($template_sections as $item){
-            $section = new MenuSection();
+        //     $section = new MenuSection();
 
-            $section->id_parent_section = $item->id_parent_section;
-            $section->title = $item->title;
-            $section->sutitle = $item->subtitle;
-            $section->price = $item->price;
-            $section->style = $item->style;
-            $section->side = $item->side;
-            $section->field_order = $item->field_order;
-            $section->ordering = $item->ordering;
-            $section->menu_type_id = $menu_type_id;
-            $section->menu_id = $menu_id;
+        //     $section->id_parent_section = $item->input('id_parent_section');
+        //     $section->title = $item->input('title');
+        //     $section->sutitle = $item->input('subtitle');
+        //     $section->price = $item->input('price');
+        //     $section->style = $item->input('style');
+        //     $section->side = $item->input('side');
+        //     $section->field_order = $item->input('field_order');
+        //     $section->ordering = $item->input('ordering');
+        //     $section->menu_type_id = $item->input('menu_type_id');
+        //     $section->menu_id = $item->input('menu_id');
 
-            $section->save();
+        //     $section->save();
 
-            $sections[] = $section;
-        }
+        //     $sections[] = $section;
+        // }
 
-        return response()->json(["sections"=>$sections]);
+        return response()->json(["sections"=> "sections" ]);
 
     }
-
+    
     /**
      * Display the specified resource.
      *
