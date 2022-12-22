@@ -18,10 +18,11 @@ class MenuSectionController extends Controller
         //
     }
 
-     public function getById($base_template_id){
+    public function getById($base_template_id)
+    {
         $template_sections = MenuSection::where('menu_id', $base_template_id)->get();
         return $template_sections;
-     }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -42,30 +43,29 @@ class MenuSectionController extends Controller
     public function store(Request $request)
     {
 
-        // foreach ($request as $item){
+        foreach ($request->data as $data) {
 
-        //     $section = new MenuSection();
+            $section = new MenuSection([
+                'id_parent_section' => $data['id_parent_section'],
+                'title' => $data['title'],
+                'subtitle' => $data['subtitle'],
+                'price' => $data['price'],
+                'style' => $data['style'],
+                'side' => $data['side'],
+                'field_order' => $data['field_order'],
+                'ordering' => $data['ordering'],
+                'menu_type_id' => $data['menu_type_id'],
+                'menu_id' => $data['menu_id'],
+            ]);
 
-        //     $section->id_parent_section = $item->input('id_parent_section');
-        //     $section->title = $item->input('title');
-        //     $section->sutitle = $item->input('subtitle');
-        //     $section->price = $item->input('price');
-        //     $section->style = $item->input('style');
-        //     $section->side = $item->input('side');
-        //     $section->field_order = $item->input('field_order');
-        //     $section->ordering = $item->input('ordering');
-        //     $section->menu_type_id = $item->input('menu_type_id');
-        //     $section->menu_id = $item->input('menu_id');
+            $section->save();
 
-        //     $section->save();
+            $sections[] = $section;
+        }
 
-        //     $sections[] = $section;
-        // }
-
-        return response()->json(["sections"=> "sections" ]);
-
+        return response()->json(["sections" => $sections]);
     }
-    
+
     /**
      * Display the specified resource.
      *

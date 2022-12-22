@@ -59,7 +59,7 @@ class ApiFetchData {
                             "Content-Type": "application/json",
                         },
                         mode: "cors",
-                        body: options.sections,
+                        body: { data: options.sections},
                     };
                 },
             },

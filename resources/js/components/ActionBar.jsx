@@ -31,28 +31,14 @@ export const ActionBar = ({ button }) => {
                     menu: response.menu,
                     sections: menuSections,
                 };
-
                 return menuObject;
             })
             .then((menuObject) => {
-                console.log(menuObject.sections, "1");
-                console.log(
-                    ApiFetchData.menusections("addMenuSections", {
-                        sections: menuObject.sections,
-                    }),
-                    "2"
-                );
-
                 ApiFetchData.menusections("addMenuSections", {
                     sections: menuObject.sections,
                 }).then((response) => {
-                    console.log(response, "3");
-                    //     addMenuSections(response.sections);
-                    // //     const menuObject = {
-                    // //         menu: savedMenu,
-                    // //         sections: response.sections,
-                    // //     };
-                    // //     return menuObject;
+                    addMenuSections(response.sections);
+                    return { ...menuObject, sections: response.sections };
                 });
             });
 
