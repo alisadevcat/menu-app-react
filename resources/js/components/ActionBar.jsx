@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -7,12 +7,23 @@ import { updateMenu } from "../store/reducers/menusSlice";
 import { addMenuSections } from "../store/reducers/menusectionsSlice";
 // import { addMenuItems } from "../store/reducers/menuitemsSlice";
 
+const updateSectionIdsinItems = (sections, items) => {
+    let result = [];
+    sections.forEach((s, i, arr1) => {
+        result = items.map((j, index, arr) =>
+            arr[i].map((item) => ({ ...item, section_id: arr1[i].id }))
+        );
+    });
+
+    return result;
+};
+
 export const ActionBar = ({ button }) => {
     const navigate = useNavigate();
+    const menu = useSelector((state) => state.menus.menu);
     const branch = useSelector((state) => state.branches.branch.slug);
-    const [menu, setMenu] = useState(useSelector((state) => state.menus.menu));
     const sections = useSelector((state) => state.menusections.sections);
-    // const menuItemsAll = useSelector((state) => state.menuitems.menuitems);
+    const menuItemsAll = useSelector((state) => state.menuitems.menuitems);
     const menuTypeTemplate = useSelector(
         (state) => state.menutypes.menutype.template
     );
@@ -24,32 +35,42 @@ export const ActionBar = ({ button }) => {
         ApiFetchData.menus("addMenu", { menu: menu })
             .then((response) => {
                 updateMenu(response.menu);
+
                 const menuSections = [...sections].map((item) => {
                     return { ...item, menu_id: response.menu.id };
                 });
-                const menuObject = {
+
+                return {
                     menu: response.menu,
                     sections: menuSections,
                 };
-                return menuObject;
             })
             .then((menuObject) => {
                 ApiFetchData.menusections("addMenuSections", {
                     sections: menuObject.sections,
-                }).then((response) => {
-                    addMenuSections(response.sections);
-                    return { ...menuObject, sections: response.sections };
-                });
+                })
+                    .then((response) => {
+                        addMenuSections(response.sections);
+
+                        const items = updateSectionIdsinItems(
+                            response.sections,
+                            menuItemsAll
+                        );
+
+                        return {
+                            ...menuObject,
+                            sections: response.sections,
+                            sectionitems: items,
+                        };
+                    })
+                    .then((menuObject) => {
+                        console.log(menuObject, "menuObject");
+                    })
+                    .then(() => {
+                        setTimeout(navigate("/menus/pdf"), 10000);
+                    });
             });
-
-        setTimeout(navigate("/menus/pdf"), 10000);
     };
-
-    // () => {
-    //     addNewMenu.then((response) => {console.log(response.menu);});
-    //     setTimeout(navigate("/menus/pdf"), 5000);
-    // };
-    //console.log(menu, "menu");
 
     return (
         <div className="actionbar mt-2">
