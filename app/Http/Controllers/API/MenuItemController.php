@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\API;
+
 use App\Http\Controllers\Controller;
 use App\Models\MenuItem;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class MenuItemController extends Controller
      */
     public function index()
     {
-        $menuitems= MenuItem::all();
+        $menuitems = MenuItem::all();
         return $menuitems;
     }
 
@@ -22,7 +23,7 @@ class MenuItemController extends Controller
     {
         $ids = explode("-", $ids);
 
-        foreach ($ids as $id){
+        foreach ($ids as $id) {
             $menu_items[] = MenuItem::where('section_id', intval($id))->get();
         }
         return $menu_items;
@@ -45,7 +46,33 @@ class MenuItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $menuitems = [];
+
+        foreach ($request->data as $key1 => $data) {
+
+            foreach ($data as $key => $item) {
+
+                $menuitem = new MenuItem([
+                    'title' => $item['title'],
+                    'subtitle' => $item['subtitle'],
+                    'price' => $item['price'],
+                    'style' => $item['style'],
+                    'modifier' => $item['modifier'],
+                    'mod_text' => $item['mod_text'],
+                    'ordering' => $item['ordering'],
+                    'notice' => $item['notice'],
+                    'section_id' => $item['section_id'],
+                ]);
+
+                $menuitem->save();
+
+                $items[] = $menuitem;
+            }
+            
+            $menuitems = [$items,...$menuitems];
+        }
+
+        return response()->json(["menuitems" => $menuitems]);
     }
 
     /**

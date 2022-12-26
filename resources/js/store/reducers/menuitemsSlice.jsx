@@ -13,29 +13,6 @@ export const fetchItems = createAsyncThunk(
         }
     }
 );
-export const addMenuItems = createAsyncThunk(
-    "menusections/addMenuItems",
-    async (menuItems) => {
-        const options = {
-            method: "POST",
-            headers: {
-                "Accept": "application/json, text/plain, */*",
-                "Content-Type": "application/json",
-            },
-            mode: "cors",
-            body: JSON.stringify(menuItems),
-        };
-
-        const response = await fetch("/api/menu-items", options);
-
-        if (response.ok) {
-            const data = await response.json();
-            return data;
-        } else {
-            console.log("Ошибка HTTP: " + response.status);
-        }
-    }
-);
 
 const menuitemsSlice = createSlice({
     name: "menuitems",
@@ -43,7 +20,6 @@ const menuitemsSlice = createSlice({
     reducers: {
         updateMenuItems: (state, action) => {
             // console.log(current(state.menuitems), "cs");
-
             state.menuitems.forEach((item, i) => {
                 const index = item.findIndex((e) => e.id === action.payload.id);
                 if (index >= 0) {
@@ -51,6 +27,9 @@ const menuitemsSlice = createSlice({
                 }
             });
         },
+        addMenuItems:(state, action)=>{
+            state.menuitems = action.payload;
+        }
     },
     extraReducers: {
         [fetchItems.pending]: (state) => {
@@ -63,19 +42,8 @@ const menuitemsSlice = createSlice({
         [fetchItems.rejected]: (state) => {
             state.isLoaded = true;
         },
-        [addMenuItems.pending]: (state) => {
-            state.isLoaded = false;
-            state.error = null;
-        },
-        [addMenuItems.fulfilled]: (state) => {
-            state.isLoaded = true;
-        },
-        [addMenuItems.rejected]: (state) => {
-            state.isLoaded = true;
-            state.error = null;
-        },
     },
 });
 
-export const { updateMenuItems } = menuitemsSlice.actions;
+export const { updateMenuItems, addMenuItems } = menuitemsSlice.actions;
 export default menuitemsSlice.reducer;

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import ApiFetchData from "../utils/ApiFetchData";
 import { updateMenu } from "../store/reducers/menusSlice";
 import { addMenuSections } from "../store/reducers/menusectionsSlice";
-// import { addMenuItems } from "../store/reducers/menuitemsSlice";
+import { addMenuItems } from "../store/reducers/menuitemsSlice";
 
 const updateSectionIdsinItems = (sections, items) => {
     let result = [];
@@ -60,14 +60,25 @@ export const ActionBar = ({ button }) => {
                         return {
                             ...menuObject,
                             sections: response.sections,
-                            sectionitems: items,
+                            menuitems: items,
                         };
                     })
                     .then((menuObject) => {
-                        console.log(menuObject, "menuObject");
-                    })
-                    .then(() => {
-                        setTimeout(navigate("/menus/pdf"), 10000);
+                        ApiFetchData.menuitems("addMenuItems", {
+                            menuitems: menuObject.menuitems,
+                        })
+                            .then((response) => {
+                                addMenuItems(response.menuitems);
+
+                                return {
+                                    ...menuObject,
+                                    menuitems: response.menuitems,
+                                };
+                            })
+                            .then((data) => {
+                                //render pdf
+                                setTimeout(navigate("/menus/pdf"), 10000);
+                            });
                     });
             });
     };
