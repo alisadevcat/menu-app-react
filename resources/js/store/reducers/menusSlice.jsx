@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 
 export const setMenu = createAsyncThunk("menus/setMenu", async (params) => {
     const response = await fetch(`/api/menus/template/${params}`);

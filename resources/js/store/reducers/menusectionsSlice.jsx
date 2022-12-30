@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 
 export const fetchSectionByMenuId = createAsyncThunk(
     "menusections/fetchSectionByMenuId",
@@ -29,7 +29,7 @@ const menusectionsSlice = createSlice({
             );
             state.sections[index] = action.payload;
         },
-        addMenuSections: (state, action)=>{
+        addSections: (state, action)=>{
             state.sections = action.payload;
         }
     },
@@ -47,5 +47,5 @@ const menusectionsSlice = createSlice({
         }
     },
 });
-export const { updateSections, addMenuSections } = menusectionsSlice.actions;
+export const { updateSections, addSections } = menusectionsSlice.actions;
 export default menusectionsSlice.reducer;

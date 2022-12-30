@@ -1,10 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import ApiFetchData from "../utils/ApiFetchData";
 import { updateMenu } from "../store/reducers/menusSlice";
-import { addMenuSections } from "../store/reducers/menusectionsSlice";
+import { addSections } from "../store/reducers/menusectionsSlice";
 import { addMenuItems } from "../store/reducers/menuitemsSlice";
 
 const updateSectionIdsinItems = (sections, items) => {
@@ -20,6 +20,7 @@ const updateSectionIdsinItems = (sections, items) => {
 
 export const ActionBar = ({ button }) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const menu = useSelector((state) => state.menus.menu);
     const branch = useSelector((state) => state.branches.branch.slug);
     const sections = useSelector((state) => state.menusections.sections);
@@ -34,7 +35,7 @@ export const ActionBar = ({ button }) => {
     const dispatchThenRoute = () => {
         ApiFetchData.menus("addMenu", { menu: menu })
             .then((response) => {
-                updateMenu(response.menu);
+                dispatch(updateMenu(response.menu));
 
                 const menuSections = [...sections].map((item) => {
                     return { ...item, menu_id: response.menu.id };
@@ -50,13 +51,10 @@ export const ActionBar = ({ button }) => {
                     sections: menuObject.sections,
                 })
                     .then((response) => {
-                        addMenuSections(response.sections);
-
-                        const items = updateSectionIdsinItems(
-                            response.sections,
-                            menuItemsAll
-                        );
-
+                        dispatch(addSections(response.sections));
+                        let items = updateSectionIdsinItems(
+                                  response.sections,
+                                  menuItemsAll);                   
                         return {
                             ...menuObject,
                             sections: response.sections,
@@ -68,7 +66,7 @@ export const ActionBar = ({ button }) => {
                             menuitems: menuObject.menuitems,
                         })
                             .then((response) => {
-                                addMenuItems(response.menuitems);
+                                dispatch(addMenuItems(response.menuitems));
 
                                 return {
                                     ...menuObject,
@@ -76,6 +74,7 @@ export const ActionBar = ({ button }) => {
                                 };
                             })
                             .then((data) => {
+                                console.log(data, "data");
                                 //render pdf
                                 setTimeout(navigate("/menus/pdf"), 10000);
                             });

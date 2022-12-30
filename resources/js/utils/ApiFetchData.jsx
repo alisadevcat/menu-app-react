@@ -59,7 +59,7 @@ class ApiFetchData {
                             "Content-Type": "application/json",
                         },
                         mode: "cors",
-                        body: { data: options.sections},
+                        body: { data: options.sections },
                     };
                 },
             },
@@ -99,8 +99,6 @@ class ApiFetchData {
                 throw new Error("Ответ сети был не ok.");
             }
             const result = await response.json();
-            console.log(result, "result");
-
             return result;
 
         } catch (err) {
