@@ -35,7 +35,7 @@ export const ActionBar = ({ button }) => {
     const dispatchThenRoute = () => {
         ApiFetchData.menus("addMenu", { menu: menu })
             .then((response) => {
-                dispatch(updateMenu(response.menu));
+           
 
                 const menuSections = [...sections].map((item) => {
                     return { ...item, menu_id: response.menu.id };
@@ -51,7 +51,7 @@ export const ActionBar = ({ button }) => {
                     sections: menuObject.sections,
                 })
                     .then((response) => {
-                        dispatch(addSections(response.sections));
+                       
                         let items = updateSectionIdsinItems(
                                   response.sections,
                                   menuItemsAll);                   
@@ -66,7 +66,7 @@ export const ActionBar = ({ button }) => {
                             menuitems: menuObject.menuitems,
                         })
                             .then((response) => {
-                                dispatch(addMenuItems(response.menuitems));
+                           
 
                                 return {
                                     ...menuObject,
@@ -75,6 +75,9 @@ export const ActionBar = ({ button }) => {
                             })
                             .then((data) => {
                                 console.log(data, "data");
+                                dispatch(updateMenu(data.menu));
+                                dispatch(addSections(data.sections));
+                                dispatch(addMenuItems(data.menuitems));
                                 //render pdf
                                 setTimeout(navigate("/menus/pdf"), 10000);
                             });

@@ -32,7 +32,7 @@ export const MenuSection = ({ section, showForms }) => {
         if (menuItemsAll.length > 0) {
             setMenuItems(getItemsById(menuItemsAll, section.id));
         }
-    }, []);
+    }, [menuItemsAll]);
 
     return (
         <div className="section-editable">
