@@ -1,5 +1,6 @@
 import React from "react";
 import { ActionIcons } from "./ActionIcons";
+import PropTypes from "prop-types";
 
 export const MenuItem = ({ menuItem, fieldOrder, showForms }) => {
     const options = { type: "menuitem", item: menuItem };
@@ -29,4 +30,18 @@ export const MenuItem = ({ menuItem, fieldOrder, showForms }) => {
             </div>
         </div>
     );
+};
+
+MenuItem.propTypes = {
+    menuItem: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        subtitle: PropTypes.string,
+        price: PropTypes.string,
+        modifier: PropTypes.modifier,
+        mod_text: PropTypes.mod_text,
+        notice: PropTypes.notice,
+    }),
+    showForms: PropTypes.bool,
+    fieldOrder: PropTypes.string
 };

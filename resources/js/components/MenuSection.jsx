@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { MenuItem } from "./MenuItem";
 import { fetchItems } from "../store/reducers/menuitemsSlice";
 import { ActionIcons } from "./ActionIcons";
+import PropTypes from "prop-types";
 import parse from "html-react-parser";
 
 function getItemsById(arr, id) {
@@ -61,4 +62,15 @@ export const MenuSection = ({ section, showForms }) => {
             </div>
         </div>
     );
+};
+
+MenuSection.propTypes = {
+    section: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        subtitle: PropTypes.string,
+        price: PropTypes.string,
+        field_order: PropTypes.string
+    }),
+    showForms: PropTypes.bool
 };

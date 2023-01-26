@@ -29,9 +29,16 @@ const menusectionsSlice = createSlice({
             );
             state.sections[index] = action.payload;
         },
-        addSections: (state, action)=>{
+        addSections: (state, action) => {
             state.sections = action.payload;
-        }
+        },
+        removeSection: (state, action) => {
+            console.log('menusections');
+            state.sections = state.sections.filter((item) => {
+                item.id !== action.id;
+            });
+            console.log(state.sections);
+        },
     },
     extraReducers: {
         [fetchSectionByMenuId.pending]: (state) => {
@@ -44,8 +51,8 @@ const menusectionsSlice = createSlice({
         },
         [fetchSectionByMenuId.rejected]: (state) => {
             state.isLoaded = true;
-        }
+        },
     },
 });
-export const { updateSections, addSections } = menusectionsSlice.actions;
+export const { updateSections, addSections, removeSection } = menusectionsSlice.actions;
 export default menusectionsSlice.reducer;

@@ -4,11 +4,28 @@ import { SectionEditForm } from "../components/Forms/SectionEditForm";
 import { MenuItemEditForm } from "../components/Forms/MenuItemEditForm";
 import { MenuEditForm } from "../components/Forms/MenuEditForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { removeMenuItems } from "../store/reducers/menuitemsSlice";
+import { removeSection } from "../store/reducers/menusectionsSlice";
 import PropTypes from "prop-types";
 
 export const ActionIcons = ({ options }) => {
     const [isOpen, setIsOpen] = useState(false);
     const handleClose = () => setIsOpen(false);
+
+    const deleteItem = () => {
+        console.log(options.type);
+        console.log(typeof(options.type));
+        if (options.type === "section") {
+            console.log("1");
+            removeSection({ id: options.item.id });
+        } else if (options.type === "menuitem") {
+            console.log("2");
+            removeMenuItems({ id: options.item.id });
+        }
+    };
+
+    //menuitem
+    //section
 
     const actionComponent = (type) => {
         switch (type) {
@@ -36,7 +53,8 @@ export const ActionIcons = ({ options }) => {
                 );
             case "section":
                 return (
-                    <div className="editable-buttons">
+                    <div className="editable-buttons section-buttons">
+                        {options.item.id}
                         <span
                             className="editable-button"
                             onClick={() => setIsOpen(true)}
@@ -49,7 +67,7 @@ export const ActionIcons = ({ options }) => {
                         <span className="editable-button">
                             <FontAwesomeIcon icon="long-arrow-down" />
                         </span>
-                        <span className="editable-button">
+                        <span className="editable-button" onClick={deleteItem}>
                             <FontAwesomeIcon icon="trash-alt" />
                         </span>
                         <Modal
@@ -67,7 +85,7 @@ export const ActionIcons = ({ options }) => {
                 );
             case "menuitem":
                 return (
-                    <div className="editable-buttons">
+                    <div className="editable-buttons item-buttons">
                         <span
                             className="editable-button"
                             onClick={() => setIsOpen(true)}
@@ -80,7 +98,7 @@ export const ActionIcons = ({ options }) => {
                         <span className="editable-button">
                             <FontAwesomeIcon icon="long-arrow-down" />
                         </span>
-                        <span className="editable-button">
+                        <span className="editable-button" onClick={deleteItem}>
                             <FontAwesomeIcon icon="trash-alt" />
                         </span>
                         <Modal

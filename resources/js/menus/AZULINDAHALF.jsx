@@ -8,7 +8,6 @@ import PropTypes from "prop-types";
 const AzulindaHalf = ({ showForms }) => {
     const menu = useSelector((state) => state.menus.menu);
     const sections = useSelector((state) => state.menusections.sections);
-
     return (
         <>
             <div className="container text-center azulinda_half">

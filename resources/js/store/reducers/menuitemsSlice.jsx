@@ -29,7 +29,14 @@ const menuitemsSlice = createSlice({
         },
         addMenuItems:(state, action)=>{
             state.menuitems = action.payload;
-        }
+        }, 
+        removeMenuItems: (state, action) => {
+            console.log('menuitems');
+            // state.menuitems = state.menuitems.filter((item) => {
+            //     item.id !== action.id;
+            // });
+            // console.log(state.menuitems);
+        },
     },
     extraReducers: {
         [fetchItems.pending]: (state) => {
@@ -45,5 +52,5 @@ const menuitemsSlice = createSlice({
     },
 });
 
-export const { updateMenuItems, addMenuItems } = menuitemsSlice.actions;
+export const { updateMenuItems, addMenuItems, removeMenuItems } = menuitemsSlice.actions;
 export default menuitemsSlice.reducer;
