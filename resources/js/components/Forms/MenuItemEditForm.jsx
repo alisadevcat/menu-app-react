@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateMenuItems } from "../../store/reducers/menuitemsSlice";
-
-const getStyles = (styles) => {
-    return styles.split(",");
-};
+import { getStyles } from "../../utils/Helpers";
+import PropTypes from "prop-types";
 
 export const MenuItemEditForm = ({ item, handleClose }) => {
     const dispatch = useDispatch();
@@ -126,4 +124,18 @@ export const MenuItemEditForm = ({ item, handleClose }) => {
             </div>
         </div>
     );
+};
+
+
+MenuItemEditForm.propTypes = {
+    item: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        subtitle: PropTypes.string,
+        price: PropTypes.string,
+        modifier: PropTypes.modifier,
+        mod_text: PropTypes.mod_text,
+        notice: PropTypes.notice,
+    }),
+    handleClose: PropTypes.bool,
 };

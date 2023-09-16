@@ -6,17 +6,7 @@ import ApiFetchData from "../utils/ApiFetchData";
 import { updateMenu } from "../store/reducers/menusSlice";
 import { addSections } from "../store/reducers/menusectionsSlice";
 import { addMenuItems } from "../store/reducers/menuitemsSlice";
-
-const updateSectionIdsinItems = (sections, items) => {
-    let result = [];
-    sections.forEach((s, i, arr1) => {
-        result = items.map((j, index, arr) =>
-            arr[i].map((item) => ({ ...item, section_id: arr1[i].id }))
-        );
-    });
-
-    return result;
-};
+import { updateSectionIdsinItems } from "../utils/Helpers";
 
 export const ActionBar = ({ button }) => {
     const navigate = useNavigate();
@@ -30,7 +20,7 @@ export const ActionBar = ({ button }) => {
     );
 
     const review_url = `/menus/${branch}/${menuTypeTemplate}/preview`;
-    const print_url = "/";
+    const print_url = "/menus/pdf";
 
     const dispatchThenRoute = () => {
         ApiFetchData.menus("addMenu", { menu: menu })
@@ -67,18 +57,19 @@ export const ActionBar = ({ button }) => {
                         })
                             .then((response) => {
                            
-
                                 return {
                                     ...menuObject,
                                     menuitems: response.menuitems,
                                 };
                             })
                             .then((data) => {
-                                console.log(data, "data");
+                      
                                 dispatch(updateMenu(data.menu));
                                 dispatch(addSections(data.sections));
                                 dispatch(addMenuItems(data.menuitems));
-                                //render pdf
+                                
+                                // render pdf
+                            }).then(()=>{
                                 setTimeout(navigate("/menus/pdf"), 10000);
                             });
                     });

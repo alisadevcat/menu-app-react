@@ -21,7 +21,7 @@ const branchesSlice = createSlice({
     initialState: { branches: [], branch: {}, isLoaded: false, error: null },
     reducers: {
         setBranch: (state, action) => {
-            state.branch = action.payload
+            state.branch = action.payload;
         },
     },
     extraReducers: {

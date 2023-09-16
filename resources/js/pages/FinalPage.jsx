@@ -1,7 +1,6 @@
 import React from "react";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-
+import { useEffect, useSelector } from "react-redux";
+import Pdf from 'react-to-pdf';
 
 const FinalPage = () => {
     const menu = useSelector((state) => state.menus.menu);
@@ -11,9 +10,9 @@ const FinalPage = () => {
     return (
         <div className="container">
             <p>Final page</p>
-            <div className="btn">
+            <button className="btn">
                 Download PDF
-            </div>
+            </button>
             <h1>Generated PDF</h1>
             <p>As you can see you can scroll without issues and select text.</p>
         </div>

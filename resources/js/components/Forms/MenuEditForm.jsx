@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateMenu } from "../../store/reducers/menusSlice";
+import PropTypes from "prop-types";
 
 export const MenuEditForm = ({ item, handleClose }) => {
     const dispatch = useDispatch();
@@ -177,4 +178,16 @@ export const MenuEditForm = ({ item, handleClose }) => {
             </form>
         </div>
     );
+};
+
+
+MenuEditForm.propTypes = {
+    handleClose: PropTypes.bool,
+    item: PropTypes.shape({
+        name: PropTypes.string,
+        title: PropTypes.string,
+        title2: PropTypes.string,
+        subtitle: PropTypes.string,
+        subtitle2: PropTypes.string,
+    }),
 };

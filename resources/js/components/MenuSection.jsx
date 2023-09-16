@@ -1,29 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { MenuItem } from "./MenuItem";
 import { fetchItems } from "../store/reducers/menuitemsSlice";
 import { ActionIcons } from "./ActionIcons";
 import PropTypes from "prop-types";
 import parse from "html-react-parser";
-
-function getItemsById(arr, id) {
-    return arr.reduce((acc, item) => {
-        if (item[0].section_id === id) {
-            acc = [...acc, ...item];
-        }
-        return acc;
-    }, []);
-}
+import { getItemsById } from "../utils/Helpers";
 
 export const MenuSection = ({ section, showForms }) => {
+    const dispatch = useDispatch();
     const [menuitems, setMenuItems] = useState([]);
     const sections = useSelector((state) => state.menusections.sections);
     const menuItemsAll = useSelector((state) => state.menuitems.menuitems);
-    const dispatch = useDispatch();
     const ids = sections.map((item) => item.id).join("-");
     const sectionClass = showForms ?  "menu-section menu-section_edit mt-1" : "menu-section_edit mt-1";
-
-    const options = { type: "section", item: section };
+    const options = useMemo(() => ({ type: "section", item: section }), [section]);
 
     useEffect(() => {
         dispatch(fetchItems(ids));

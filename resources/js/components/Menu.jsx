@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { ActionIcons } from "./ActionIcons";
 import PropTypes from "prop-types";
 
 export const Menu = ({ menu, showForms }) => {
-    const options = { type: "menu", item: menu };
+    const options = useMemo(() => ({ type: "menu", item: menu }), [menu]);
+    
     return (
         <div className="menuitem-editable">
             {showForms && <ActionIcons options={options} />}

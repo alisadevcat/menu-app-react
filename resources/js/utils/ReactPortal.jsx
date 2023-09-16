@@ -1,6 +1,7 @@
 import { useState, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
-import {createWrapperAndAppendToBody} from "../utils/Helpers";
+import { createWrapperAndAppendToBody } from "../utils/Helpers";
+import PropTypes from "prop-types";
 
 //wrapperId property, which is the ID attribute of a DOM element and acts as the container for the portal.
 
@@ -11,13 +12,18 @@ function ReactPortal({ children, wrapperId = "react-portal-modal-container" }) {
   const [wrapperElement, setWrapperElement] = useState(null);
 
   useLayoutEffect(() => {
-  let element = document.getElementById(wrapperId);
-  if (!element) {
-    element = createWrapperAndAppendToBody(wrapperId);
-  }  setWrapperElement(element);
-}, [wrapperId]);
+    let element = document.getElementById(wrapperId);
+    if (!element) {
+      element = createWrapperAndAppendToBody(wrapperId);
+    }
+    setWrapperElement(element);
+  }, [wrapperId]);
 
-    if (wrapperElement === null) return null;
+  if (wrapperElement === null) return null;
   return createPortal(children, wrapperElement);
 }
 export default ReactPortal;
+
+ReactPortal.propTypes = {
+  wrapperId: PropTypes.string,
+};

@@ -4,7 +4,7 @@ import AzulindaMobile from "../menus/AzulindaMobile";
 import LaLuceDinner from "../menus/LaluceDinner";
 import React from "react";
 
-export const getComponent = (template, showForms) => {
+export const createComponent = (template, showForms) => {
     switch (template) {
         case "azulindaHalf":
             return <AzulindaHalf showForms={showForms}/>;
